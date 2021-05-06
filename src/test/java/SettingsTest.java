@@ -1,6 +1,6 @@
 import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.Before;
+import Settings.*;
+
 import org.junit.Test;
 
 import java.util.EnumMap;
@@ -15,7 +15,7 @@ public class SettingsTest {
     public void allSettingsMapped() {
         EnumMap p = Settings.getMapping();
         
-        for(Param param : Param.values()) {
+        for(EParam param : EParam.values()) {
             assertTrue(p.containsKey(param));
         }
     }

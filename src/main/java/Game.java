@@ -1,3 +1,5 @@
+import Media.*;
+
 /**
  * The main class that starts the game/
  */
@@ -9,6 +11,6 @@ public class Game {
      */
     public static void main(String[] args){
     
-        
+    
     }
 }
