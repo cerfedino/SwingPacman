@@ -1,19 +1,26 @@
 package Media;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.EnumMap;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 /**
  *  Contains all the media files needed to display the game.
  */
 public class Media {
-    //TODO: Figure out whats the type of an image file
-    static private EnumMap<EImage, Integer> mapping;
+    static private EnumMap<EImage, ImageIcon> mapping;
     
     /**
      * Imports the media files.
      */
     static {
-        importMedia();
+        try{
+            importMedia();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
     
     /**
@@ -21,37 +28,35 @@ public class Media {
      * @param eimage the EImage ENUM key
      * @return the image
      */
-    public static int get(EImage eimage) {
+    public static ImageIcon get(EImage eimage) {
         return mapping.get(eimage);
     }
     
     /**
      * Imports the media files in the class.
      */
-    static private void importMedia() {
-        //TODO: Actually implement the media importing aspect
+    static private void importMedia() throws IOException  {
         
-        /*
-        EnumMap<EImage, Integer> newMapping = new EnumMap<>(EImage.class);
+        EnumMap<EImage, ImageIcon> newMapping = new EnumMap<>(EImage.class);
+        
+        newMapping.put(EImage.pacman, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
 
-        newMapping.put(EImage.pacman,            4);
+        newMapping.put(EImage.ghost, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder2.png"))));
+        newMapping.put(EImage.ghost_vuln, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
 
-        newMapping.put(EImage.ghost,   3);
-        newMapping.put(EImage.ghost_vuln,             3);
+        newMapping.put(EImage.large_food, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
+        newMapping.put(EImage.small_food, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
 
-        newMapping.put(EImage.large_food,        40);
-        newMapping.put(EImage.small_food,        20);
-
-        newMapping.put(EImage.hearth,  10);
-
-        mapping = newMapping;*/
+        newMapping.put(EImage.hearth, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
+        
+        mapping = newMapping;
     }
     
     /**
      * Getter method for the EnumMap.
-     * @return the settings EnumMap
+     * @return the media EnumMap
      */
-    public static EnumMap<EImage, Integer> getMapping() {
+    public static EnumMap<EImage, ImageIcon> getMapping() {
         return mapping;
     }
     
