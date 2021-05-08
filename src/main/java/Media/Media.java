@@ -1,5 +1,6 @@
 package Media;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.EnumMap;
@@ -10,10 +11,11 @@ import javax.swing.*;
  *  Contains all the media files needed to display the game.
  */
 public class Media {
-    static private EnumMap<EImage, ImageIcon> mapping;
+    static private EnumMap<EImage, BufferedImage> mapping;
     
     /**
      * Imports the media files.
+     *  Throws an Exception if a media file can't be found
      */
     static {
         try{
@@ -28,7 +30,7 @@ public class Media {
      * @param eimage the EImage ENUM key
      * @return the image
      */
-    public static ImageIcon get(EImage eimage) {
+    public static BufferedImage get(EImage eimage) {
         return mapping.get(eimage);
     }
     
@@ -37,17 +39,20 @@ public class Media {
      */
     static private void importMedia() throws IOException  {
         
-        EnumMap<EImage, ImageIcon> newMapping = new EnumMap<>(EImage.class);
+        EnumMap<EImage, BufferedImage> newMapping = new EnumMap<>(EImage.class);
         
-        newMapping.put(EImage.pacman, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
+        newMapping.put(EImage.pacman, ImageIO.read(new File("./src/main/resources/pacman.png")));
+    
+        newMapping.put(EImage.ghost1, ImageIO.read(new File("./src/main/resources/ghost1.png")));
+        newMapping.put(EImage.ghost2, ImageIO.read(new File("./src/main/resources/ghost2.png")));
+        newMapping.put(EImage.ghost3, ImageIO.read(new File("./src/main/resources/ghost3.png")));
+        newMapping.put(EImage.ghost4, ImageIO.read(new File("./src/main/resources/ghost3.png")));
+        newMapping.put(EImage.ghost_vuln, ImageIO.read(new File("./src/main/resources/ghost_vuln.png")));
 
-        newMapping.put(EImage.ghost, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder2.png"))));
-        newMapping.put(EImage.ghost_vuln, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
+        newMapping.put(EImage.large_food, ImageIO.read(new File("./src/main/resources/pacman.png")));
+        newMapping.put(EImage.small_food, ImageIO.read(new File("./src/main/resources/pacman.png")));
 
-        newMapping.put(EImage.large_food, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
-        newMapping.put(EImage.small_food, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
-
-        newMapping.put(EImage.hearth, new ImageIcon(ImageIO.read(new File("./src/main/resources/placeholder.png"))));
+        newMapping.put(EImage.hearth, ImageIO.read(new File("./src/main/resources/pacman.png")));
         
         mapping = newMapping;
     }
@@ -56,7 +61,7 @@ public class Media {
      * Getter method for the EnumMap.
      * @return the media EnumMap
      */
-    public static EnumMap<EImage, ImageIcon> getMapping() {
+    public static EnumMap<EImage, BufferedImage> getMapping() {
         return mapping;
     }
     
