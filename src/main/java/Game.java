@@ -18,11 +18,15 @@ public class Game {
         ////////////////////////////
         //// DEMO
         painter = new Painter();
-        Sprite s = new Sprite(1000,0, EImage.ghost1);
-        Sprite g = new Sprite(1000,0, EImage.ghost2);
-        painter.registerSprite(s);
-        painter.registerSprite(g);
-        s.setX(0);
+        Sprite s1 = new Sprite(1000,200, EImage.ghost1);
+        Sprite s2 = new Sprite(1000,200, EImage.ghost2);
+        Sprite s3 = new Sprite(1000,200, EImage.ghost3);
+        Sprite s4 = new Sprite(1000,200, EImage.ghost4);
+        painter.registerSprite(s1);
+        painter.registerSprite(s2);
+        painter.registerSprite(s3);
+        painter.registerSprite(s4);
+        s1.setX(0);
         painter.registerSprite(new Sprite(1000,200, EImage.pacman));
         
         Thread t = new Thread(new Runnable() {
@@ -30,23 +34,31 @@ public class Game {
             public void run(){
                 try{
                     for (int z=0; z<=200; z++){
-                        s.setPos(z,z);
-                        g.setPos(z+100,z);
+                        s1.setPos(z,z);
+                        s2.setPos(z+100,z);
+                        s3.setPos(z,z+100);
+                        s4.setPos(z+100,z+100);
                         Thread.sleep(10);
                     }
                     for (int z=200; z<=400; z+=2){
-                        s.setX(z);
-                        g.setX(z+100);
+                        s1.setX(z);
+                        s2.setX(z+100);
+                        s3.setX(z);
+                        s4.setX(z+100);
                         Thread.sleep(10);
                     }
                     for (int z=200; z<=400; z+=4){
-                        s.setY(z);
-                        g.setY(z);
+                        s1.setY(z);
+                        s2.setY(z);
+                        s3.setY(z+100);
+                        s4.setY(z+100);
                         Thread.sleep(10);
                     }
                     for (int z=400; z<=600; z++){
-                        s.setX(z);
-                        g.setX(z+100);
+                        s1.setX(z);
+                        s2.setX(z+100);
+                        s3.setX(z);
+                        s4.setX(z+100);
                         Thread.sleep(10);
                     }
                 } catch (Exception ae){

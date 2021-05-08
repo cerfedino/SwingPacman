@@ -46,7 +46,7 @@ public class Media {
         newMapping.put(EImage.ghost1, ImageIO.read(new File("./src/main/resources/ghost1.png")));
         newMapping.put(EImage.ghost2, ImageIO.read(new File("./src/main/resources/ghost2.png")));
         newMapping.put(EImage.ghost3, ImageIO.read(new File("./src/main/resources/ghost3.png")));
-        newMapping.put(EImage.ghost4, ImageIO.read(new File("./src/main/resources/ghost3.png")));
+        newMapping.put(EImage.ghost4, ImageIO.read(new File("./src/main/resources/ghost4.png")));
         newMapping.put(EImage.ghost_vuln, ImageIO.read(new File("./src/main/resources/ghost_vuln.png")));
 
         newMapping.put(EImage.large_food, ImageIO.read(new File("./src/main/resources/pacman.png")));
