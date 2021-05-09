@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 /**
  * A Sprite to be displayed on the game screen.
  */
-public class Sprite extends Canvas {
+public class Sprite extends JPanel {
     private int x;
     private int y;
     
@@ -33,15 +33,13 @@ public class Sprite extends Canvas {
     }
     
     /**
-     * Paints the sprite in its awt/swing Container.
+     * Paints the sprite in its swing Container.
      */
     @Override
-    // TODO: Make the paint method paint with a transparent background
-    public void paint(Graphics g) {
-        super.paint(g);
+    public void paintComponent(Graphics g) {
         g.drawImage(Media.Media.get(image), 0, 0, this); // see javadoc for more info on the parameters
+        Toolkit.getDefaultToolkit().sync();
     }
-    
     
     
     /////////////////////////////
@@ -59,29 +57,27 @@ public class Sprite extends Canvas {
         BufferedImage img = Media.Media.get(image);
         x_render_offset = - img.getWidth()/2;
         y_render_offset = - img.getHeight()/2;
+        setSize(img.getWidth(), img.getHeight());
         this.image = image;
     }
     
     public void setX(int newX){
         this.x = newX + x_render_offset;
         
-        BufferedImage img = Media.Media.get(image);
-        setBounds(x,y,img.getWidth(), img.getHeight());
+        setLocation(x,y);
     }
     
     public void setY(int newY){
         this.y = newY + y_render_offset;
         
-        BufferedImage img = Media.Media.get(image);
-        setBounds(x,y,img.getWidth(), img.getHeight());
+        setLocation(x,y);
     }
     
     public void setPos(int newX, int newY) {
         this.x = newX + x_render_offset;
         this.y = newY + y_render_offset;
-    
-        BufferedImage img = Media.Media.get(image);
-        setBounds(x,y,img.getWidth(), img.getHeight());
+        
+        setLocation(x,y);
     }
     
 }
