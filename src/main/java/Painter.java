@@ -22,7 +22,11 @@ public class Painter {
      */
     public Painter() {
         Dimension screenSize = t.getScreenSize();
-        int size = Math.min(screenSize.height, screenSize.width);
+        int size = (int)Math.round(Math.min(screenSize.height*0.95, screenSize.width)*0.95);
+        
+        // Scales the Sprite images based on the screen size
+        Scaler.setNewsize(size);
+        Media.rescaleMedia(Scaler.getScale_factor());
         
         gameframe = new JFrame("SwingPacman");
         gameframe.setSize(size, size);
@@ -45,7 +49,7 @@ public class Painter {
         if ( !sprites.contains(sprite)) {
             sprites.add(sprite);
             gameframe.add(sprite);
-            sprite.repaint();
+            gameframe.repaint();
         }
     }
     

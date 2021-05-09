@@ -1,5 +1,6 @@
 package Media;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +56,29 @@ public class Media {
         newMapping.put(EImage.hearth, ImageIO.read(new File("./src/main/resources/pacman.png")));
         
         mapping = newMapping;
+    }
+    
+    /**
+     * Scales all the images by a factor.
+     * @param scale the scale factor of the new images
+     */
+    static public void rescaleMedia(double scale) {
+        try{
+            importMedia();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        
+        for (EImage img: mapping.keySet()) {
+            BufferedImage originalImage = mapping.get(img);
+            int targetWidth = (int)(originalImage.getWidth()*scale);
+            int targetHeight = (int) (originalImage.getHeight()*scale);
+            
+            BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D graphics2D = resizedImage.createGraphics();
+            graphics2D.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+            mapping.replace(img, resizedImage);
+        }
     }
     
     /**

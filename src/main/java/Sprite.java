@@ -80,8 +80,8 @@ public class Sprite extends JPanel {
     }
     
     public void setPos(int newX, int newY) {
-        this.x = newX + x_render_offset;
-        this.y = newY + y_render_offset;
+        x = newX + x_render_offset;
+        y = newY + y_render_offset;
         
         setLocation(x,y);
     }
