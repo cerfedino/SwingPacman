@@ -1,4 +1,4 @@
-import Media.EImage;
+import Media.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +37,7 @@ public class Sprite extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(Media.Media.get(image), 0, 0, this); // see javadoc for more info on the parameters
+        g.drawImage(Media.get(image), 0, 0, this); // see javadoc for more info on the parameters
         Toolkit.getDefaultToolkit().sync();
     }
     
@@ -51,39 +51,25 @@ public class Sprite extends JPanel {
     /////////////////////////////
     // Getters and setters below
     
-    public int getX(){
-        return x - x_render_offset;
-    }
-    
-    public int getY(){
-        return y - y_render_offset;
-    }
-    
     public void setImage(EImage image){
-        BufferedImage img = Media.Media.get(image);
-        x_render_offset = - img.getWidth()/2;
-        y_render_offset = - img.getHeight()/2;
+        BufferedImage img = Media.get(image);
         setSize(img.getWidth(), img.getHeight());
         this.image = image;
     }
     
     public void setX(int newX){
-        this.x = newX + x_render_offset;
-        
-        setLocation(x,y);
+        setPos(newX, y);
     }
     
     public void setY(int newY){
-        this.y = newY + y_render_offset;
-        
-        setLocation(x,y);
+        setPos(x,newY);
     }
     
     public void setPos(int newX, int newY) {
-        x = newX + x_render_offset;
-        y = newY + y_render_offset;
-        
-        setLocation(x,y);
+        x = newX;
+        y = newY;
+    
+        setLocation(x - getWidth()/2, y - getHeight()/2);
     }
     
 }

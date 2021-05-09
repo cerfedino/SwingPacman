@@ -22,7 +22,7 @@ public class Painter {
      */
     public Painter() {
         Dimension screenSize = t.getScreenSize();
-        int size = (int)Math.round(Math.min(screenSize.height*0.95, screenSize.width)*0.95);
+        int size = Math.min(screenSize.height, screenSize.width);
         
         // Scales the Sprite images based on the screen size
         Scaler.setNewsize(size);

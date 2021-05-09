@@ -19,16 +19,15 @@ public class Game {
         //// DEMO
         painter = new Painter();
         
-        Sprite s1 = new Sprite(Scaler.scale(500),Scaler.scale(500), EImage.ghost1);
-        Sprite s2 = new Sprite(Scaler.scale(500),Scaler.scale(500), EImage.ghost2);
-        Sprite s3 = new Sprite(Scaler.scale(500),Scaler.scale(500), EImage.ghost3);
-        Sprite s4 = new Sprite(Scaler.scale(500),Scaler.scale(500), EImage.ghost4);
+        Sprite s1 = new Sprite(Scaler.scale(0),Scaler.scale(0), EImage.ghost1);
+        Sprite s2 = new Sprite(Scaler.scale(1000),Scaler.scale(0), EImage.ghost2);
+        Sprite s3 = new Sprite(Scaler.scale(0),Scaler.scale(1000), EImage.ghost3);
+        Sprite s4 = new Sprite(Scaler.scale(1000),Scaler.scale(1000), EImage.ghost4);
         
         painter.registerSprite(s1);
         painter.registerSprite(s2);
         painter.registerSprite(s3);
         painter.registerSprite(s4);
-        
         
         Thread t = new Thread(new Runnable() {
             @Override
