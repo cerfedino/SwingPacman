@@ -41,6 +41,12 @@ public class Sprite extends JPanel {
         Toolkit.getDefaultToolkit().sync();
     }
     
+    /**
+     * Handles the complete deletion and removal of this Sprite in the game.
+     */
+    public void removeSprite() {
+        Game.painter().unregisterSprite(this);
+    }
     
     /////////////////////////////
     // Getters and setters below

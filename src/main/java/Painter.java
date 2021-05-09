@@ -37,15 +37,27 @@ public class Painter {
     }
     
     /**
-     * Initializes a Sprite on the game screen by creating
-     *  a corrisponding Swing image and adding it to the HashMap.
-     * @param sprite the spite to initialize
+     * Initializes a Sprite on the game screen by adding it
+     *  to the game frame.
+     * @param sprite the sprite to initialize
      */
     public void registerSprite(Sprite sprite) {
         if ( !sprites.contains(sprite)) {
             sprites.add(sprite);
             gameframe.add(sprite);
             sprite.repaint();
+        }
+    }
+    
+    /**
+     * Removes a sprite from the game frame.
+     * @param sprite the sprite to unregister/delete
+     */
+    public void unregisterSprite(Sprite sprite) {
+        if ( sprites.contains(sprite)) {
+            sprites.remove(sprite);
+            gameframe.remove(sprite);
+            gameframe.repaint();
         }
     }
     

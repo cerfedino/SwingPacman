@@ -63,6 +63,18 @@ public class Game {
                         s4.setX(z+60);
                         Thread.sleep(10);
                     }
+                    Thread.sleep(1000);
+                    s1.removeSprite();
+                    
+                    Thread.sleep(1000);
+                    s2.removeSprite();
+                    
+                    Thread.sleep(1000);
+                    s3.removeSprite();
+                    
+                    Thread.sleep(1000);
+                    s4.removeSprite();
+    
                 } catch (Exception ae){
     
                 }
