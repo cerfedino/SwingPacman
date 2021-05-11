@@ -1,13 +1,11 @@
-import static org.junit.Assert.*;
-import Settings.*;
-
-import org.junit.Test;
-
 import java.util.EnumMap;
 
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+import Settings.*;
+
 public class SettingsTest {
-    
-    
     /**
      * Checks that every possible parameter is mapped in the EnumMap.
      */
