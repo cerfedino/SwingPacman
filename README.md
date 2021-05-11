@@ -1,6 +1,6 @@
 # Guide to compiling :rocket:
 
-# 1. Install Java 16
+### 1. Install Java 16
 
 [Java SE 16 Download page](https://www.oracle.com/java/technologies/javase-jdk16-downloads.html)
 
@@ -10,7 +10,7 @@ After installing Java 16, set the JAVA_HOME environment variable to point to the
 export JAVA_HOME=/usr/lib/jvm/jdk-16.0.1/
 ```
 
-# 2. Install Maven 3.8.1
+### 2. Install Maven 3.8.1
 
 Since we are using Java 16, you need to be using Apache Maven 3.8.1  
 [Download page](https://maven.apache.org/download.cgi)
