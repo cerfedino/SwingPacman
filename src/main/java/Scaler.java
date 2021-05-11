@@ -23,7 +23,7 @@ public class Scaler {
     public static void setNewsize (int inSize) {
         newSize = inSize;
         scale_factor = newSize/(double)size;
-        System.out.println(newSize +" "+size+" -> "+scale_factor);
+        System.out.println("**********\nSCALER\n" + "New size: "+newSize +" | Def size: "+size+" | -> Scale factor: "+scale_factor);
     }
     
     
@@ -32,5 +32,9 @@ public class Scaler {
     
     public static double getScale_factor(){
         return scale_factor;
+    }
+    
+    public static int getSize(){
+        return size;
     }
 }

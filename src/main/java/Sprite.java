@@ -57,6 +57,14 @@ public class Sprite extends JPanel {
         this.image = image;
     }
     
+    public int getX(){
+        return x;
+    }
+    
+    public int getY(){
+        return y;
+    }
+    
     public void setX(int newX){
         setPos(newX, y);
     }
