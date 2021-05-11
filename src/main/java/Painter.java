@@ -17,6 +17,7 @@ public class Painter {
     
     private JFrame gameframe;
     
+    
     /**
      * Initializes the Painter object by creating and setting the game window.
      */
@@ -63,6 +64,15 @@ public class Painter {
             gameframe.remove(sprite);
             gameframe.repaint();
         }
+    }
+    
+    /**
+     * Returns whether the Sprite is registered in the game screen.
+     * @param sprite the sprite to check for
+     * @return whether the Sprite is registered in the game screen
+     */
+    public boolean isSpriteRegistered(Sprite sprite) {
+        return sprites.contains(sprite);
     }
     
     
