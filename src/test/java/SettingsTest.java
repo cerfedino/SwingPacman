@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.EnumMap;
 
 import static org.junit.Assert.*;
@@ -15,6 +16,26 @@ public class SettingsTest {
         
         for(EParam param : EParam.values()) {
             assertTrue(p.containsKey(param));
+        }
+    }
+    
+    /**
+     * Checks the types of the parameters.
+     */
+    @Test
+    public void settingsTypeCheck() {
+        EnumMap p = Settings.getMapping();
+        
+        for(EParam param : EParam.values()) {
+            switch(param) {
+                case background_color:
+                case line_color:
+                    //TODO: FInd a way to assert the class of an object
+                    //assertEquals(Color.class, p.get(param).getClass());
+                    break;
+                default:
+                    //assertEquals(Integer.class, p.get(param).getClass());
+            }
         }
     }
     
