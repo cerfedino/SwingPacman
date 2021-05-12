@@ -39,4 +39,8 @@ public class Scaler {
     public static int getSize(){
         return size;
     }
+    
+    public static int getNewSize(){
+        return newSize;
+    }
 }

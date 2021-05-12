@@ -32,6 +32,7 @@ public class Sprite extends JPanel {
     public Sprite(int x, int y, EImage en) {
         setImage(en);
         setPos(x,y);
+        setOpaque(false);
     }
     
     /**
@@ -41,6 +42,7 @@ public class Sprite extends JPanel {
     public void paintComponent(Graphics g) {
         g.drawImage(Media.get(image), 0, 0, this); // see javadoc for more info on the parameters
         Toolkit.getDefaultToolkit().sync();
+        super.paintComponent(g);
     }
     
     /**

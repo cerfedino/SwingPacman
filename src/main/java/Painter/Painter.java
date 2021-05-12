@@ -1,6 +1,7 @@
 package Painter;
 
 import Entities.Sprite;
+import Map.Map;
 import Media.Media;
 
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class Painter {
     private static Toolkit t= Toolkit.getDefaultToolkit();
     private ArrayList<Sprite> sprites = new ArrayList<>();
     
+    private JLayeredPane gamepanel;
     private JFrame gameframe;
     
     
@@ -34,12 +36,16 @@ public class Painter {
         
         gameframe = new JFrame("SwingPacman");
         gameframe.setSize(size, size);
-        gameframe.setResizable(true);
+        gameframe.setResizable(false);
         gameframe.getContentPane().setBackground(Color.black);
         gameframe.setUndecorated(true);
         
         gameframe.setLayout(null);
         gameframe.setVisible(true);
+        
+        gamepanel = new JLayeredPane();
+        gamepanel.setBounds(0,0,size,size);
+        gameframe.add(gamepanel);
     
         gameframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -52,8 +58,8 @@ public class Painter {
     public void registerSprite(Sprite sprite) {
         if ( !sprites.contains(sprite)) {
             sprites.add(sprite);
-            gameframe.add(sprite);
-            gameframe.repaint();
+            gamepanel.add(sprite,0);
+            gamepanel.repaint();
         }
     }
     
@@ -64,9 +70,20 @@ public class Painter {
     public void unregisterSprite(Sprite sprite) {
         if ( sprites.contains(sprite)) {
             sprites.remove(sprite);
-            gameframe.remove(sprite);
-            gameframe.repaint();
+            gamepanel.remove(sprite);
+            gamepanel.repaint();
         }
+    }
+    
+    /**
+     * Add the map to the game frame to be displayed
+     * @param map the sprite to initialize
+     */
+    public void registerMap(Map map) {
+        gamepanel.add(map,1);
+        map.repaint();
+        gamepanel.revalidate();
+        gamepanel.repaint();
     }
     
     /**

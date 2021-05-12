@@ -1,6 +1,7 @@
 package Game;
 
 import Entities.Sprite;
+import Map.Map;
 import Media.EImage;
 import Painter.*;
 
@@ -22,6 +23,8 @@ public class Game {
         ////////////////////////////
         //// DEMO
         painter = new Painter();
+        Map map = new Map();
+        painter.registerMap(map);
         
         Sprite s1 = new Sprite(Scaler.scale(0), Scaler.scale(0), EImage.ghost1);
         Sprite s2 = new Sprite(Scaler.scale(1000), Scaler.scale(0), EImage.ghost2);
