@@ -12,5 +12,6 @@ public enum EParam {
     
     // Graphics
     line_color,
-    background_color
+    background_color,
+    path_width
 }

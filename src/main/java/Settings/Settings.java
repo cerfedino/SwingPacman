@@ -45,7 +45,7 @@ public class Settings {
         
         newMapping.put(EParam.line_color, Color.blue);
         newMapping.put(EParam.background_color, Color.black);
-    
+        newMapping.put(EParam.path_width, 40);
         mapping = newMapping;
     }
     

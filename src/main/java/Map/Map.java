@@ -27,8 +27,24 @@ public class Map extends JPanel {
         g.setColor((Color)Settings.get(EParam.line_color));
         for (Edge e : edges) {
             Node n1 = e.getFrom();
+            
             Node n2 = e.getTo();
-            g.drawLine(n1.getX(),n1.getY(),n2.getX(),n2.getY());
+            
+            
+            int x1 = n1.getX(); int y1 = n1.getY();
+            int x2 = n2.getX(); int y2 = n2.getY();
+            
+            int offset = Scaler.scale((int)Settings.get(EParam.path_width))/2;
+            switch (e.getOrientation()) {
+                case HORIZONTAL:
+                    g.drawLine(x1,y1+offset,x2,y2+offset);
+                    g.drawLine(x1,y1-offset,x2,y2-offset);
+                    break;
+                case VERTICAL:
+                    g.drawLine(x1+offset,y1,x2+offset,y2);
+                    g.drawLine(x1-offset,y1,x2-offset,y2);
+                    break;
+            }
         }
         Toolkit.getDefaultToolkit().sync();
         super.paintComponent(g);
@@ -39,6 +55,7 @@ public class Map extends JPanel {
             nodes.add(from);
         if (!nodes.contains(to))
             nodes.add(to);
+        
         Edge edge = new Edge(from, to);
         from.setEdge(edge, fromDirection);
         to.setEdge(edge, toDirection);

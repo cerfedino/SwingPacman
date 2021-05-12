@@ -22,19 +22,21 @@ public class Node {
         switch (direction) {
             case LEFT:
                 left = edge;
+                edge.setOrientation(EOrientation.HORIZONTAL);
                 break;
             case RIGHT:
                 right = edge;
+                edge.setOrientation(EOrientation.HORIZONTAL);
                 break;
             case UP:
                 up = edge;
+                edge.setOrientation(EOrientation.VERTICAL);
                 break;
             case DOWN:
                 down = edge;
+                edge.setOrientation(EOrientation.VERTICAL);
                 break;
-    
         }
-        this.left=left;
     }
     
     public int getX(){

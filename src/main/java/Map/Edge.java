@@ -7,7 +7,10 @@ public class Edge {
     private final Node from;
     private final Node to;
     
-    private final double lenght;
+    private final double length;
+    
+    private EOrientation orientation;
+    
     
     // private ArrayList<Food> food;
     
@@ -15,7 +18,7 @@ public class Edge {
         this.from = from;
         this.to = to;
         
-        lenght = calcLenght();
+        length = calcLenght();
         
         //TODO: Implement auto generation of food
     }
@@ -46,7 +49,14 @@ public class Edge {
         return to;
     }
     
-    public double getLenght(){
-        return lenght;
+    public double getLength(){
+        return length;
+    }
+    
+    public void setOrientation(EOrientation orientation) {
+        this.orientation = orientation;
+    }
+    public EOrientation getOrientation(){
+        return orientation;
     }
 }
