@@ -13,7 +13,7 @@ import static java.lang.Thread.sleep;
 public class Game {
     
     private static Painter painter;
-    
+    private static GameState gamestate;
     /**
      * The main method. Starts the game
      * @param args the arguments passed to the main method
@@ -23,8 +23,9 @@ public class Game {
         ////////////////////////////
         //// DEMO
         painter = new Painter();
-        Map map = new Map();
-        painter.registerMap(map);
+        
+        gamestate = new GameState();
+        painter.registerMap(gamestate.getMap());
         
         Sprite s1 = new Sprite(Scaler.scale(0), Scaler.scale(0), EImage.ghost1);
         Sprite s2 = new Sprite(Scaler.scale(1000), Scaler.scale(0), EImage.ghost2);
