@@ -46,4 +46,20 @@ public class Node {
     public int getY(){
         return y;
     }
+    
+    public Edge getLeft(){
+        return left;
+    }
+    
+    public Edge getRight(){
+        return right;
+    }
+    
+    public Edge getUp(){
+        return up;
+    }
+    
+    public Edge getDown(){
+        return down;
+    }
 }

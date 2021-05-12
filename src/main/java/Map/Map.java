@@ -25,27 +25,55 @@ public class Map extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         g.setColor((Color)Settings.get(EParam.line_color));
+        int line_thickness = (int)Settings.get(EParam.line_thickness);
+        
+        ((Graphics2D) g).setStroke(new BasicStroke(line_thickness));
+        
+        //Paints all the edges
+        int offset = Scaler.scale((int)Settings.get(EParam.path_width))/2;
         for (Edge e : edges) {
             Node n1 = e.getFrom();
-            
             Node n2 = e.getTo();
-            
             
             int x1 = n1.getX(); int y1 = n1.getY();
             int x2 = n2.getX(); int y2 = n2.getY();
             
-            int offset = Scaler.scale((int)Settings.get(EParam.path_width))/2;
+    
+            
             switch (e.getOrientation()) {
                 case HORIZONTAL:
-                    g.drawLine(x1,y1+offset,x2,y2+offset);
-                    g.drawLine(x1,y1-offset,x2,y2-offset);
+                    g.drawLine(x1-offset,y1+offset,x2+offset,y2+offset);
+                    g.drawLine(x1-offset,y1-offset,x2+offset,y2-offset);
                     break;
                 case VERTICAL:
-                    g.drawLine(x1+offset,y1,x2+offset,y2);
-                    g.drawLine(x1-offset,y1,x2-offset,y2);
+                    g.drawLine(x1+offset,y1-offset,x2+offset,y2+offset);
+                    g.drawLine(x1-offset,y1-offset,x2-offset,y2+offset);
                     break;
             }
         }
+        
+        //Paints all the nodes
+        g.setColor((Color)Settings.get(EParam.background_color));
+        for (Node n : nodes) {
+    
+            int x = n.getX() - offset;
+            int y = n.getY() - offset;
+            int line_lenght = Scaler.scale((int)Settings.get(EParam.path_width)) - line_thickness;
+    
+            if (n.getLeft() != null) {
+                g.drawLine(x,y+line_thickness,x,y+line_lenght);
+            }
+            if (n.getRight() != null) {
+                g.drawLine(x+offset*2,y+line_thickness,x+offset*2,y+line_lenght);
+            }
+            if (n.getUp() != null) {
+                g.drawLine(x+line_thickness,y,x+line_lenght,y);
+            }
+            if (n.getDown() != null) {
+                g.drawLine(x+line_thickness,y+offset*2,x+line_lenght,y+offset*2);
+            }
+        }
+        
         Toolkit.getDefaultToolkit().sync();
         super.paintComponent(g);
     }

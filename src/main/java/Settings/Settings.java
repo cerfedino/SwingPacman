@@ -43,9 +43,12 @@ public class Settings {
     
         newMapping.put(EParam.special_food_spawn_odd,  10);
         
-        newMapping.put(EParam.line_color, Color.blue);
-        newMapping.put(EParam.background_color, Color.black);
-        newMapping.put(EParam.path_width, 40);
+        
+        newMapping.put(EParam.line_color,              Color.red);
+        newMapping.put(EParam.line_thickness,          10);
+        
+        newMapping.put(EParam.background_color,        Color.black);
+        newMapping.put(EParam.path_width,              40);
         mapping = newMapping;
     }
     

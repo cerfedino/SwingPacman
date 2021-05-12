@@ -11,7 +11,7 @@ public enum EParam {
     special_food_spawn_odd,
     
     // Graphics
-    line_color,
+    line_color, line_thickness,
     background_color,
     path_width
 }
