@@ -3,6 +3,7 @@ package Painter;
 import Entities.Sprite;
 import Map.Map;
 import Media.Media;
+import Settings.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +38,7 @@ public class Painter {
         gameframe = new JFrame("SwingPacman");
         gameframe.setSize(size, size);
         gameframe.setResizable(false);
-        gameframe.getContentPane().setBackground(Color.black);
+        gameframe.getContentPane().setBackground((Color)Settings.get(EParam.background_color));
         gameframe.setUndecorated(true);
         
         gameframe.setLayout(null);

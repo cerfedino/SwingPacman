@@ -4,8 +4,8 @@ package Map;
  * Represents a walkable path connect two edges together
  */
 public class Edge {
-    private Node from;
-    private Node to;
+    private final Node from;
+    private final Node to;
     
     private final double lenght;
     
@@ -30,6 +30,9 @@ public class Edge {
         return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2));
     }
     
+    void spawnFood() {
+        //TODO: Implement
+    }
     
     //////////////
     // Getters and Setters below

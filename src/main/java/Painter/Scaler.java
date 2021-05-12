@@ -5,7 +5,7 @@ package Painter;
  */
 public class Scaler {
     
-    private static int size = 1000;
+    private static final int size = 1000;
     private static int newSize = 1000;
     private static double scale_factor;
     

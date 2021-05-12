@@ -12,8 +12,9 @@ import static java.lang.Thread.sleep;
  */
 public class Game {
     
-    private static Painter painter;
     private static GameState gamestate;
+    private static Painter painter;
+    
     /**
      * The main method. Starts the game
      * @param args the arguments passed to the main method

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import Media.Media;
 import Painter.Scaler;
+import Settings.*;
 
 public class Map extends JPanel {
     private ArrayList<Edge> edges;
@@ -23,7 +24,7 @@ public class Map extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor((Color)Settings.get(EParam.line_color));
         for (Edge e : edges) {
             Node n1 = e.getFrom();
             Node n2 = e.getTo();
