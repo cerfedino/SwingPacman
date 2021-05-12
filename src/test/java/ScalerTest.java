@@ -1,7 +1,5 @@
-import Settings.Settings;
+import Painter.Scaler;
 import org.junit.Test;
-
-import java.util.EnumMap;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

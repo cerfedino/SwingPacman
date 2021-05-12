@@ -1,3 +1,5 @@
+package Painter;
+
 /**
  * Scales an integer based on the ratio between the original screen size and the new one.
  */

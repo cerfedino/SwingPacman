@@ -1,8 +1,8 @@
 
+import Entities.Sprite;
 import Media.EImage;
+import Painter.Painter;
 import org.junit.Test;
-
-import java.util.EnumMap;
 
 import static org.junit.Assert.*;
 

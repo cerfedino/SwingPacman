@@ -1,3 +1,6 @@
+package Painter;
+
+import Entities.Sprite;
 import Media.Media;
 
 import javax.swing.*;
@@ -19,13 +22,13 @@ public class Painter {
     
     
     /**
-     * Initializes the Painter object by creating and setting the game window.
+     * Initializes the Painter.Painter object by creating and setting the game window.
      */
     public Painter() {
         Dimension screenSize = t.getScreenSize();
         int size = Math.min(screenSize.height, screenSize.width);
         
-        // Scales the Sprite images based on the screen size
+        // Scales the Entities.Sprite images based on the screen size
         Scaler.setNewsize(size);
         Media.rescaleMedia(Scaler.getScale_factor());
         
@@ -42,7 +45,7 @@ public class Painter {
     }
     
     /**
-     * Initializes a Sprite on the game screen by adding it
+     * Initializes a Entities.Sprite on the game screen by adding it
      *  to the game frame.
      * @param sprite the sprite to initialize
      */
@@ -67,9 +70,9 @@ public class Painter {
     }
     
     /**
-     * Returns whether the Sprite is registered in the game screen.
+     * Returns whether the Entities.Sprite is registered in the game screen.
      * @param sprite the sprite to check for
-     * @return whether the Sprite is registered in the game screen
+     * @return whether the Entities.Sprite is registered in the game screen
      */
     public boolean isSpriteRegistered(Sprite sprite) {
         return sprites.contains(sprite);

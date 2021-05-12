@@ -1,11 +1,13 @@
-import Media.*;
+package Entities;
 
+import Media.*;
+import Game.Game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * A Sprite to be displayed on the game screen.
+ * A Entities.Sprite to be displayed on the game screen.
  */
 public class Sprite extends JPanel {
     private int x;
@@ -22,9 +24,9 @@ public class Sprite extends JPanel {
     
     
     /**
-     * Initializes a Sprite object.
-     * @param x the x coordinate of the Sprite
-     * @param y the y coordinate of the Sprite
+     * Initializes a Entities.Sprite object.
+     * @param x the x coordinate of the Entities.Sprite
+     * @param y the y coordinate of the Entities.Sprite
      * @param en the EImage ENUM for the image
      */
     public Sprite(int x, int y, EImage en) {
@@ -42,7 +44,7 @@ public class Sprite extends JPanel {
     }
     
     /**
-     * Handles the complete deletion and removal of this Sprite in the game.
+     * Handles the complete deletion and removal of this Entities.Sprite in the game.
      */
     public void removeSprite() {
         Game.painter().unregisterSprite(this);
