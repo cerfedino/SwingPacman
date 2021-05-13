@@ -31,9 +31,10 @@ public class Painter {
         Dimension screenSize = t.getScreenSize();
         int size = Math.min(screenSize.height, screenSize.width);
         
-        // Scales the Entities.Sprite images based on the screen size
+        // Scales the Entities.Sprite images and graphic settings based on the screen size
         Scaler.setNewsize(size);
         Media.rescaleMedia(Scaler.getScale_factor());
+        Settings.rescaleGraphicSettings(Scaler.getScale_factor());
         
         gameframe = new JFrame("SwingPacman");
         gameframe.setSize(size, size);

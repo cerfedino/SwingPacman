@@ -45,13 +45,22 @@ public class Settings {
         
         
         newMapping.put(EParam.line_color,              Color.red);
-        newMapping.put(EParam.line_thickness,          10);
+        newMapping.put(EParam.line_thickness,          5);
         
         newMapping.put(EParam.background_color,        Color.black);
         newMapping.put(EParam.path_width,              40);
         mapping = newMapping;
     }
     
+    /**
+     * Scales all the graphics settings by a factor.
+     * @param scalefactor the scale factor of the new graphic settings
+     */
+    static public void rescaleGraphicSettings(double scalefactor) {
+        setDefaultSettings();
+        mapping.put(EParam.line_thickness, (int)((int)mapping.get(EParam.line_thickness)*scalefactor));
+        mapping.put(EParam.path_width, (int)((int)mapping.get(EParam.path_width)*scalefactor));
+    }
     /**
      * Getter method for the EnumMap.
      * @return the settings EnumMap
