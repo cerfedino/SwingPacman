@@ -1,5 +1,7 @@
 package Map;
 
+import java.util.ArrayList;
+
 public class Node {
     private final int x;
     private final int y;
@@ -15,8 +17,39 @@ public class Node {
         this.y = y;
     }
     
+    public boolean canTurn (EDirection d) {
+        switch (d) {
+            case UP:
+                return up != null;
+            case DOWN:
+                return down != null;
+            case LEFT:
+                return left != null;
+            case RIGHT:
+                return right != null;
+        }
+        return false;
+    }
+    
+    
+    
     /////////////////////
     // Getters and Setters
+    
+    public Edge getTurn(EDirection d) {
+        switch (d) {
+            case UP:
+                return up;
+            case DOWN:
+                return down;
+            case LEFT:
+                return left;
+            case RIGHT:
+                return right;
+            default:
+                return null;
+        }
+    }
     
     public void setEdge(Edge edge, EDirection direction) {
         switch (direction) {
@@ -39,12 +72,32 @@ public class Node {
         }
     }
     
+    
+    
     public int getX(){
         return x;
     }
     
     public int getY(){
         return y;
+    }
+    
+    public ArrayList<EDirection> getPossibleTurns() {
+        ArrayList<EDirection> possible = new ArrayList<EDirection>();
+        if (up != null) {
+            possible.add(EDirection.UP);
+        }
+        if (down != null) {
+            possible.add(EDirection.DOWN);
+        }
+        if (left != null) {
+            possible.add(EDirection.LEFT);
+        }
+        if (right != null) {
+            possible.add(EDirection.RIGHT);
+        }
+        return possible;
+    
     }
     
     public Edge getLeft(){

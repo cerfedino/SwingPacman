@@ -32,6 +32,7 @@ public class GameState {
         }
         ////////////////
         
+        
     }
     
     
@@ -40,5 +41,13 @@ public class GameState {
     // Getters and Setters below
     public Map getMap(){
         return map;
+    }
+    
+    public void removeGhost(Ghost g) {
+        if (ghosts.contains(g)) ghosts.remove(g);
+    }
+    
+    public ArrayList<Ghost> getGhosts(){
+        return ghosts;
     }
 }

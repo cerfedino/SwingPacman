@@ -32,10 +32,10 @@ public class Settings {
     static private void setDefaultSettings() {
         EnumMap<EParam, Object> newMapping = new EnumMap<>(EParam.class);
     
-        newMapping.put(EParam.pacman_speed,            4);
+        newMapping.put(EParam.pacman_speed,            30);
         newMapping.put(EParam.pacman_starting_lives,   3);
     
-        newMapping.put(EParam.ghost_speed,             3);
+        newMapping.put(EParam.ghost_speed,             2);
         newMapping.put(EParam.vulnerable_mstime,       15000);
     
         newMapping.put(EParam.large_food_score,        40);
@@ -56,8 +56,10 @@ public class Settings {
      * Scales all the graphics settings by a factor.
      * @param scalefactor the scale factor of the new graphic settings
      */
-    static public void rescaleGraphicSettings(double scalefactor) {
+    static public void rescaleSettings(double scalefactor) {
         setDefaultSettings();
+        mapping.put(EParam.pacman_speed, (int)((int)mapping.get(EParam.pacman_speed)*scalefactor));
+        mapping.put(EParam.ghost_speed, (int)((int)mapping.get(EParam.ghost_speed)*scalefactor));
         mapping.put(EParam.line_thickness, (int)((int)mapping.get(EParam.line_thickness)*scalefactor));
         mapping.put(EParam.path_width, (int)((int)mapping.get(EParam.path_width)*scalefactor));
     }

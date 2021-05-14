@@ -1,5 +1,6 @@
 package Painter;
 
+import Entities.Ghost;
 import Entities.Sprite;
 import Map.Map;
 import Media.Media;
@@ -31,7 +32,7 @@ public class Painter {
         // Scales the Entities.Sprite images and graphic settings based on the screen size
         Scaler.setNewsize(size);
         Media.rescaleMedia(Scaler.getScale_factor());
-        Settings.rescaleGraphicSettings(Scaler.getScale_factor());
+        Settings.rescaleSettings(Scaler.getScale_factor());
         
         gameframe = new JFrame("SwingPacman");
         gameframe.setSize(size, size);
@@ -47,6 +48,8 @@ public class Painter {
         gameframe.add(gamepanel);
     
         gameframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
     }
     
     /**

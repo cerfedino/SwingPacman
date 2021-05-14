@@ -8,7 +8,7 @@ import Media.EImage;
  */
 public class Entity extends Sprite {
     
-    private Edge location;
+    private Edge currEdge;
     private boolean colliding = true;
     
     /**
@@ -17,20 +17,25 @@ public class Entity extends Sprite {
      * @param x  the x coordinate of the Sprite
      * @param y  the y coordinate of the Sprite
      * @param en the EImage ENUM for the image
-     * @param location the Edge in which the Entity is located
+     * @param currEdge the Edge in which the Entity is located
      */
-    public Entity(int x, int y, EImage en, Edge location){
+    public Entity(int x, int y, EImage en, Edge currEdge){
         super(x, y, en);
-        this.location = location;
+        this.currEdge=currEdge;
     }
     
+    public void onCollision(Entity e) {
+    
+    }
     
     ///////////////////
     // Setters and getters below
     
-    public void setLocation(Edge location){
-        this.location=location;
+    public void setCurrEdge(Edge currEdge){
+        this.currEdge=currEdge;
     }
     
-    
+    public Edge getCurrEdge(){
+        return currEdge;
+    }
 }

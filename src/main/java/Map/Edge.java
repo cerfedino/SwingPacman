@@ -1,5 +1,7 @@
 package Map;
 
+import Entities.Sprite;
+
 /**
  * Represents a walkable path connect two edges together
  */
@@ -36,6 +38,63 @@ public class Edge {
     void spawnFood() {
         //TODO: Implement
     }
+    
+    public int moveAlongEdge(EDirection direction, int pos, int stepsize) {
+        // TODO: Make this way more efficient
+        switch (direction) {
+            case LEFT:
+                stepsize *= -1;
+            case RIGHT:
+                int fromX = from.getX();
+                int toX = to.getX();
+                
+                pos += stepsize;
+                if (pos < Math.min(fromX, toX)) {
+                    return Math.min(fromX, toX);
+                } else if(pos > Math.max(fromX, toX)) {
+                    return Math.max(fromX, toX);
+                } else {
+                    System.out.println("Stepbro I'm stuck !");
+                    return pos;
+                }
+                
+            case UP:
+                stepsize *= -1;
+            case DOWN:
+                int fromY = from.getY();
+                int toY = to.getY();
+    
+                pos += stepsize;
+                if (pos < Math.min(fromY, toY)) {
+                    return Math.min(fromY, toY);
+                } else if(pos > Math.max(fromY, toY)) {
+                    return Math.max(fromY, toY);
+                } else {
+                    System.out.println("Step-bro I'm stuck !");
+                    return pos;
+                }
+        }
+        
+        return 0;
+    }
+    
+    public boolean isAtExtremes(Sprite s) {
+        int x = s.getSpriteX();
+        int y = s.getSpriteY();
+    
+        return (from.getX() == x && from.getY() == y) || (to.getX() == x && to.getY() == y);
+    }
+    
+    public Node getExtreme(Sprite s) {
+        int x = s.getSpriteX();
+        int y = s.getSpriteY();
+        
+        if (from.getX() == x && from.getY() == y) return from;
+        if (to.getX() == x && to.getY() == y) return to;
+        
+        return null;
+    }
+    
     
     //////////////
     // Getters and Setters below
