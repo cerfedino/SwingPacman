@@ -70,18 +70,16 @@ public class Sprite extends JPanel {
     }
     
     public void setX(int newX){
-        setPos(newX, y);
+        x = newX - getWidth()/2;
     }
     
     public void setY(int newY){
-        setPos(x,newY);
+        y = newY - getWidth()/2;
     }
     
     public void setPos(int newX, int newY) {
-        x = newX;
-        y = newY;
-    
-        setLocation(x - getWidth()/2, y - getHeight()/2);
+        setY(newY);
+        setX(newX);
     }
     
 }
