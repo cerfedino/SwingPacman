@@ -14,20 +14,20 @@ public class SpriteTest {
         
         s.setPos(100,200);
     
-        assertEquals(100,s.getX());
-        assertEquals(200,s.getY());
+        assertEquals(100,s.getSpriteX());
+        assertEquals(200,s.getSpriteY());
     
         s.setX(420);
-        assertEquals(420,s.getX());
-        assertEquals(200,s.getY());
+        assertEquals(420,s.getSpriteX());
+        assertEquals(200,s.getSpriteY());
     
         s.setY(69);
-        assertEquals(420,s.getX());
-        assertEquals(69,s.getY());
+        assertEquals(420,s.getSpriteX());
+        assertEquals(69,s.getSpriteY());
         
         s.setImage(EImage.ghost1);
-        assertEquals(420,s.getX());
-        assertEquals(69,s.getY());
+        assertEquals(420,s.getSpriteX());
+        assertEquals(69,s.getSpriteY());
     }
     
     @Test
