@@ -7,13 +7,10 @@ import Settings.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
 
 /**
- * Responsible of painting all the elements on screen that need to be repainted.
+ * Responsible of painting and updating all the graphic elements on screen.
  */
 public class Painter {
     
@@ -25,7 +22,7 @@ public class Painter {
     
     
     /**
-     * Initializes the Painter.Painter object by creating and setting the game window.
+     * Initializes the Painter object by creating and setting the game window.
      */
     public Painter() {
         Dimension screenSize = t.getScreenSize();
@@ -79,7 +76,7 @@ public class Painter {
     }
     
     /**
-     * Add the map to the game frame to be displayed
+     * Add the map to the game panel to be displayed
      * @param map the sprite to initialize
      */
     public void registerMap(Map map) {
@@ -90,9 +87,9 @@ public class Painter {
     }
     
     /**
-     * Returns whether the Entities.Sprite is registered in the game screen.
+     * Returns whether the Sprite is registered in the game screen.
      * @param sprite the sprite to check for
-     * @return whether the Entities.Sprite is registered in the game screen
+     * @return whether the Sprite is registered in the game screen
      */
     public boolean isSpriteRegistered(Sprite sprite) {
         return sprites.contains(sprite);

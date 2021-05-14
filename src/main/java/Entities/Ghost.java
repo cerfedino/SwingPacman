@@ -6,10 +6,17 @@ import Settings.*;
 
 import java.util.Random;
 
+/**
+ * An enemy Ghost.
+ */
 public class Ghost extends MovingEntity{
     
+    /**
+     * Initializes a Ghost object
+     * @param location the Edge where the ghost is located.
+     */
     public Ghost(Edge location){
-        super(EImage.ghost1,location,(int)Settings.get(EParam.ghost_speed));
+        super(EImage.ghost1, location, (int)Settings.get(EParam.ghost_speed));
         
         // Chooses a random image for the ghost
         EImage img;

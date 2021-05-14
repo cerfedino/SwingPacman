@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * A Entities.Sprite to be displayed on the game screen.
+ * A Sprite to be displayed on the game screen.
  */
 public class Sprite extends JPanel {
     private int x;
@@ -16,17 +16,9 @@ public class Sprite extends JPanel {
     private EImage image;
     
     /**
-     * The x and y axis offsets in order for the anchor point
-     *  to be the center of the sprite at coordinates (0,0)
-     */
-    private int x_render_offset;
-    private int y_render_offset;
-    
-    
-    /**
-     * Initializes a Entities.Sprite object.
-     * @param x the x coordinate of the Entities.Sprite
-     * @param y the y coordinate of the Entities.Sprite
+     * Initializes a Sprite object.
+     * @param x the x coordinate of the Sprite
+     * @param y the y coordinate of the Sprite
      * @param en the EImage ENUM for the image
      */
     public Sprite(int x, int y, EImage en) {
@@ -46,7 +38,7 @@ public class Sprite extends JPanel {
     }
     
     /**
-     * Handles the complete deletion and removal of this Entities.Sprite in the game.
+     * Handles the complete deletion and removal of this Sprite from the game.
      */
     public void removeSprite() {
         Game.painter().unregisterSprite(this);
@@ -56,16 +48,45 @@ public class Sprite extends JPanel {
     // Getters and setters below
     
     public void setImage(EImage image){
+        int x = getSpriteX() ,y = getSpriteY();
         BufferedImage img = Media.get(image);
         setSize(img.getWidth(), img.getHeight());
+        setPos(x,y);
         this.image = image;
     }
     
-    public int getX(){
+    
+    /**
+     * Returns the actual X coordinate based on the Sprite's center.
+      * @return the actual X coordinate
+     */
+    public int getSpriteX(){
+        return x + getWidth()/2;
+    }
+    
+    /**
+     * Returns the actual Y coordinate based on the Sprite's center.
+     * @return the actual Y coordinate
+     */
+    public int getSpriteY(){
+        return y + getWidth()/2;
+    }
+    
+    /**
+     * Method Override from JPanel in order to make the Sprite centered.
+     * @return
+     */
+    @Override
+    public int getX() {
         return x;
     }
     
-    public int getY(){
+    /**
+     * Method Override from JPanel in order to make the Sprite centered.
+     * @return
+     */
+    @Override
+    public int getY() {
         return y;
     }
     

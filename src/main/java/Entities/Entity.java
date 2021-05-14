@@ -3,10 +3,13 @@ package Entities;
 import Map.Edge;
 import Media.EImage;
 
-
+/**
+ * An entity that has an active presence in the Map and can collide with other Entities
+ */
 public class Entity extends Sprite {
     
     private Edge location;
+    private boolean colliding = true;
     
     /**
      * Initializes an Entity object.
@@ -28,4 +31,6 @@ public class Entity extends Sprite {
     public void setLocation(Edge location){
         this.location=location;
     }
+    
+    
 }
