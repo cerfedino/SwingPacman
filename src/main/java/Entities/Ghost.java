@@ -83,7 +83,8 @@ public class Ghost extends MovingEntity{
                     inverse = EDirection.LEFT;
                     break;
             }
-            possible_turns.remove(inverse);
+            if (possible_turns.size()>1)
+                possible_turns.remove(inverse);
             System.out.println(possible_turns.size());
             Random r = new Random();
             turnQueue.add(possible_turns.get(new Random().nextInt(possible_turns.size())));
