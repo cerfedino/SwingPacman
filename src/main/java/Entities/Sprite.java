@@ -23,7 +23,8 @@ public class Sprite extends JPanel {
      */
     public Sprite(int x, int y, EImage en) {
         setImage(en);
-        setPos(x,y);
+        setX(x);
+        setY(y);
         setOpaque(false);
     }
     
@@ -33,8 +34,9 @@ public class Sprite extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         g.drawImage(Media.get(image), 0, 0, this); // see javadoc for more info on the parameters
-        Toolkit.getDefaultToolkit().sync();
+        
         super.paintComponent(g);
+        Toolkit.getDefaultToolkit().sync();
     }
     
     /**
@@ -51,7 +53,8 @@ public class Sprite extends JPanel {
         int x = getSpriteX() ,y = getSpriteY();
         BufferedImage img = Media.get(image);
         setSize(img.getWidth(), img.getHeight());
-        setPos(x,y);
+        setX(x);
+        setY(y);
         this.image = image;
     }
     
@@ -73,7 +76,7 @@ public class Sprite extends JPanel {
     }
     
     /**
-     * Method Override from JPanel in order to make the Sprite centered.
+     * DO NOT USE. Method Override from JPanel in order to make the Sprite centered.
      * @return
      */
     @Override
@@ -82,7 +85,7 @@ public class Sprite extends JPanel {
     }
     
     /**
-     * Method Override from JPanel in order to make the Sprite centered.
+     * DO NOT USE. Method Override from JPanel in order to make the Sprite centered.
      * @return
      */
     @Override
@@ -92,15 +95,12 @@ public class Sprite extends JPanel {
     
     public void setX(int newX){
         x = newX - getWidth()/2;
+        setLocation(x,y);
     }
     
     public void setY(int newY){
         y = newY - getWidth()/2;
-    }
-    
-    public void setPos(int newX, int newY) {
-        setY(newY);
-        setX(newX);
+        setLocation(x,y);
     }
     
 }
