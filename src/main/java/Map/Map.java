@@ -55,7 +55,6 @@ public class Map extends JPanel {
         //Paints all the nodes
         g.setColor((Color)Settings.get(EParam.background_color));
         for (Node n : nodes) {
-    
             int x = n.getX() - offset;
             int y = n.getY() - offset;
             int line_lenght = Scaler.scale((int)Settings.get(EParam.path_width)) - line_thickness;
@@ -174,4 +173,7 @@ public class Map extends JPanel {
     //////////////////
     // Getters and Setters below
     
+    public ArrayList<Edge> getEdges(){
+        return edges;
+    }
 }

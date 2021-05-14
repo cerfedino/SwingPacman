@@ -14,17 +14,6 @@ public class Entity extends Sprite {
      * @param x  the x coordinate of the Sprite
      * @param y  the y coordinate of the Sprite
      * @param en the EImage ENUM for the image
-     */
-    public Entity(int x, int y, EImage en){
-        super(x, y, en);
-    }
-    
-    /**
-     * Initializes an Entity object.
-     *
-     * @param x  the x coordinate of the Sprite
-     * @param y  the y coordinate of the Sprite
-     * @param en the EImage ENUM for the image
      * @param location the Edge in which the Entity is located
      */
     public Entity(int x, int y, EImage en, Edge location){

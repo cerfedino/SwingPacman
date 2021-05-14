@@ -56,7 +56,38 @@ public class Edge {
     public void setOrientation(EOrientation orientation) {
         this.orientation = orientation;
     }
+    
     public EOrientation getOrientation(){
         return orientation;
+    }
+    
+    public int getMiddlePointX() {
+        int x=0;
+        switch(orientation) {
+            case HORIZONTAL:
+                int minX = Math.min(from.getX(),to.getX());
+                int maxX = Math.max(from.getX(),to.getX());
+                x = minX + (maxX - minX)/2;
+                break;
+            case VERTICAL:
+                x = from.getX();;
+                break;
+        }
+        return x;
+    }
+    
+    public int getMiddlePointY() {
+        int y = 0;
+        switch(orientation) {
+            case HORIZONTAL:
+                y = from.getY();
+                break;
+            case VERTICAL:
+                int minY = Math.min(from.getY(),to.getY());
+                int maxY = Math.max(from.getY(),to.getY());
+                y = minY + (maxY - minY)/2;
+                break;
+        }
+        return y;
     }
 }
