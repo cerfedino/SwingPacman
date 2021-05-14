@@ -12,7 +12,8 @@ public class SpriteTest {
     public void setPosTest() {
         Sprite s = new Sprite(0,0, EImage.pacman);
         
-        s.setPos(100,200);
+        s.setX(100);
+        s.setY(200);
     
         assertEquals(100,s.getSpriteX());
         assertEquals(200,s.getSpriteY());
