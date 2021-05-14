@@ -60,7 +60,8 @@ public class Painter {
     public void registerSprite(Sprite sprite) {
         if ( !sprites.contains(sprite)) {
             sprites.add(sprite);
-            gamepanel.add(sprite,0);
+            gamepanel.add(sprite,1);
+            gamepanel.revalidate();
             gamepanel.repaint();
         }
     }
@@ -82,7 +83,7 @@ public class Painter {
      * @param map the sprite to initialize
      */
     public void registerMap(Map map) {
-        gamepanel.add(map,1);
+        gamepanel.add(map,10);
         map.repaint();
         gamepanel.revalidate();
         gamepanel.repaint();
