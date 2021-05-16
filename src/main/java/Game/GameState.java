@@ -2,8 +2,8 @@ package Game;
 
 import Entities.EGhostType;
 import Entities.Ghost;
-import Entities.MovingEntity;
 import Map.*;
+import Settings.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -24,23 +24,31 @@ public class GameState {
         // Initializes the Map.
         map = new Map();
         
-        ///////////////
-        //// Demo
+        
+        // Creates the Ghosts
         ArrayList<Edge> edges = map.getEdges();
         Random rand = new Random();
-        Ghost g1 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost1);
-        Ghost g2 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost2);
-        Ghost g3 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost3);
-        Ghost g4 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost4);
-        ghosts.add(g1);
-        ghosts.add(g2);
-        ghosts.add(g3);
-        ghosts.add(g4);
-        Game.painter().registerSprite(g1);
-        Game.painter().registerSprite(g2);
-        Game.painter().registerSprite(g3);
-        Game.painter().registerSprite(g4);
-        ////////////////
+        
+        for(int i = 1; i <= (int)Settings.get(EParam.ghost_count); i++) {
+            Ghost g;
+            switch(i%4) {
+                case 0:
+                    g = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost4);
+                    break;
+                case 1:
+                    g = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost1);
+                    break;
+                case 2:
+                    g = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost2);
+                    break;
+                default: // 3
+                    g = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost3);
+                    break;
+    
+            }
+            ghosts.add(g);
+            Game.painter().registerSprite(g);
+        }
         
         
     }
