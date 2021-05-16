@@ -8,6 +8,7 @@ import Settings.*;
 import Game.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 
 /**
@@ -16,6 +17,9 @@ import java.util.Random;
 public class Ghost extends MovingEntity{
     
     EGhostType type;
+    private static boolean vulnerable = false;
+    
+    private LinkedList<EDirection> priorityQueue = new LinkedList<>();
     
     /**
      * Initializes a Ghost object.
@@ -69,8 +73,15 @@ public class Ghost extends MovingEntity{
     public void makeTurn(Node n) {
         // If there is priority queue unqueue that one,
         // otherwise super.makeTurn()
-        // TODO: Implement priority queue.
-        super.makeTurn(n);
+        if (priorityQueue.isEmpty()) {
+            super.makeTurn(n);
+        }else if (n.canTurn(priorityQueue.getFirst())){
+            setDirection(priorityQueue.getFirst());
+            setCurrEdge(n.getTurn(priorityQueue.removeFirst()));
+        }else{
+            priorityQueue.removeFirst();
+        }
+        
     }
     
     /**
@@ -79,7 +90,12 @@ public class Ghost extends MovingEntity{
      */
     @Override
     public void addTurn(EDirection direction) {
-        // TODO: Implement if close to pacman, takes shortest route, otherwise a random one
+        // TODO: Implement if close to pacman
+        //          1. If not vulnerable
+        //                  tries to get closer to Pacman
+        //          2. If vulnerable
+        //                  tries to get away from Pacman
+        //      otherwise a random one
         
         if (getCurrEdge().isAtExtremes(this)) {
             // The possible turns to be performed on the Node

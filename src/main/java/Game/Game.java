@@ -13,7 +13,7 @@ public class Game {
     
     private static GameState gamestate;
     private static Painter painter;
-    
+    private static GameThread gamethread;
     /**
      * The main method. Starts the game
      * @param args the arguments passed to the main method
@@ -25,8 +25,8 @@ public class Game {
         gamestate = new GameState();
         painter.registerMap(gamestate.getMap());
         
-        GameThread thread = new GameThread();
-        thread.run();
+        gamethread = new GameThread();
+        gamethread.run();
         
     }
     
