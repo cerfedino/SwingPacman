@@ -19,27 +19,28 @@ public class Ghost extends MovingEntity{
     
     
     
+    EGhostType type;
     /**
      * Initializes a Ghost object
      * @param location the Edge where the ghost is located.
      */
-    public Ghost(Edge location){
+    public Ghost(Edge location, EGhostType ghost){
         super(EImage.ghost1, location, (int)Settings.get(EParam.ghost_speed));
-        
-        // Chooses a random image for the ghost
+        type = ghost;
+        // Chooses the respective image for the ghost
         EImage img;
-        switch(new Random().nextInt(3)) {
-            case 0:
+        switch(ghost) {
+            case ghost1:
+                img = EImage.ghost1;
+                break;
+            case ghost2:
                 img = EImage.ghost2;
                 break;
-            case 1:
+            case ghost3:
                 img = EImage.ghost3;
                 break;
-            case 2:
-                img = EImage.ghost4;
-                break;
             default:
-                img = EImage.ghost1;
+                img = EImage.ghost4;
                 break;
         }
         setImage(img);

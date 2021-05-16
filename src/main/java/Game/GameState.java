@@ -1,9 +1,8 @@
 package Game;
 
+import Entities.EGhostType;
 import Entities.Ghost;
-import Entities.Sprite;
 import Map.*;
-import Painter.Scaler;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -25,11 +24,18 @@ public class GameState {
         // Demo
         ArrayList<Edge> edges = map.getEdges();
         Random rand = new Random();
-        for (int x=0;x<4;x++) {
-            Ghost g = new Ghost(edges.get(rand.nextInt(edges.size())));
-            ghosts.add(g);
-            Game.painter().registerSprite(g);
-        }
+        Ghost g1 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost1);
+        Ghost g2 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost2);
+        Ghost g3 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost3);
+        Ghost g4 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost4);
+        ghosts.add(g1);
+        ghosts.add(g2);
+        ghosts.add(g3);
+        ghosts.add(g4);
+        Game.painter().registerSprite(g1);
+        Game.painter().registerSprite(g2);
+        Game.painter().registerSprite(g3);
+        Game.painter().registerSprite(g4);
         ////////////////
         
         
