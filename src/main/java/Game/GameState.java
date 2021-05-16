@@ -19,9 +19,12 @@ public class GameState {
      * Initializes the GameState object.
      */
     public GameState() {
+        
+        // Initializes the Map.
         map = new Map();
         
-        // Demo
+        ///////////////
+        //// Demo
         ArrayList<Edge> edges = map.getEdges();
         Random rand = new Random();
         Ghost g1 = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost1);
@@ -40,7 +43,6 @@ public class GameState {
         
         
     }
-    
     
     
     //////////////

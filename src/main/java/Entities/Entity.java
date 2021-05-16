@@ -17,13 +17,17 @@ public class Entity extends Sprite {
      * @param x  the x coordinate of the Sprite
      * @param y  the y coordinate of the Sprite
      * @param en the EImage ENUM for the image
-     * @param currEdge the Edge in which the Entity is located
+     * @param currEdge the Edge in which the Entity is located at
      */
     public Entity(int x, int y, EImage en, Edge currEdge){
         super(x, y, en);
         this.currEdge=currEdge;
     }
     
+    /**
+     * To be called when the Entity collides with another Entity.
+     * @param e the Entity collided with
+     */
     public void onCollision(Entity e) {
     
     }

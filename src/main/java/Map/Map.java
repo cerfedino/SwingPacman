@@ -4,19 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-import Media.Media;
 import Painter.Scaler;
 import Settings.*;
 
+/**
+ * The Map navigable by MovingEntity objects and to be independently painted on the game screen.
+ */
 public class Map extends JPanel {
     private ArrayList<Edge> edges;
     private ArrayList<Node> nodes;
     
+    /**
+     * Initializes a Map object.
+     */
     public Map() {
         createMap();
         setBounds(0,0,Scaler.getNewSize(),Scaler.getNewSize());
         setOpaque(false);
-        repaint();
     }
     
     /**
@@ -52,7 +56,7 @@ public class Map extends JPanel {
             }
         }
         
-        //Paints all the nodes
+        // Paints all the nodes
         g.setColor((Color)Settings.get(EParam.background_color));
         for (Node n : nodes) {
             int x = n.getX() - offset;
@@ -77,6 +81,13 @@ public class Map extends JPanel {
         super.paintComponent(g);
     }
     
+    /**
+     * Adds an Edge connecting two Nodes
+     * @param from the starting node
+     * @param to the end node
+     * @param fromDirection the direction of the new Edge from the start Node
+     * @param toDirection the direction of the new Edge from the end Node
+     */
     private void addEdge(Node from, Node to, EDirection fromDirection, EDirection toDirection) {
         if (!nodes.contains(from))
             nodes.add(from);
@@ -88,7 +99,10 @@ public class Map extends JPanel {
         to.setEdge(edge, toDirection);
         edges.add(edge);
     }
-
+    
+    /**
+     * Creates the Map by creating all the required Edges and Nodes.
+     */
     private void createMap() {
         edges = new ArrayList<Edge>();
         nodes = new ArrayList<Node>();

@@ -7,9 +7,7 @@ import Media.EImage;
 import Settings.*;
 import Game.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Queue;
 import java.util.Random;
 
 /**
@@ -17,11 +15,10 @@ import java.util.Random;
  */
 public class Ghost extends MovingEntity{
     
-    
-    
     EGhostType type;
+    
     /**
-     * Initializes a Ghost object
+     * Initializes a Ghost object.
      * @param location the Edge where the ghost is located.
      */
     public Ghost(Edge location, EGhostType ghost){
@@ -46,29 +43,49 @@ public class Ghost extends MovingEntity{
         setImage(img);
     }
     
+    /**
+     * Handles the complete removal of the Ghost from the game.
+     */
     @Override
     public void removeSprite() {
         super.removeSprite();
         Game.gamestate().removeGhost(this);
     }
     
+    /**
+     * To be called when the Ghost collides with another Entity.
+     * @param e the Entity the Ghost collided with
+     */
     @Override
     public void onCollision(Entity e) {
     
     }
     
+    /**
+     * Unqueues a turn from the queue and tries to perform it on the Node.
+     * @param n The Node to perform the turn on.
+     */
     @Override
     public void makeTurn(Node n) {
-        // IF there is priority queue, unqueue that one,
+        // If there is priority queue unqueue that one,
         // otherwise super.makeTurn()
+        // TODO: Implement priority queue.
         super.makeTurn(n);
     }
     
+    /**
+     * Handles the decision-making when it comes to choosing which turn to perform next.
+     * @param direction used by Pacman to manually add a turn
+     */
     @Override
     public void addTurn(EDirection direction) {
         // TODO: Implement if close to pacman, takes shortest route, otherwise a random one
+        
         if (getCurrEdge().isAtExtremes(this)) {
+            // The possible turns to be performed on the Node
             ArrayList<EDirection> possible_turns = getCurrEdge().getExtreme(this).getPossibleTurns();
+            
+            // The inverse of the current Ghost direction
             EDirection inverse;
             switch(getDirection()) {
                 case UP:
@@ -84,9 +101,13 @@ public class Ghost extends MovingEntity{
                     inverse = EDirection.LEFT;
                     break;
             }
+            
+            // Removes the inverse of the direction from the possible turns,
+            //  to eliminate the strange behaviour of going back at a turn.
             if (possible_turns.size()>1)
                 possible_turns.remove(inverse);
-            System.out.println(possible_turns.size());
+            
+            // Chooses a random turn to add to the queue
             Random r = new Random();
             turnQueue.add(possible_turns.get(new Random().nextInt(possible_turns.size())));
             

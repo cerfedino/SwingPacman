@@ -76,6 +76,11 @@ public class MovingEntity extends Entity {
         }
     }
     
+    /**
+     * Unqueues a turn and tries to perform it,
+     *  otherwise calls addTurn(null).
+     * @param n the node to perform the turn on
+     */
     public void makeTurn(Node n) {
         // TO OVERRIDE
         // if there is a turn in the queue, unqueue it.
@@ -91,8 +96,8 @@ public class MovingEntity extends Entity {
     }
     
     /**
-     * Adds a turn to the queue, to be unqueued once the entity reaches the end of an edge.
-     * @param direction
+     * Handles the decision-making when it comes to choosing which turn to perform next.
+     * @param direction used by Pacman to manually add a turn
      */
     public void addTurn(EDirection direction) {
         // TO OVERRIDE

@@ -11,7 +11,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Responsible of painting and updating all the graphic elements on screen.
+ * Responsible of painting and updating all the on-screen graphic elements.
  */
 public class Painter {
     
@@ -53,7 +53,7 @@ public class Painter {
     }
     
     /**
-     * Initializes a Entities.Sprite on the game screen by adding it
+     * Initializes a Sprite on the game screen by adding it to the game panel.
      *  to the game frame.
      * @param sprite the sprite to initialize
      */
@@ -67,7 +67,7 @@ public class Painter {
     }
     
     /**
-     * Removes a sprite from the game frame.
+     * Removes a sprite from the game panel.
      * @param sprite the sprite to unregister/delete
      */
     public void unregisterSprite(Sprite sprite) {
@@ -90,9 +90,9 @@ public class Painter {
     }
     
     /**
-     * Returns whether the Sprite is registered in the game screen.
+     * Returns whether the Sprite is registered in the game panel.
      * @param sprite the sprite to check for
-     * @return whether the Sprite is registered in the game screen
+     * @return whether the Sprite is registered in the game panel
      */
     public boolean isSpriteRegistered(Sprite sprite) {
         return sprites.contains(sprite);

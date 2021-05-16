@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static java.lang.Thread.sleep;
 
 /**
- * The main class that starts the game/
+ * The main class that starts the game.
  */
 public class Game {
     
@@ -30,7 +30,8 @@ public class Game {
         painter.registerMap(gamestate.getMap());
         
         
-        // DEMO.
+        ////////////////////
+        // DEMO
         Thread t = new Thread(new Runnable() {
             @Override
             public void run(){
@@ -48,6 +49,7 @@ public class Game {
             }
         });
         t.start();
+        ///////////////////////////////
         
     }
     

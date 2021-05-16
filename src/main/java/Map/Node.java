@@ -2,6 +2,9 @@ package Map;
 
 import java.util.ArrayList;
 
+/**
+ * A Node in the Map. It sits in between Edges and offers the ability to perform turns towards multiple Edges.
+ */
 public class Node {
     private final int x;
     private final int y;
@@ -12,11 +15,21 @@ public class Node {
     private Edge down;
     
     
+    /**
+     * Initializes a Node object.
+     * @param x the x coordinate of the Node
+     * @param y the y coordinate of the Node
+     */
     public Node(int x, int y) {
         this.x = x;
         this.y = y;
     }
     
+    /**
+     * Returns true whether a turn in the specified direction can be performed.
+     * @param d the direction to check if its possible
+     * @return whether the turn is possible
+     */
     public boolean canTurn (EDirection d) {
         switch (d) {
             case UP:
@@ -36,6 +49,11 @@ public class Node {
     /////////////////////
     // Getters and Setters
     
+    /**
+     * Gets the outgoing Edge in the specified the direction.
+     * @param d the direction of the outgoing Edge
+     * @return the edge in the specified direction
+     */
     public Edge getTurn(EDirection d) {
         switch (d) {
             case UP:
@@ -51,6 +69,11 @@ public class Node {
         }
     }
     
+    /**
+     * Sets an Edge connected to this Node.
+     * @param edge the edge to set
+     * @param direction the outgoing direction of the edge connected to this Node
+     */
     public void setEdge(Edge edge, EDirection direction) {
         switch (direction) {
             case LEFT:
@@ -73,15 +96,10 @@ public class Node {
     }
     
     
-    
-    public int getX(){
-        return x;
-    }
-    
-    public int getY(){
-        return y;
-    }
-    
+    /**
+     * Returns the possible turns to be performed on this Node.
+     * @return the possible turns to be performed
+     */
     public ArrayList<EDirection> getPossibleTurns() {
         ArrayList<EDirection> possible = new ArrayList<EDirection>();
         if (up != null) {
@@ -98,6 +116,14 @@ public class Node {
         }
         return possible;
     
+    }
+    
+    public int getX(){
+        return x;
+    }
+    
+    public int getY(){
+        return y;
     }
     
     public Edge getLeft(){
