@@ -1,6 +1,5 @@
 package Painter;
 
-import Entities.Ghost;
 import Entities.Sprite;
 import Map.Map;
 import Media.Media;

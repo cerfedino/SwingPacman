@@ -1,14 +1,9 @@
 package Game;
 
 import Entities.Ghost;
-import Entities.Sprite;
-import Map.Map;
-import Media.EImage;
 import Painter.*;
 
 import java.util.ArrayList;
-
-import static java.lang.Thread.sleep;
 
 /**
  * The main class that starts the game.

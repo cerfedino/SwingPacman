@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.EnumMap;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 
 /**
  *  Contains all the media files needed to display the game.

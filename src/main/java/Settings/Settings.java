@@ -2,7 +2,6 @@ package Settings;
 
 import java.awt.*;
 import java.util.EnumMap;
-import java.lang.Integer;
 
 /**
  * Class containing all the static settings necessary to run the game.
@@ -63,6 +62,7 @@ public class Settings {
         mapping.put(EParam.line_thickness, (int)((int)mapping.get(EParam.line_thickness)*scalefactor));
         mapping.put(EParam.path_width, (int)((int)mapping.get(EParam.path_width)*scalefactor));
     }
+    
     /**
      * Getter method for the EnumMap.
      * @return the settings EnumMap
