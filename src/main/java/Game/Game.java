@@ -1,6 +1,7 @@
 package Game;
 
 import Entities.Ghost;
+import Entities.MovingEntity;
 import Painter.*;
 
 import java.util.ArrayList;
@@ -24,27 +25,8 @@ public class Game {
         gamestate = new GameState();
         painter.registerMap(gamestate.getMap());
         
-        
-        ////////////////////
-        // DEMO
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run(){
-                try{
-                    ArrayList<Ghost> ghosts = gamestate.getGhosts();
-                    while(true){
-                        for (Ghost g : ghosts){
-                            g.step();
-                        }
-                        Thread.sleep(20);
-                    }
-                } catch (Exception ae){
-                    ae.printStackTrace();
-                }
-            }
-        });
-        t.start();
-        ///////////////////////////////
+        GameThread thread = new GameThread();
+        thread.run();
         
     }
     
@@ -59,4 +41,43 @@ public class Game {
     }
     
     
+}
+
+/**
+ * Responsible of the Sprites moving and interacting with each other.
+ */
+class GameThread implements Runnable {
+    
+    private boolean paused = false;
+    
+    @Override
+    public void run(){
+        try{
+            while(true){
+                while (!paused){
+                    ArrayList<Ghost> entities = Game.gamestate().getGhosts();
+                    for (Ghost g : entities){
+                        g.step();
+                    }
+                    Thread.sleep(20);
+                }
+            }
+        } catch (Exception ae){
+            ae.printStackTrace();
+        }
+    }
+    
+    /**
+     * Pauses the Thread.
+     */
+    public void pause() {
+        paused = true;
+    }
+    
+    /**
+     * Unpauses the Thread.
+     */
+    public void unpause() {
+        paused = false;
+    }
 }

@@ -2,6 +2,7 @@ package Game;
 
 import Entities.EGhostType;
 import Entities.Ghost;
+import Entities.MovingEntity;
 import Map.*;
 
 import java.util.ArrayList;
