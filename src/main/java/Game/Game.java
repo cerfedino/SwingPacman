@@ -20,7 +20,6 @@ public class Game {
     private static GameState gamestate;
     private static Painter painter;
     private static GameThread gamethread;
-    
     private static GameInputManager gameinput;
     /**
      * The main method. Starts the game
