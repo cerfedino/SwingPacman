@@ -1,5 +1,6 @@
 package Map;
 
+import Entities.MovingEntity;
 import Entities.Sprite;
 
 /**
@@ -9,7 +10,7 @@ public class Edge {
     private final Node from;
     private final Node to;
     
-    private final double length;
+    private double length;
     
     private EOrientation orientation;
     
@@ -54,16 +55,16 @@ public class Edge {
      * Returns an integer representing a coordinate moved in a direction along the Edge
      *  by a certain step size.
      * @param direction the direction to move the coordinate along
-     * @param pos the current position
-     * @param stepsize by how much to move the coordinate
      * @return the coordinate moved along the Edge
      */
-    public int moveAlongEdge(EDirection direction, int pos, int stepsize) {
-        
+    public int moveAlongEdge(EDirection direction, MovingEntity s) {
+        int stepsize = s.getSpeed();
+        int pos;
         switch (direction) {
             case LEFT:
                 stepsize *= -1;
             case RIGHT:
+                pos = s.getSpriteX();
                 int fromX = from.getX();
                 int toX = to.getX();
                 
@@ -79,6 +80,8 @@ public class Edge {
             case UP:
                 stepsize *= -1;
             case DOWN:
+                pos = s.getSpriteY();
+                
                 int fromY = from.getY();
                 int toY = to.getY();
     
@@ -184,4 +187,7 @@ public class Edge {
         return orientation;
     }
     
+    public void setLength(double length){
+        this.length=length;
+    }
 }

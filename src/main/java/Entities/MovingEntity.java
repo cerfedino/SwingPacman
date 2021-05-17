@@ -64,11 +64,11 @@ public class MovingEntity extends Entity {
         switch(direction) {
             case LEFT:
             case RIGHT:
-                setX(getCurrEdge().moveAlongEdge(direction,getSpriteX(),speed));
+                setX(getCurrEdge().moveAlongEdge(direction,this));
                 break;
             case UP:
             case DOWN:
-                setY(getCurrEdge().moveAlongEdge(direction,getSpriteY(),speed));
+                setY(getCurrEdge().moveAlongEdge(direction,this));
         }
         if (getCurrEdge().isAtExtremes(this)){
             makeTurn(getCurrEdge().getExtreme(this));
@@ -111,5 +111,9 @@ public class MovingEntity extends Entity {
     
     public EDirection getDirection(){
         return direction;
+    }
+    
+    public int getSpeed(){
+        return speed;
     }
 }

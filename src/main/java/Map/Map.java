@@ -36,23 +36,27 @@ public class Map extends JPanel {
         //Paints all the edges
         int offset = Scaler.scale((int)Settings.get(EParam.path_width))/2;
         for (Edge e : edges) {
-            Node n1 = e.getFrom();
-            Node n2 = e.getTo();
-            
-            int x1 = n1.getX(); int y1 = n1.getY();
-            int x2 = n2.getX(); int y2 = n2.getY();
-            
+            // Paints only edges that are not TeleportEdge
+            if(!(e instanceof TeleportEdge)){
+                Node n1=e.getFrom();
+                Node n2=e.getTo();
     
-            
-            switch (e.getOrientation()) {
-                case HORIZONTAL:
-                    g.drawLine(x1-offset,y1+offset,x2+offset,y2+offset);
-                    g.drawLine(x1-offset,y1-offset,x2+offset,y2-offset);
-                    break;
-                case VERTICAL:
-                    g.drawLine(x1+offset,y1-offset,x2+offset,y2+offset);
-                    g.drawLine(x1-offset,y1-offset,x2-offset,y2+offset);
-                    break;
+                int x1=n1.getX();
+                int y1=n1.getY();
+                int x2=n2.getX();
+                int y2=n2.getY();
+    
+    
+                switch (e.getOrientation()){
+                    case HORIZONTAL:
+                        g.drawLine(x1-offset, y1+offset, x2+offset, y2+offset);
+                        g.drawLine(x1-offset, y1-offset, x2+offset, y2-offset);
+                        break;
+                    case VERTICAL:
+                        g.drawLine(x1+offset, y1-offset, x2+offset, y2+offset);
+                        g.drawLine(x1-offset, y1-offset, x2-offset, y2+offset);
+                        break;
+                }
             }
         }
         
@@ -95,6 +99,18 @@ public class Map extends JPanel {
             nodes.add(to);
         
         Edge edge = new Edge(from, to);
+        from.setEdge(edge, fromDirection);
+        to.setEdge(edge, toDirection);
+        edges.add(edge);
+    }
+    
+    private void addTeleportEdge(Node from, Node to, EDirection fromDirection, EDirection toDirection) {
+        if (!nodes.contains(from))
+            nodes.add(from);
+        if (!nodes.contains(to))
+            nodes.add(to);
+        
+        TeleportEdge edge = new TeleportEdge(from, to);
         from.setEdge(edge, fromDirection);
         to.setEdge(edge, toDirection);
         edges.add(edge);
@@ -201,10 +217,14 @@ public class Map extends JPanel {
         addEdge(r5c6, r5c7, EDirection.RIGHT, EDirection.LEFT);
 
         Node empty1 = new Node(Scaler.scale(0), Scaler.scale(500));
+        ///
         addEdge(empty1, r5c2, EDirection.RIGHT, EDirection.LEFT);
 
         Node empty2 = new Node(Scaler.scale(1000), Scaler.scale(500));
+        ////
         addEdge(r5c7, empty2, EDirection.RIGHT, EDirection.LEFT);
+        addTeleportEdge(empty2,empty1, EDirection.RIGHT, EDirection.LEFT);
+        addTeleportEdge(empty1,empty2, EDirection.LEFT, EDirection.RIGHT);
         addEdge(r3c7, r5c7, EDirection.DOWN, EDirection.UP);
 
         Node r6c3 = new Node(Scaler.scale(360),Scaler.scale(600));
