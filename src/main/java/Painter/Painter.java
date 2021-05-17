@@ -1,12 +1,15 @@
 package Painter;
 
 import Entities.Sprite;
+import Game.GameInputManager;
 import Map.Map;
 import Media.Media;
 import Settings.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +27,7 @@ public class Painter {
     /**
      * Initializes the Painter object by creating and setting the game window.
      */
-    public Painter() {
+    public Painter(GameInputManager g) {
         Dimension screenSize = t.getScreenSize();
         int size = Math.min(screenSize.height, screenSize.width);
         
@@ -45,7 +48,11 @@ public class Painter {
         gamepanel = new JLayeredPane();
         gamepanel.setBounds(0,0,size,size);
         gameframe.add(gamepanel);
-    
+        
+        gamepanel.setFocusable(true);
+        gamepanel.grabFocus();
+        gamepanel.addKeyListener(g);
+        
         gameframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
@@ -97,9 +104,15 @@ public class Painter {
         return sprites.contains(sprite);
     }
     
-    
     ///////////////////
     // Getters and Setters below
     
     
+    public JLayeredPane getGamepanel(){
+        return gamepanel;
+    }
+    
+    public JFrame getGameframe(){
+        return gameframe;
+    }
 }

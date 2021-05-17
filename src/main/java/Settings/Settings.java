@@ -1,6 +1,7 @@
 package Settings;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.EnumMap;
 
 /**
@@ -31,10 +32,11 @@ public class Settings {
     static private void setDefaultSettings() {
         EnumMap<EParam, Object> newMapping = new EnumMap<>(EParam.class);
     
-        newMapping.put(EParam.pacman_speed,            30);
+        // Game mechanics
+        newMapping.put(EParam.pacman_speed,            2.9);
         newMapping.put(EParam.pacman_starting_lives,   3);
     
-        newMapping.put(EParam.ghost_speed,             2);
+        newMapping.put(EParam.ghost_speed,             2.4);
         newMapping.put(EParam.vulnerable_mstime,       15000);
         newMapping.put(EParam.ghost_count,       4);
     
@@ -42,13 +44,21 @@ public class Settings {
         newMapping.put(EParam.small_food_score,        20);
     
         newMapping.put(EParam.special_food_spawn_odd,  10);
-        
-        
+    
+        // Graphics
         newMapping.put(EParam.line_color,              Color.red);
         newMapping.put(EParam.line_thickness,          5);
         
         newMapping.put(EParam.background_color,        Color.black);
         newMapping.put(EParam.path_width,              20);
+    
+        // Controls
+        newMapping.put(EParam.KEY_turn_up,              KeyEvent.VK_UP);
+        newMapping.put(EParam.KEY_turn_down,            KeyEvent.VK_DOWN);
+    
+        newMapping.put(EParam.KEY_turn_left,            KeyEvent.VK_LEFT);
+        newMapping.put(EParam.KEY_turn_right,           KeyEvent.VK_RIGHT);
+        
         mapping = newMapping;
     }
     
@@ -58,8 +68,8 @@ public class Settings {
      */
     static public void rescaleSettings(double scalefactor) {
         setDefaultSettings();
-        mapping.put(EParam.pacman_speed, (int)((int)mapping.get(EParam.pacman_speed)*scalefactor));
-        mapping.put(EParam.ghost_speed, (int)((int)mapping.get(EParam.ghost_speed)*scalefactor));
+        mapping.put(EParam.pacman_speed, (int)((double)mapping.get(EParam.pacman_speed)*scalefactor));
+        mapping.put(EParam.ghost_speed, (int)((double)mapping.get(EParam.ghost_speed)*scalefactor));
         mapping.put(EParam.line_thickness, (int)((int)mapping.get(EParam.line_thickness)*scalefactor));
         mapping.put(EParam.path_width, (int)((int)mapping.get(EParam.path_width)*scalefactor));
     }

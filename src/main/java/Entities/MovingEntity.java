@@ -71,7 +71,6 @@ public class MovingEntity extends Entity {
                 setY(getCurrEdge().moveAlongEdge(direction,getSpriteY(),speed));
         }
         if (getCurrEdge().isAtExtremes(this)){
-            System.out.println("Im at an edge holy shit I'm so excited");
             makeTurn(getCurrEdge().getExtreme(this));
         }
     }

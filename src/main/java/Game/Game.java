@@ -1,10 +1,16 @@
 package Game;
 
 import Entities.Ghost;
-import Entities.MovingEntity;
+import Map.EDirection;
 import Painter.*;
+import Settings.*;
 
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * The main class that starts the game.
@@ -14,20 +20,21 @@ public class Game {
     private static GameState gamestate;
     private static Painter painter;
     private static GameThread gamethread;
+    
+    private static GameInputManager gameinput;
     /**
      * The main method. Starts the game
      * @param args the arguments passed to the main method
      */
     public static void main(String[] args){
-        
-        painter = new Painter();
+        gameinput = new GameInputManager();
+        painter = new Painter(gameinput);
         
         gamestate = new GameState();
         painter.registerMap(gamestate.getMap());
         
         gamethread = new GameThread();
         gamethread.run();
-        
     }
     
     //////////////////////////
@@ -53,31 +60,18 @@ class GameThread implements Runnable {
     @Override
     public void run(){
         try{
+            GameState gamestate =  Game.gamestate();
             while(true){
-                while (!paused){
-                    ArrayList<Ghost> entities = Game.gamestate().getGhosts();
-                    for (Ghost g : entities){
-                        g.step();
-                    }
-                    Thread.sleep(20);
+                ArrayList<Ghost> entities = gamestate.getGhosts();
+                for (Ghost g : entities){
+                    g.step();
                 }
+                gamestate.getPacman().step();
+                Thread.sleep(20);
             }
         } catch (Exception ae){
             ae.printStackTrace();
         }
     }
-    
-    /**
-     * Pauses the Thread.
-     */
-    public void pause() {
-        paused = true;
-    }
-    
-    /**
-     * Unpauses the Thread.
-     */
-    public void unpause() {
-        paused = false;
-    }
 }
+

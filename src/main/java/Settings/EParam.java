@@ -13,5 +13,9 @@ public enum EParam {
     // Graphics
     line_color, line_thickness,
     background_color,
-    path_width
+    path_width,
+    
+    // Controls
+    KEY_turn_up, KEY_turn_down,
+    KEY_turn_left, KEY_turn_right
 }

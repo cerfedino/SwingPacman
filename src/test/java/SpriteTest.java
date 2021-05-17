@@ -1,5 +1,6 @@
 
 import Entities.Sprite;
+import Game.GameInputManager;
 import Media.EImage;
 import Painter.Painter;
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class SpriteTest {
     @Test
     public void deleteSpriteTest() {
         Sprite s = new Sprite(0,0, EImage.pacman);
-        Painter p = new Painter();
+        Painter p = new Painter(new GameInputManager());
         
         p.registerSprite(s);
         assertTrue(p.isSpriteRegistered(s));

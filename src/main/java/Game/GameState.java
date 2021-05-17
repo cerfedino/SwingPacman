@@ -2,6 +2,7 @@ package Game;
 
 import Entities.EGhostType;
 import Entities.Ghost;
+import Entities.Pacman;
 import Map.*;
 import Settings.*;
 
@@ -12,7 +13,7 @@ import java.util.Random;
  * Saves all the valuable stats and data about the game.
  */
 public class GameState {
-    //private Pacman pacman;
+    private Pacman pacman;
     private ArrayList<Ghost> ghosts = new ArrayList<>();
     private Map map;
     
@@ -47,10 +48,11 @@ public class GameState {
     
             }
             ghosts.add(g);
+            
             Game.painter().registerSprite(g);
         }
-        
-        
+        pacman = new Pacman(edges.get(rand.nextInt(edges.size())));
+        Game.painter().registerSprite(pacman);
     }
     
     
@@ -63,8 +65,15 @@ public class GameState {
     public void removeGhost(Ghost g) {
         if (ghosts.contains(g)) ghosts.remove(g);
     }
+    public void removePacman(Pacman g) {
+        pacman = null;
+    }
     
     public ArrayList<Ghost> getGhosts(){
         return ghosts;
+    }
+    
+    public Pacman getPacman(){
+        return pacman;
     }
 }
