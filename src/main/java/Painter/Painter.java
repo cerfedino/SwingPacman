@@ -15,6 +15,7 @@ import java.util.ArrayList;
 /**
  * Responsible of painting and updating all the on-screen graphic elements.
  */
+// TODO: Fix Painter layers being fucked up
 public class Painter {
     
     private static Toolkit t= Toolkit.getDefaultToolkit();
