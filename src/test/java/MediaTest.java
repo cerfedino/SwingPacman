@@ -12,7 +12,7 @@ public class MediaTest {
      */
     @Test
     public void allMediaMapped() {
-        EnumMap m = Media.getMapping();
+        EnumMap m = Media.getImgMap();
         
         for(EImage image : EImage.values()) {
             assertTrue(m.containsKey(image));

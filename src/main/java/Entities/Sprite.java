@@ -33,7 +33,7 @@ public class Sprite extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(Media.get(image), 0, 0, this); // see javadoc for more info on the parameters
+        g.drawImage(Media.getImg(image), 0, 0, this); // see javadoc for more info on the parameters
         
         super.paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
@@ -51,7 +51,7 @@ public class Sprite extends JPanel {
     
     public void setImage(EImage image){
         int x = getSpriteX() ,y = getSpriteY();
-        BufferedImage img = Media.get(image);
+        BufferedImage img = Media.getImg(image);
         setSize(img.getWidth(), img.getHeight());
         setX(x);
         setY(y);
