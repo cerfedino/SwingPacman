@@ -1,7 +1,12 @@
 package Map;
 
+import Entities.Food;
 import Entities.MovingEntity;
+import Entities.SmallFood;
 import Entities.Sprite;
+import Settings.*;
+
+import java.util.ArrayList;
 
 /**
  * Represents a walkable path connect two edges together
@@ -14,7 +19,7 @@ public class Edge {
     
     private EOrientation orientation;
     
-    // private ArrayList<Food> food;
+    private ArrayList<Food> food;
     
     /**
      * Initializes an Edge object.
@@ -25,9 +30,15 @@ public class Edge {
         this.from = from;
         this.to = to;
         
+        if (from.getX() == to.getX()) {
+            orientation = EOrientation.VERTICAL;
+        } else if(from.getY() == to.getY()){
+            orientation = EOrientation.HORIZONTAL;
+        }
+        
         length = calcLenght();
         
-        //TODO: Implement auto generation of food
+        spawnFood();
     }
     
     /**
@@ -40,15 +51,33 @@ public class Edge {
     
         int x2 = to.getX();
         int y2 = to.getY();
-        
-        return Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2));
+    
+        return Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2));
     }
     
     /**
      * Spawns food along the Edge.
      */
-    private void spawnFood() {
-        //TODO: Implement
+    protected void spawnFood() {
+        calcLenght();
+        food = new ArrayList<>();
+        int minX = Math.min(from.getX(), to.getX());
+        int minY = Math.min(from.getY(), to.getY());
+        
+        int food_density = (int)Settings.get(EParam.food_density);
+        for(int i = food_density; i < length; i+=food_density) {
+            switch(orientation) {
+                case VERTICAL:
+                    food.add(new SmallFood(minX,minY+i,this));
+                    break;
+                case HORIZONTAL:
+                    food.add(new SmallFood(minX+i,minY,this));
+                    break;
+            }
+        }
+        for (Food f: food) {
+            Game.Game.painter().registerSprite(f);
+        }
     }
     
     /**

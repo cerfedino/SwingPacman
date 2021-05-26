@@ -3,9 +3,11 @@ package Game;
 import AudioEngine.AudioEngine;
 import Entities.Ghost;
 import Map.EDirection;
+import Media.EAudio;
 import Painter.*;
 import Settings.*;
 
+import javax.security.auth.callback.Callback;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -62,6 +64,7 @@ class GameThread implements Runnable {
     public void run(){
         try{
             GameState gamestate =  Game.gamestate();
+            performRoundIntro();
             while(true) {
                 while(!paused){
                     ArrayList<Ghost> entities=gamestate.getGhosts();
@@ -70,11 +73,17 @@ class GameThread implements Runnable {
                     }
                     gamestate.getPacman().step();
                     Thread.sleep(20);
+                    
                 }
             }
         } catch (Exception ae){
             ae.printStackTrace();
         }
+    }
+    
+    public void performRoundIntro() {
+        Game.audioengine().playOnce(EAudio.round_start);
+        
     }
     
     /**
@@ -92,3 +101,6 @@ class GameThread implements Runnable {
     }
 }
 
+interface FunctionCallback {
+    void callback();
+}

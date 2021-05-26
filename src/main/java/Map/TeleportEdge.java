@@ -82,4 +82,9 @@ public class TeleportEdge extends Edge {
         }
         return getFrom().getY();
     }
+    
+    @Override
+    protected void spawnFood() {
+    
+    }
 }

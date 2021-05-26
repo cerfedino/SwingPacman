@@ -28,23 +28,9 @@ public class Ghost extends MovingEntity{
     public Ghost(Edge location, EGhostType ghost){
         super(EImage.ghost1, location, (int)Settings.get(EParam.ghost_speed));
         type = ghost;
+        
         // Chooses the respective image for the ghost
-        EImage img;
-        switch(ghost) {
-            case ghost1:
-                img = EImage.ghost1;
-                break;
-            case ghost2:
-                img = EImage.ghost2;
-                break;
-            case ghost3:
-                img = EImage.ghost3;
-                break;
-            default:
-                img = EImage.ghost4;
-                break;
-        }
-        setImage(img);
+        resetGhostImg();
     }
     
     /**
@@ -78,7 +64,7 @@ public class Ghost extends MovingEntity{
         }else if (n.canTurn(priorityQueue.getFirst())){
             setDirection(priorityQueue.getFirst());
             setCurrEdge(n.getTurn(priorityQueue.removeFirst()));
-        }else{
+        }else {
             priorityQueue.removeFirst();
         }
         
@@ -126,9 +112,33 @@ public class Ghost extends MovingEntity{
             // Chooses a random turn to add to the queue
             Random r = new Random();
             turnQueue.add(possible_turns.get(new Random().nextInt(possible_turns.size())));
-            
         }
         
     }
+    
+    /**
+     * Sets the Ghost image accordingly to the type of the ghost
+     */
+    public void resetGhostImg() {
+        EImage img;
+        switch(type) {
+            case ghost1:
+                img = EImage.ghost1;
+                break;
+            case ghost2:
+                img = EImage.ghost2;
+                break;
+            case ghost3:
+                img = EImage.ghost3;
+                break;
+            default:
+                img = EImage.ghost4;
+                break;
+        }
+        setImage(img);
+    }
+    
+    ////////////////
+    // Setters and getters below
     
 }
