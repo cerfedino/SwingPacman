@@ -68,6 +68,8 @@ public class Media {
         
         ////////////////////
         // Audio
+        newSfx.put(EAudio.placeholder, new File("./src/main/resources/sfx/ding.wav").getAbsoluteFile());
+        
         newSfx.put(EAudio.ghost_moving, new File("./src/main/resources/sfx/ghost_moving.wav").getAbsoluteFile());
         newSfx.put(EAudio.ghost_vulnerable, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
         newSfx.put(EAudio.pacman_eating, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());

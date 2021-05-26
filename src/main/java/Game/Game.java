@@ -1,5 +1,6 @@
 package Game;
 
+import AudioEngine.AudioEngine;
 import Entities.Ghost;
 import Map.EDirection;
 import Painter.*;
@@ -19,6 +20,8 @@ public class Game {
     
     private static GameState gamestate;
     private static Painter painter;
+    private static AudioEngine audioengine;
+    
     private static GameThread gamethread;
     private static GameInputManager gameinput;
     /**
@@ -31,6 +34,7 @@ public class Game {
         
         gamestate = new GameState();
         painter.registerMap(gamestate.getMap());
+        audioengine = new AudioEngine();
         
         gamethread = new GameThread();
         gamethread.run();
@@ -39,13 +43,11 @@ public class Game {
     //////////////////////////
     // Getters and Setters below
     
-    public static Painter painter() {
-        return painter;
-    }
+    public static Painter painter() { return painter; }
     public static GameState gamestate() {
         return gamestate;
     }
-    
+    public static AudioEngine audioengine() { return audioengine; };
     
 }
 
@@ -60,17 +62,33 @@ class GameThread implements Runnable {
     public void run(){
         try{
             GameState gamestate =  Game.gamestate();
-            while(true){
-                ArrayList<Ghost> entities = gamestate.getGhosts();
-                for (Ghost g : entities){
-                    g.step();
+            while(true) {
+                while(!paused){
+                    ArrayList<Ghost> entities=gamestate.getGhosts();
+                    for (Ghost g : entities){
+                        g.step();
+                    }
+                    gamestate.getPacman().step();
+                    Thread.sleep(20);
                 }
-                gamestate.getPacman().step();
-                Thread.sleep(20);
             }
         } catch (Exception ae){
             ae.printStackTrace();
         }
+    }
+    
+    /**
+     * Pauses the game thread
+     */
+    public void pause() {
+        paused = true;
+    }
+    
+    /**
+     * Unpauses the game thread
+     */
+    public void unpause() {
+        paused = false;
     }
 }
 
