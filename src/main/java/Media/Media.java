@@ -61,8 +61,8 @@ public class Media {
         newImage.put(EImage.ghost4, ImageIO.read(new File("./src/main/resources/img/ghost4.png")));
         newImage.put(EImage.ghost_vuln, ImageIO.read(new File("./src/main/resources/img/ghost_vuln.png")));
 
-        newImage.put(EImage.large_food, ImageIO.read(new File("./src/main/resources/img/pacman.png")));
-        newImage.put(EImage.small_food, ImageIO.read(new File("./src/main/resources/img/pacman.png")));
+        newImage.put(EImage.large_food, ImageIO.read(new File("./src/main/resources/img/large_food.png")));
+        newImage.put(EImage.small_food, ImageIO.read(new File("./src/main/resources/img/small_food.png")));
 
         newImage.put(EImage.hearth, ImageIO.read(new File("./src/main/resources/img/pacman.png")));
         
