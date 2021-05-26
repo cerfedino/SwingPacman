@@ -74,6 +74,7 @@ public class Media {
         newSfx.put(EAudio.ghost_vulnerable, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
         newSfx.put(EAudio.pacman_eating, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
         newSfx.put(EAudio.ghost_vulnerable_end, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
+        newSfx.put(EAudio.round_start, new File("./src/main/resources/sfx/round_start.wav").getAbsoluteFile());
     
         img= newImage;
         sfx = newSfx;
@@ -104,10 +105,17 @@ public class Media {
     
     /**
      * Getter method for the EnumMap.
-     * @return the media EnumMap
+     * @return the img EnumMap
      */
     public static EnumMap<EImage, BufferedImage> getImgMap() {
         return img;
+    }
+    /**
+     * Getter method for the EnumMap.
+     * @return the sfx EnumMap
+     */
+    public static EnumMap<EAudio, File> getSfxMap() {
+        return sfx;
     }
     
 }
