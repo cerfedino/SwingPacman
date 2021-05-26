@@ -1,12 +1,10 @@
 package Map;
 
-import Entities.Food;
-import Entities.MovingEntity;
-import Entities.SmallFood;
-import Entities.Sprite;
+import Entities.*;
 import Settings.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Represents a walkable path connect two edges together
@@ -36,7 +34,7 @@ public class Edge {
             orientation = EOrientation.HORIZONTAL;
         }
         
-        length = calcLenght();
+        length = calcLength();
         
         spawnFood();
     }
@@ -45,7 +43,7 @@ public class Edge {
      * Calculates the length of the Edge.
      * @return the length of the Edge
      */
-    private double calcLenght() {
+    private double calcLength() {
         int x1 = from.getX();
         int y1 = from.getY();
     
@@ -59,21 +57,33 @@ public class Edge {
      * Spawns food along the Edge.
      */
     protected void spawnFood() {
-        calcLenght();
+        calcLength();
         food = new ArrayList<>();
+        
         int minX = Math.min(from.getX(), to.getX());
         int minY = Math.min(from.getY(), to.getY());
-        
-        int food_density = (int)Settings.get(EParam.food_density);
-        for(int i = food_density; i < length; i+=food_density) {
+    
+        int path_width = (int)Settings.get(EParam.path_width);
+        int offset = (int)(((length - path_width*2) % (int)Settings.get(EParam.food_distancing) ) / 2)+ path_width;
+        int food_distancing = (int)Settings.get(EParam.food_distancing);
+    
+        Random r = new Random();
+        for(int i = offset; i <= length-offset; i+=food_distancing) {
+            Food f;
+            if (r.nextInt(100) < (int)Settings.get(EParam.special_food_spawn_odd)){
+                f = new LargeFood(minX,minY,this);
+            } else {
+                f = new SmallFood(minX,minY,this);
+            }
             switch(orientation) {
                 case VERTICAL:
-                    food.add(new SmallFood(minX,minY+i,this));
+                    f.setY(minY+i);
                     break;
                 case HORIZONTAL:
-                    food.add(new SmallFood(minX+i,minY,this));
+                    f.setX(minX+i);
                     break;
             }
+            food.add(f);
         }
         for (Food f: food) {
             Game.Game.painter().registerSprite(f);
