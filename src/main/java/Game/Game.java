@@ -1,19 +1,13 @@
 package Game;
 
-import AudioEngine.AudioEngine;
+import AudioEngine.*;
 import Entities.Ghost;
 import Map.EDirection;
 import Media.EAudio;
 import Painter.*;
 import Settings.*;
 
-import javax.security.auth.callback.Callback;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * The main class that starts the game.
@@ -60,19 +54,20 @@ public class Game {
  */
 class GameThread implements Runnable {
     
-    private boolean paused = false;
+    private static boolean paused = false;
     
     @Override
     public void run(){
         try{
-            GameState gamestate =  Game.gamestate();
             performRoundIntro();
             while(true) {
-                while(!paused){
+                // DONT REMOVE THIS. Apparently if you dont print here, everything breaks.
+                // Java makes no sense
+                // TODO: Investigate this paranormal behaviour
+                System.out.print("");
+                
+                if(!paused) {
                     stepEntities();
-                    
-                    
-                    
                     Thread.sleep(20);
                 }
             }
@@ -82,8 +77,14 @@ class GameThread implements Runnable {
     }
     
     public void performRoundIntro() {
-        Game.audioengine().playOnce(EAudio.round_start, null);
-        
+        pause();
+        Game.audioengine().playOnce(EAudio.round_start, new FunctionCallback() {
+            @Override
+            public void callback(){
+                System.out.println("Finished round start");
+                unpause();
+            }
+        });
     }
     
     /**
@@ -111,4 +112,5 @@ class GameThread implements Runnable {
         paused = false;
     }
 }
+
 
