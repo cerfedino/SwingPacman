@@ -90,7 +90,7 @@ public class Painter {
      * @param map the sprite to initialize
      */
     public void registerMap(Map map) {
-        gamepanel.add(map,10);
+        gamepanel.add(map,-1);
         map.repaint();
         gamepanel.revalidate();
         gamepanel.repaint();
