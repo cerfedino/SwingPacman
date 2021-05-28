@@ -42,6 +42,8 @@ public class Game {
         gamethread.run();
     }
     
+    
+    
     //////////////////////////
     // Getters and Setters below
     
@@ -67,13 +69,11 @@ class GameThread implements Runnable {
             performRoundIntro();
             while(true) {
                 while(!paused){
-                    ArrayList<Ghost> entities=gamestate.getGhosts();
-                    for (Ghost g : entities){
-                        g.step();
-                    }
-                    gamestate.getPacman().step();
-                    Thread.sleep(20);
+                    stepEntities();
                     
+                    
+                    
+                    Thread.sleep(20);
                 }
             }
         } catch (Exception ae){
@@ -82,8 +82,19 @@ class GameThread implements Runnable {
     }
     
     public void performRoundIntro() {
-        Game.audioengine().playOnce(EAudio.round_start);
+        Game.audioengine().playOnce(EAudio.round_start, null);
         
+    }
+    
+    /**
+     * Gathers all the MovingEntities and makes them step.
+     */
+    protected void stepEntities() {
+        ArrayList<Ghost> entities = Game.gamestate().getGhosts();
+        for (Ghost g : entities){
+            g.step();
+        }
+        Game.gamestate().getPacman().step();
     }
     
     /**
@@ -101,6 +112,3 @@ class GameThread implements Runnable {
     }
 }
 
-interface FunctionCallback {
-    void callback();
-}
