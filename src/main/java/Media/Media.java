@@ -75,6 +75,7 @@ public class Media {
         newSfx.put(EAudio.pacman_eating, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
         newSfx.put(EAudio.ghost_vulnerable_end, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
         newSfx.put(EAudio.round_start, new File("./src/main/resources/sfx/round_start.wav").getAbsoluteFile());
+        newSfx.put(EAudio.death_sound, new File("./src/main/resources/sfx/death_sound.wav").getAbsoluteFile());
     
         img= newImage;
         sfx = newSfx;

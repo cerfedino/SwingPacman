@@ -38,6 +38,7 @@ public class AudioEntity {
         // Create AudioInputStream object
         this.audiofile = audiofile;
         setMode(mode);
+        status = PlaybackStatus.stopped;
         
         audioInputStream = AudioSystem.getAudioInputStream(audiofile);
         
@@ -67,7 +68,8 @@ public class AudioEntity {
      * Pauses the audio Clip.
      */
     public void pause() {
-        status = PlaybackStatus.paused;
+        if (status != PlaybackStatus.stopped)
+            status = PlaybackStatus.paused;
         
         this.currentFrame = this.clip.getMicrosecondPosition();
         clip.stop();
@@ -77,7 +79,7 @@ public class AudioEntity {
      * Resumes the playback of the audio Clip.
      */
     public void resumeAudio() {
-        if (status != PlaybackStatus.playing) {
+        if (status == PlaybackStatus.paused) {
             clip.close();
             try{
                 resetAudioStream();
@@ -132,6 +134,11 @@ public class AudioEntity {
         this.mode = mode;
     }
     
+    //////////////////
+    // Getters and setters below
     
     
+    public Clip getClip(){
+        return clip;
+    }
 }
