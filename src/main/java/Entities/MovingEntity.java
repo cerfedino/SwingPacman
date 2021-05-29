@@ -26,7 +26,8 @@ public class MovingEntity extends Entity {
     public MovingEntity(EImage en, Edge location, int speed){
         super(location.getMiddlePointX(), location.getMiddlePointY(), en, location);
         this.speed = speed;
-        
+
+
         // Chooses a random initial direction for the MovingSprite
         switch(location.getOrientation()) {
             case VERTICAL:
@@ -60,7 +61,9 @@ public class MovingEntity extends Entity {
     public void step() {
         // Move along the edge if hes not at the end,
         // otherwise, call makeTurn();
-        
+
+        EntityManager.checkCollisions(this);
+
         switch(direction) {
             case LEFT:
             case RIGHT:
