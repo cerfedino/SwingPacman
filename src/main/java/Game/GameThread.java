@@ -12,9 +12,10 @@ import java.util.ArrayList;
 class GameThread implements Runnable {
     
     private static boolean paused=false;
+    private static boolean stepping=true;
     
     @Override
-    public void run(){
+    public void run() {
         try{
             performRoundIntro();
             
@@ -24,29 +25,30 @@ class GameThread implements Runnable {
                 // TODO: Investigate this paranormal behaviour
                 System.out.print("");
                 
-                while (!paused){
+                while (!paused && stepping){
                     stepEntities();
                     Thread.sleep(20);
                 }
+                
             }
-        } catch (Exception ae){
+        } catch (Exception ae) {
             ae.printStackTrace();
         }
     }
     
     public void performRoundIntro(){
-        pause();
+        freezeEntities();
         Game.audioengine().playOnce(EAudio.round_start, new FunctionCallback() {
             @Override
             public void callback(){
                 System.out.println("Finished round start");
-                unpause();
+                unfreezeEntities();
             }
         });
     }
     
     public void performDeathSequence(){
-        pause();
+        freezeEntities();
         
         Game.audioengine().playOnce(EAudio.death_sound, new FunctionCallback() {
             @Override
@@ -83,5 +85,12 @@ class GameThread implements Runnable {
     public void unpause(){
         paused = false;
         Game.audioengine().resumeALl();
+    }
+    
+    public void freezeEntities() {
+        stepping = false;
+    }
+    public void unfreezeEntities() {
+        stepping = true;
     }
 }
