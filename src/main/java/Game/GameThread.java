@@ -40,7 +40,7 @@ public class GameThread implements Runnable {
     
     public void performRoundIntro(){
         freezeEntities();
-        Game.audioengine().playOnce(EAudio.round_start, new FunctionCallback() {
+        Game.audioengine().play(EAudio.round_start, new FunctionCallback() {
             @Override
             public void callback(){
                 System.out.println("Finished round start");
@@ -52,7 +52,7 @@ public class GameThread implements Runnable {
     public void performDeathSequence(){
         freezeEntities();
         
-        Game.audioengine().playOnce(EAudio.death_sound, new FunctionCallback() {
+        Game.audioengine().play(EAudio.death_sound, new FunctionCallback() {
             @Override
             public void callback() {
                 System.out.println("Finished death sound");

@@ -43,7 +43,7 @@ public class GameInputManager implements KeyListener {
         
         // TODO: Remove placeholder for audio Demo
         if(e.getKeyChar() == 'a') {
-            Game.audioengine().playOnce(EAudio.placeholder, new FunctionCallback() {
+            Game.audioengine().playIfNotAlready(EAudio.placeholder, new FunctionCallback() {
                 @Override
                 public void callback(){
                     System.out.println("Audio is done playing, here's the callback !!!");

@@ -1,5 +1,8 @@
 package AudioEngine;
 
+import Media.EAudio;
+import Media.Media;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -24,6 +27,7 @@ public class AudioEntity {
     // To store current position
     Long currentFrame;
     
+    EAudio audio;
     File audiofile;
     Clip clip;
     
@@ -34,9 +38,10 @@ public class AudioEntity {
     AudioInputStream audioInputStream;
     
     // Constructor to initialize streams and clip
-    public AudioEntity(File audiofile, PlaybackMode mode) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public AudioEntity(EAudio audio, PlaybackMode mode) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         // Create AudioInputStream object
-        this.audiofile = audiofile;
+        this.audio = audio;
+        this.audiofile = Media.getSfx(audio);
         setMode(mode);
         status = PlaybackStatus.stopped;
         
@@ -137,8 +142,15 @@ public class AudioEntity {
     //////////////////
     // Getters and setters below
     
-    
     public Clip getClip(){
         return clip;
+    }
+    
+    public EAudio getAudio(){
+        return audio;
+    }
+    
+    public boolean isPlaying() {
+        return status == PlaybackStatus.playing;
     }
 }

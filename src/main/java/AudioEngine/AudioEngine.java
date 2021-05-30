@@ -12,31 +12,20 @@ import java.util.EnumMap;
 
 public class AudioEngine {
     
-    private final EnumMap<EAudio,AudioEntity> entities;
-    private final ArrayList<AudioEntity> tempEntities;
+    private final ArrayList<AudioEntity> entities = new ArrayList<AudioEntity>();
+    
     /**
      * Initializes the AudioEngine object.
      */
     public AudioEngine() {
-        entities = new EnumMap<>(EAudio.class);
-        tempEntities = new ArrayList<AudioEntity>();
-        
         try {
-            entities.put(EAudio.ghost_moving, new AudioEntity(Media.getSfx(EAudio.ghost_moving), PlaybackMode.loop));
+            
+            entities.add(new AudioEntity(EAudio.ghost_moving, PlaybackMode.loop));
+            entities.add(new AudioEntity(EAudio.ghost_moving, PlaybackMode.regular));
+            
         } catch (Exception e) {
             System.out.println("[-] Couldn't set up the AudioEntities correctly.");
             e.printStackTrace();
-        }
-    }
-    
-    /**
-     * Sets the playback mode of a Clip.
-     * @param eaudio the audio of the AudioEntity to modify
-     * @param mode the PlayBackMode to set
-     */
-    public void setPlaybackMode(EAudio eaudio, PlaybackMode mode) {
-        if (entities.containsKey(eaudio)) {
-            entities.get(eaudio);
         }
     }
     
@@ -45,24 +34,26 @@ public class AudioEngine {
      * @param audio the audio to play
      * @param callback the callback function to call after the AudioEntity has finished playing
      */
-    public void playOnce(EAudio audio, FunctionCallback callback) {
+    public void play(EAudio audio, FunctionCallback callback) {
         try{
-            AudioEntity a = new AudioEntity(Media.getSfx(audio), PlaybackMode.regular);
-            tempEntities.add(a);
+            AudioEntity a = new AudioEntity(audio, PlaybackMode.regular);
+            entities.add(a);
             
-            if (callback != null) {
-                Clip c = a.getClip();
-                c.addLineListener(new LineListener() {
-                    @Override
-                    public void update(LineEvent event){
-                        if (event.getType() == LineEvent.Type.STOP && a.status != PlaybackStatus.paused) {
-                            c.removeLineListener(this);
-                            tempEntities.remove(a);
+            Clip c = a.getClip();
+            
+            c.addLineListener(new LineListener() {
+                @Override
+                public void update(LineEvent event){
+                    if (event.getType() == LineEvent.Type.STOP && a.status != PlaybackStatus.paused) {
+                        c.removeLineListener(this);
+                        entities.remove(a);
+                        if (callback != null) {
                             callback.callback();
                         }
                     }
-                });
-            }
+                }
+            });
+            
             a.play();
         }catch (Exception e) {
             System.out.println("[-] Couldn't set up the AudioEntity correctly.");
@@ -71,13 +62,24 @@ public class AudioEngine {
     }
     
     /**
+     * Plays an audio only if its not playing already.
+     * @param audio the audio to play
+     * @param callback the callback function to call after the AudioEntity has finished playing
+     */
+    public void playIfNotAlready(EAudio audio, FunctionCallback callback) {
+        for (AudioEntity e : entities) {
+            if (e.getAudio() == audio && e.isPlaying()) {
+                return;
+            }
+        }
+        play(audio, callback);
+    }
+    
+    /**
      * Pauses all AudioEntities.
      */
     public void pauseAll() {
-        for(AudioEntity e : entities.values()) {
-            e.pause();
-        }
-        for(AudioEntity e : tempEntities) {
+        for(AudioEntity e : entities) {
             e.pause();
         }
     }
@@ -86,10 +88,7 @@ public class AudioEngine {
      * Resumes all AudioEntities.
      */
     public void resumeALl() {
-        for(AudioEntity e : entities.values()) {
-            e.resumeAudio();
-        }
-        for(AudioEntity e : tempEntities) {
+        for(AudioEntity e : entities) {
             e.resumeAudio();
         }
     }
