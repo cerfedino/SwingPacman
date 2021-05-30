@@ -55,7 +55,7 @@ public class AudioEngine {
                 c.addLineListener(new LineListener() {
                     @Override
                     public void update(LineEvent event){
-                        if (event.getType() == LineEvent.Type.STOP) {
+                        if (event.getType() == LineEvent.Type.STOP && a.status != PlaybackStatus.paused) {
                             c.removeLineListener(this);
                             tempEntities.remove(a);
                             callback.callback();
@@ -63,7 +63,6 @@ public class AudioEngine {
                     }
                 });
             }
-            
             a.play();
         }catch (Exception e) {
             System.out.println("[-] Couldn't set up the AudioEntity correctly.");

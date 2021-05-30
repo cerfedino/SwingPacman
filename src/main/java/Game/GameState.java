@@ -45,7 +45,6 @@ public class GameState {
                 default: // 3
                     g = new Ghost(edges.get(rand.nextInt(edges.size())), EGhostType.ghost3);
                     break;
-    
             }
             ghosts.add(g);
             
@@ -55,6 +54,28 @@ public class GameState {
         Game.painter().registerSprite(pacman);
     }
     
+    /**
+     * Takes all the MovingEntities and moves them randomly to a new Edge.
+     */
+    //TODO: Move method to EntityManager
+    public void reshuffleEntityPositions() {
+        System.out.println("Reshuffling");
+        Random rand = new Random();
+        ArrayList<Edge> edges = map.getEdges();
+    
+        Edge e = (edges.get(rand.nextInt(edges.size())));
+        pacman.setCurrEdge(e);
+        pacman.setX(e.getFrom().getX());
+        pacman.setY(e.getFrom().getY());
+        pacman.resetEntity();
+        for (Ghost g : ghosts) {
+            e = (edges.get(rand.nextInt(edges.size())));
+            g.setCurrEdge(e);
+            g.setX(e.getFrom().getX());
+            g.setY(e.getFrom().getY());
+            g.resetEntity();
+        }
+    }
     
     //////////////
     // Getters and Setters below

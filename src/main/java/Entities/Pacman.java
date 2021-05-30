@@ -21,7 +21,7 @@ public class Pacman extends MovingEntity{
      * @param location the Edge where the ghost is located.
      */
     public Pacman(Edge location){
-        super(EImage.pacman, location, (int)Settings.get(EParam.pacman_speed));
+        super(EImage.pacman, location, null, (int)Settings.get(EParam.pacman_speed));
         lives = (int)Settings.get(EParam.pacman_starting_lives);
     }
     
@@ -42,14 +42,17 @@ public class Pacman extends MovingEntity{
     public void onCollision(Entity e) {
     
     }
-    
+    @Override
+    public void step() {
+        super.step();
+    }
     /**
      * Handles the decision-making when it comes to choosing which turn to perform next.
      * @param direction used by Pacman to manually add a turn
      */
     @Override
     public void addTurn(EDirection direction) {
-        if (direction != null) {
+        if (getDirection() != null) {
             switch (getDirection()) {
                 case DOWN:
                     if (direction == EDirection.UP) {
@@ -77,12 +80,13 @@ public class Pacman extends MovingEntity{
                     break;
             }
             
-            if (turnQueue.size() > 0) {
+        }
+        if (direction != null){
+            turnQueue.addFirst(direction);
+            if (turnQueue.size() > 1) {
                 turnQueue.removeLast();
             }
-            turnQueue.addFirst(direction);
         }
-        
     }
     
 }

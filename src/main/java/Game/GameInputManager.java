@@ -50,11 +50,14 @@ public class GameInputManager implements KeyListener {
                 }
             });
         }
-        if(e.getKeyChar() == 'd') {
-            Game.audioengine().pauseAll();
+        if(e.getKeyChar() == 'p') {
+            Game.gamethread().pause();
         }
-        if(e.getKeyChar() == 'f') {
-            Game.audioengine().resumeALl();
+        if(e.getKeyChar() == 'u') {
+            Game.gamethread().unpause();
+        }
+        if(e.getKeyChar() == 'd') {
+            Game.gamethread().performDeathSequence();
         }
     }
     

@@ -26,7 +26,7 @@ public class Ghost extends MovingEntity{
      * @param location the Edge where the ghost is located.
      */
     public Ghost(Edge location, EGhostType ghost){
-        super(EImage.ghost1, location, (int)Settings.get(EParam.ghost_speed));
+        super(EImage.ghost1, location, EDirection.DOWN, (int)Settings.get(EParam.ghost_speed));
         type = ghost;
         
         // Chooses the respective image for the ghost
@@ -88,20 +88,22 @@ public class Ghost extends MovingEntity{
             ArrayList<EDirection> possible_turns = getCurrEdge().getExtreme(this).getPossibleTurns();
             
             // The inverse of the current Ghost direction
-            EDirection inverse;
-            switch(getDirection()) {
-                case UP:
-                    inverse = EDirection.DOWN;
-                    break;
-                case DOWN:
-                    inverse = EDirection.UP;
-                    break;
-                case LEFT:
-                    inverse = EDirection.RIGHT;
-                    break;
-                default: // RIGHT
-                    inverse = EDirection.LEFT;
-                    break;
+            EDirection inverse = null;
+            if(getDirection()!=null) {
+                switch(getDirection()) {
+                    case UP:
+                        inverse = EDirection.DOWN;
+                        break;
+                    case DOWN:
+                        inverse = EDirection.UP;
+                        break;
+                    case LEFT:
+                        inverse = EDirection.RIGHT;
+                        break;
+                    default: // RIGHT
+                        inverse = EDirection.LEFT;
+                        break;
+                }
             }
             
             // Removes the inverse of the direction from the possible turns,
@@ -140,5 +142,9 @@ public class Ghost extends MovingEntity{
     
     ////////////////
     // Setters and getters below
-    
+    @Override
+    public void resetEntity() {
+        super.resetEntity();
+        priorityQueue = new LinkedList<>();
+    }
 }
