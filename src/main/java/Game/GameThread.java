@@ -1,5 +1,7 @@
 package Game;
 
+
+
 import AudioEngine.FunctionCallback;
 import Entities.Ghost;
 import Media.EAudio;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Responsible of the Sprites moving and interacting with each other.
  */
-class GameThread implements Runnable {
+public class GameThread implements Runnable {
     
     private static boolean paused=false;
     private static boolean stepping=true;
