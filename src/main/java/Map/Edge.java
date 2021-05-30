@@ -206,6 +206,11 @@ public class Edge {
     //////////////
     // Getters and Setters below
     
+    
+    public ArrayList<Food> getFood(){
+        return food;
+    }
+    
     public Node getFrom(){
         return from;
     }
