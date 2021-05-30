@@ -72,7 +72,7 @@ public class Media {
         
         newSfx.put(EAudio.ghost_moving, new File("./src/main/resources/sfx/ghost_moving.wav").getAbsoluteFile());
         newSfx.put(EAudio.ghost_vulnerable, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
-        newSfx.put(EAudio.pacman_eating, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
+        newSfx.put(EAudio.pacman_eating, new File("./src/main/resources/sfx/waka.wav").getAbsoluteFile());
         newSfx.put(EAudio.ghost_vulnerable_end, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
         newSfx.put(EAudio.round_start, new File("./src/main/resources/sfx/round_start.wav").getAbsoluteFile());
         newSfx.put(EAudio.death_sound, new File("./src/main/resources/sfx/death_sound.wav").getAbsoluteFile());
