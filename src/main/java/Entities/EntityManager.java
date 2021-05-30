@@ -7,11 +7,9 @@ public class EntityManager {
     public static void checkCollisions(Entity e) {
         if (e instanceof Pacman) {
             for (Ghost g : Game.gamestate().getGhosts()) {
-                if ((g.getSpriteX() == e.getSpriteX()) || (g.getSpriteY() == e.getSpriteY())) {
-                    if (areColliding(e, g)) {
-                        g.onCollision(e);
-                        e.onCollision(g);
-                    }
+                if (areColliding(e, g)) {
+                    g.onCollision(e);
+                    e.onCollision(g);
                 }
             }
             for (Food f : e.getCurrEdge().getFood()) {
@@ -23,7 +21,7 @@ public class EntityManager {
         }
         if (e instanceof Ghost) {
             Pacman p = Game.gamestate().getPacman();
-            if (e.getCurrEdge() == p.getCurrEdge()) {
+            if (areColliding(e,p)) {
                 p.onCollision(e);
                 e.onCollision(p);
             }
@@ -31,11 +29,13 @@ public class EntityManager {
     }
 
     public static boolean areColliding(Entity a, Entity b) {
+        double offset = 0.3;
         if (a.isColliding() && b.isColliding()) {
-            if (a.getSpriteX() > b.getSpriteX() && ((a.getSpriteX() - a.getWidth()/2) - (b.getSpriteX()+b.getWidth()/2)) < 1) {
-                return true;
-            }
-            if (a.getSpriteY() > b.getSpriteY() && ((a.getSpriteY() - a.getHeight()/2) - (b.getSpriteY()+b.getHeight()/2)) < 1) {
+            int minX = Math.min(a.getSpriteX(),b.getSpriteX()); int minY = Math.min(a.getSpriteY(),b.getSpriteY());
+            int maxX = Math.max(a.getSpriteX(),b.getSpriteX()); int maxY = Math.max(a.getSpriteY(),b.getSpriteY());
+    
+            if (maxX-minX < ((a.getWidth()/2) + (b.getWidth()/2))*offset
+                && maxY-minY < ((a.getHeight()/2) + (b.getHeight()/2))*offset) {
                 return true;
             }
         }
