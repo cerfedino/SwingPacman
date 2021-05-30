@@ -35,6 +35,11 @@ public class Entity extends Sprite {
     ///////////////////
     // Setters and getters below
     
+    
+    public void setColliding(boolean colliding){
+        this.colliding=colliding;
+    }
+    
     public void setCurrEdge(Edge currEdge){
         this.currEdge=currEdge;
     }

@@ -2,7 +2,7 @@ package Entities;
 
 import Map.Edge;
 import Media.EImage;
-import Media.Media;
+import Media.*;
 import Settings.*;
 
 public class SmallFood extends Food{
@@ -15,5 +15,8 @@ public class SmallFood extends Food{
     public void onCollision(Entity e){
         // Just disappears
         super.onCollision(e);
+        
+        // TODO: Pacman should be the one calling the method for the sfx
+        Game.Game.audioengine().playIfNotAlready(EAudio.pacman_eating, null);
     }
 }

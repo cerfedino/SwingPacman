@@ -46,6 +46,7 @@ public class AudioEngine {
                 public void update(LineEvent event){
                     if (event.getType() == LineEvent.Type.STOP && a.status != PlaybackStatus.paused) {
                         c.removeLineListener(this);
+                        c.close();
                         entities.remove(a);
                         if (callback != null) {
                             callback.callback();

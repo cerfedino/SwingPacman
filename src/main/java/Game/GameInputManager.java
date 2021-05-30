@@ -50,13 +50,13 @@ public class GameInputManager implements KeyListener {
                 }
             });
         }
-        if(e.getKeyChar() == 'p') {
+        if (e.getKeyChar() == 'p') {
             Game.gamethread().pause();
         }
-        if(e.getKeyChar() == 'u') {
+        if (e.getKeyChar() == 'u') {
             Game.gamethread().unpause();
         }
-        if(e.getKeyChar() == 'd') {
+        if (e.getKeyChar() == 'd') {
             Game.gamethread().performDeathSequence();
         }
     }
