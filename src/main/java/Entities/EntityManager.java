@@ -7,9 +7,11 @@ public class EntityManager {
     public static void checkCollisions(Entity e) {
         if (e instanceof Pacman) {
             for (Ghost g : Game.gamestate().getGhosts()) {
-                if (areColliding(e, g)) {
-                    g.onCollision(e);
-                    e.onCollision(g);
+                if ((g.getSpriteX() == e.getSpriteX()) || (g.getSpriteY() == e.getSpriteY())) {
+                    if (areColliding(e, g)) {
+                        g.onCollision(e);
+                        e.onCollision(g);
+                    }
                 }
             }
             for (Food f : e.getCurrEdge().getFood()) {
