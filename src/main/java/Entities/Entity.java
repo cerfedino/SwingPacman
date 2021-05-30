@@ -42,4 +42,8 @@ public class Entity extends Sprite {
     public Edge getCurrEdge(){
         return currEdge;
     }
+    
+    public boolean isColliding() {
+        return colliding;
+    }
 }

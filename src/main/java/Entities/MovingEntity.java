@@ -39,6 +39,8 @@ public class MovingEntity extends Entity {
     public void step() {
         // Move along the edge if hes not at the end,
         // otherwise, call makeTurn();
+        EntityManager.checkCollisions(this);
+        
         if (getCurrEdge().isAtExtremes(this)){
             makeTurn(getCurrEdge().getExtreme(this));
         }
