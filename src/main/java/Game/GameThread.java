@@ -52,7 +52,7 @@ class GameThread implements Runnable {
         
         Game.audioengine().playOnce(EAudio.death_sound, new FunctionCallback() {
             @Override
-            public void callback(){
+            public void callback() {
                 System.out.println("Finished death sound");
                 Game.gamestate().reshuffleEntityPositions();
                 performRoundIntro();
@@ -64,7 +64,7 @@ class GameThread implements Runnable {
      * Gathers all the MovingEntities and makes them step.
      */
     protected void stepEntities(){
-        ArrayList<Ghost> entities=Game.gamestate().getGhosts();
+        ArrayList<Ghost> entities = Game.gamestate().getGhosts();
         for (Ghost g : entities){
             g.step();
         }

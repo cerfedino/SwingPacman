@@ -46,7 +46,7 @@ public class AudioEntity {
         clip = AudioSystem.getClip();
         
         // Open audioInputStream to the clip
-        clip.open(audioInputStream);
+        resetAudioStream();
         
     }
     
