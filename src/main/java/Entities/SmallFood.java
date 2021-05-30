@@ -15,8 +15,6 @@ public class SmallFood extends Food{
     public void onCollision(Entity e){
         // Just disappears
         super.onCollision(e);
-        
-        // TODO: Pacman should be the one calling the method for the sfx
-        Game.Game.audioengine().playIfNotAlready(EAudio.pacman_eating, null);
+        Game.Game.audioengine().playIfNotAlready(EAudio.small_food, null);
     }
 }

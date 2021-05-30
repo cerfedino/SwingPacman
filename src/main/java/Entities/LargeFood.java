@@ -1,6 +1,7 @@
 package Entities;
 
 import Map.Edge;
+import Media.EAudio;
 import Media.EImage;
 import Settings.*;
 
@@ -12,6 +13,7 @@ public class LargeFood extends Food {
     @Override
     public void onCollision(Entity e){
         super.onCollision(e);
+        Game.Game.audioengine().playIfNotAlready(EAudio.large_food, null);
         //TODO: Makes Ghosts vulnerable
     }
 }

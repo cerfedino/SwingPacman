@@ -41,7 +41,6 @@ public class Pacman extends MovingEntity{
     @Override
     public void onCollision(Entity e) {
         if (e instanceof Ghost) {
-            
             if (!((Ghost)e).isVulnerable()) {
                 // TODO: Check if gameover
                 Game.gamethread().performDeathSequence();
@@ -50,8 +49,13 @@ public class Pacman extends MovingEntity{
             } else {
                 // The Ghost dies instead (add points)
             }
+        }else if(e instanceof SmallFood) {
+        
+        } else if(e instanceof LargeFood) {
+        
         }
     }
+    
     @Override
     public void step() {
         super.step();
