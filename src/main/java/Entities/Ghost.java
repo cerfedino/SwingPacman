@@ -147,4 +147,8 @@ public class Ghost extends MovingEntity{
         super.resetEntity();
         priorityQueue = new LinkedList<>();
     }
+    
+    public static boolean isVulnerable(){
+        return vulnerable;
+    }
 }

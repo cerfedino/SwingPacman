@@ -41,10 +41,15 @@ public class Pacman extends MovingEntity{
     @Override
     public void onCollision(Entity e) {
         if (e instanceof Ghost) {
-            // TODO: Check if lives > 0
-            Game.gamethread().performDeathSequence();
-            lives--;
-            System.out.println(lives);
+            
+            if (!((Ghost)e).isVulnerable()) {
+                // TODO: Check if gameover
+                Game.gamethread().performDeathSequence();
+                lives--;
+                System.out.println(lives);
+            } else {
+                // The Ghost dies instead (add points)
+            }
         }
     }
     @Override
