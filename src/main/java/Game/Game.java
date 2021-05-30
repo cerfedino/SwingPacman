@@ -38,9 +38,7 @@ public class Game {
     // Getters and Setters below
     
     public static Painter painter() { return painter; }
-    public static GameState gamestate() {
-        return gamestate;
-    }
+    public static GameState gamestate() { return gamestate; }
     public static AudioEngine audioengine() { return audioengine; };
     public static GameThread gamethread() { return gamethread; };
 }

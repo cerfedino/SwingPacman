@@ -48,16 +48,19 @@ public class GameState {
             
             Game.painter().registerSprite(g);
         }
-        
+    
         // Prevents Pacman to spawn at the same position as a Ghost
-        while(true) {
+        boolean valid = false;
+        while(!valid) {
             pacman = new Pacman(edges.get(rand.nextInt(edges.size())));
+        
+            valid = true;
             for(Ghost g : ghosts) {
                 if(EntityManager.areColliding(g,pacman)) {
+                    valid = false;
                     break;
                 }
             }
-            break;
         }
         Game.painter().registerSprite(pacman);
     }
@@ -73,7 +76,7 @@ public class GameState {
     
         Edge e;
         for (Ghost g : ghosts) {
-            e = (edges.get(rand.nextInt(edges.size())));
+            e = edges.get(rand.nextInt(edges.size()));
             g.setCurrEdge(e);
             g.setX(e.getFrom().getX());
             g.setY(e.getFrom().getY());
@@ -81,18 +84,20 @@ public class GameState {
         }
     
         // Prevents Pacman to spawn at the same position as a Ghost
-        while(true) {
-            e = (edges.get(rand.nextInt(edges.size())));
+        boolean valid = false;
+        while(!valid) {
+            e = edges.get(rand.nextInt(edges.size()));
             pacman.setCurrEdge(e);
             pacman.setX(e.getFrom().getX());
             pacman.setY(e.getFrom().getY());
             
+            valid = true;
             for(Ghost g : ghosts) {
                 if(EntityManager.areColliding(g,pacman)) {
+                    valid = false;
                     break;
                 }
             }
-            break;
         }
         pacman.resetEntity();
     }
