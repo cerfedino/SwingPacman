@@ -17,7 +17,7 @@ public class Edge {
     
     private EOrientation orientation;
     
-    private ArrayList<Food> food;
+    private ArrayList<Food> food = new ArrayList<>();
     
     /**
      * Initializes an Edge object.
