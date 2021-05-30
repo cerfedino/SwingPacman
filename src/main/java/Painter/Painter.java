@@ -15,7 +15,6 @@ import java.util.ArrayList;
 /**
  * Responsible of painting and updating all the on-screen graphic elements.
  */
-// TODO: Fix Painter layers being fucked up
 public class Painter {
     
     private static Toolkit t= Toolkit.getDefaultToolkit();
@@ -32,13 +31,14 @@ public class Painter {
         Dimension screenSize = t.getScreenSize();
         int size = Math.min(screenSize.height, screenSize.width);
         
-        // Scales the Entities.Sprite images and graphic settings based on the screen size
+        // Scales the Sprite images and graphic settings based on the screen size
         Scaler.setNewsize(size);
+        Scaler.setNewsize(size-Scaler.scale(100));
         Media.rescaleMedia(Scaler.getScale_factor());
         Settings.rescaleSettings(Scaler.getScale_factor());
         
         gameframe = new JFrame("SwingPacman");
-        gameframe.setSize(size, size);
+        gameframe.setSize(Scaler.getNewSize(), size);
         gameframe.setResizable(false);
         gameframe.getContentPane().setBackground((Color)Settings.get(EParam.background_color));
         gameframe.setUndecorated(true);
