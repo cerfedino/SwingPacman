@@ -1,5 +1,7 @@
 package Entities;
 
+import AudioEngine.FunctionCallback;
+import Game.Game;
 import Map.Edge;
 import Media.EAudio;
 import Media.EImage;
@@ -13,7 +15,14 @@ public class LargeFood extends Food {
     @Override
     public void onCollision(Entity e){
         super.onCollision(e);
-        Game.Game.audioengine().playIfNotAlready(EAudio.large_food, null);
-        //TODO: Makes Ghosts vulnerable
+        Game.audioengine().playIfNotAlready(EAudio.large_food, null);
+        EntityManager.makeGhostVulnerable(true);
+        Game.audioengine().play(EAudio.round_start, new FunctionCallback() {
+            @Override
+            public void callback() {
+                System.out.println("Finished ghost vulnerability");
+                EntityManager.makeGhostVulnerable(false);
+            }
+        });
     }
 }
