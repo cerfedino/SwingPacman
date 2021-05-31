@@ -23,6 +23,7 @@ public class Painter {
     private JLayeredPane gamepanel;
     private JFrame gameframe;
     
+    private ScoreJLabel scoreLabel;
     
     /**
      * Initializes the Painter object by creating and setting the game window.
@@ -48,15 +49,21 @@ public class Painter {
         
         gamepanel = new JLayeredPane();
         gamepanel.setBounds(0,0,size,size);
+        
+        
         gameframe.add(gamepanel);
+    
+        scoreLabel = new ScoreJLabel();
+        scoreLabel.setLocation(0,size-Scaler.scale(100));
+        scoreLabel.repaint();
+        gameframe.add(scoreLabel);
         
         gamepanel.setFocusable(true);
         gamepanel.grabFocus();
         gamepanel.addKeyListener(g);
         
+        
         gameframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
     }
     
     /**
@@ -107,7 +114,9 @@ public class Painter {
     
     ///////////////////
     // Getters and Setters below
-    
+    public void updateScoreLabel(long newScore) {
+        scoreLabel.updateScore(newScore);
+    }
     
     public JLayeredPane getGamepanel(){
         return gamepanel;

@@ -52,7 +52,7 @@ public class Pacman extends MovingEntity{
             }
         }else if(e instanceof Food) {
             score += ((Food) e).getPoints();
-            //Game.painter().updateScoreLabel(score);
+            Game.painter().updateScoreLabel(score);
             if (e instanceof LargeFood) {
                 Game.audioengine().playIfNotAlready(EAudio.large_food, null);
             } else{
