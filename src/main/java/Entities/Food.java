@@ -4,7 +4,7 @@ import Map.Edge;
 import Media.EImage;
 
 public class Food extends Entity{
-    int points;
+    private int points;
     
     public Food(int x, int y, EImage en, Edge currEdge, int points){
         super(x, y, en, currEdge);
