@@ -14,8 +14,8 @@ public class LivesJPanel extends JPanel {
     private JLabel label;
     public LivesJPanel(){
         super();
-        label = new JLabel("LIVES:");
-        label.setFont(new Font("Sans Serif", Font.BOLD, (int) Settings.get(EParam.label_size)));
+        label = new JLabel("LIVES ");
+        label.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int)Settings.get(EParam.label_size)));
         label.setForeground(((Color)Settings.get(EParam.label_color)));
         add(label);
         

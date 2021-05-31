@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 public class Media {
     static private EnumMap<EImage, BufferedImage> img;
     static private EnumMap<EAudio, File> sfx;
+    static private EnumMap<EFont, Font> font;
     
     /**
      * Imports the media files.
@@ -46,12 +47,24 @@ public class Media {
     }
     
     /**
+     * Returns the Font object associated with its key.
+     * @param efont the EFont ENUM key
+     * @return the Font object
+     */
+    public static Font getFont(EFont efont) {
+        return font.get(efont);
+    }
+    
+    
+    /**
      * Imports the media files in the class.
      */
     static private void importMedia() throws IOException  {
     
         EnumMap<EImage, BufferedImage> newImage = new EnumMap<>(EImage.class);
         EnumMap<EAudio, File> newSfx = new EnumMap<>(EAudio.class);
+        EnumMap<EFont, Font> newFont = new EnumMap<>(EFont.class);
+    
     
         newImage.put(EImage.pacman, ImageIO.read(new File("./src/main/resources/img/pacman.png")));
     
@@ -78,8 +91,24 @@ public class Media {
         newSfx.put(EAudio.round_start, new File("./src/main/resources/sfx/round_start.wav").getAbsoluteFile());
         newSfx.put(EAudio.death_sound, new File("./src/main/resources/sfx/death_sound.wav").getAbsoluteFile());
     
+        ////////////////////
+        // Font
+        try {
+            Font f = Font.createFont(Font.TRUETYPE_FONT, new File("./src/main/resources/font/game_font1.ttf").getAbsoluteFile()).deriveFont(12f);
+            newFont.put(EFont.regular, f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            //register the font
+            ge.registerFont(f);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch(FontFormatException e) {
+            e.printStackTrace();
+        }
+    
         img= newImage;
         sfx = newSfx;
+        font = newFont;
     }
     
     /**
@@ -124,5 +153,7 @@ public class Media {
     public static EnumMap<EAudio, File> getSfxMap() {
         return sfx;
     }
+    
+    
     
 }

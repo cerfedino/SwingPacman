@@ -1,5 +1,6 @@
 package Painter.HUD;
 
+import Media.*;
 import Settings.*;
 
 import javax.swing.*;
@@ -12,14 +13,14 @@ public class ScoreJLabel extends JLabel {
     public ScoreJLabel() {
         super();
         setOpaque(false);
-        setFont(new Font("Sans Serif", Font.BOLD, (int)Settings.get(EParam.label_size)));
+        setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int)Settings.get(EParam.label_size)));
         updateScore(0);
     }
     
     @Override
     public void paintComponent(Graphics g) {
         setForeground((Color)Settings.get(EParam.label_color));
-        setText("SCORE: "+score);
+        setText("SCORE     "+score);
         super.paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
     }
