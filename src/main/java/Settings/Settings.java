@@ -40,7 +40,7 @@ public class Settings {
         newMapping.put(EParam.vulnerable_mstime,       15000);
         newMapping.put(EParam.ghost_count,       4);
     
-        newMapping.put(EParam.food_distancing,        30);
+        newMapping.put(EParam.food_distancing,        20);
         newMapping.put(EParam.large_food_score,        40);
         newMapping.put(EParam.small_food_score,        20);
     
@@ -52,6 +52,9 @@ public class Settings {
         
         newMapping.put(EParam.background_color,        Color.black);
         newMapping.put(EParam.path_width,              30);
+        
+        newMapping.put(EParam.score_label_size, 50);
+        newMapping.put(EParam.score_label_color, Color.WHITE);
     
         // Controls
         newMapping.put(EParam.KEY_turn_up,              KeyEvent.VK_UP);
@@ -74,6 +77,7 @@ public class Settings {
         mapping.put(EParam.food_distancing, (int)((int)mapping.get(EParam.food_distancing)*scalefactor));
         mapping.put(EParam.line_thickness, (int)((int)mapping.get(EParam.line_thickness)*scalefactor));
         mapping.put(EParam.path_width, (int)((int)mapping.get(EParam.path_width)*scalefactor));
+        mapping.put(EParam.score_label_size, (int)((int)mapping.get(EParam.score_label_size)*scalefactor));
     }
     
     /**
