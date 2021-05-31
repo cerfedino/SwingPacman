@@ -42,7 +42,7 @@ public class LivesJPanel extends JPanel {
     public void updateLives(int lives) {
         this.lives = lives;
         int newWidth = label.getWidth()
-                        + ((lives+1)*Media.getImg(EImage.live).getWidth());
+                        + Math.max(0,(lives+1)*Media.getImg(EImage.live).getWidth());
         int newHeight = Math.max(label.getHeight(), Media.getImg(EImage.live).getHeight());
         
         setBounds(getX(), getY(),newWidth, newHeight);
