@@ -64,7 +64,7 @@ public class Media {
         newImage.put(EImage.large_food, ImageIO.read(new File("./src/main/resources/img/large_food.png")));
         newImage.put(EImage.small_food, ImageIO.read(new File("./src/main/resources/img/small_food.png")));
 
-        newImage.put(EImage.hearth, ImageIO.read(new File("./src/main/resources/img/pacman.png")));
+        newImage.put(EImage.live, ImageIO.read(new File("./src/main/resources/img/live.png")));
         
         ////////////////////
         // Audio
@@ -94,15 +94,20 @@ public class Media {
         }
         
         for (EImage img: img.keySet()) {
-            BufferedImage originalImage = Media.img.get(img);
-            int targetWidth = (int)(originalImage.getWidth()*scale);
-            int targetHeight = (int) (originalImage.getHeight()*scale);
-            
-            BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
-            Graphics2D graphics2D = resizedImage.createGraphics();
-            graphics2D.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
-            Media.img.replace(img, resizedImage);
+            BufferedImage originalImage = getImg(img);
+            Media.img.replace(img, scaleImg(originalImage,scale));
         }
+    }
+    
+    private static BufferedImage scaleImg(BufferedImage img, double scale) {
+        int targetWidth = (int)(img.getWidth()*scale);
+        int targetHeight = (int) (img.getHeight()*scale);
+    
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics2D = resizedImage.createGraphics();
+        graphics2D.drawImage(img, 0, 0, targetWidth, targetHeight, null);
+        
+        return resizedImage;
     }
     
     /**
