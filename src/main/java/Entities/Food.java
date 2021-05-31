@@ -13,12 +13,15 @@ public class Food extends Entity{
     
     @Override
     public void onCollision(Entity e){
-        removeSprite();
-        
-        // TODO: TEMPORARY FIX. This throws ConcurrentMod exception.
-        //  while figuring out a fix, we just set it to not collide anymore.
-        //getCurrEdge().getFood().remove(this);
-        setColliding(false);
+        if(e instanceof  Pacman){
+            removeSprite();
+    
+            // TODO: TEMPORARY FIX. This throws ConcurrentMod exception.
+            //  while figuring out a fix, we just set it to not collide anymore.
+            //getCurrEdge().getFood().remove(this);
+            setColliding(false);
+            // TODO: Makes Ghosts vulnerable
+        }
     }
     
     ///////////////

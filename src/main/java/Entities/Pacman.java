@@ -3,6 +3,7 @@ package Entities;
 import Map.EDirection;
 import Map.Edge;
 
+import Media.EAudio;
 import Media.EImage;
 import Settings.EParam;
 import Settings.Settings;
@@ -49,10 +50,14 @@ public class Pacman extends MovingEntity{
             } else {
                 // The Ghost dies instead (add points)
             }
-        }else if(e instanceof SmallFood) {
-        
-        } else if(e instanceof LargeFood) {
-        
+        }else if(e instanceof Food) {
+            score += ((Food) e).getPoints();
+            //Game.painter().updateScoreLabel(score);
+            if (e instanceof LargeFood) {
+                Game.audioengine().playIfNotAlready(EAudio.large_food, null);
+            } else{
+                Game.audioengine().playIfNotAlready(EAudio.small_food, null);
+            }
         }
     }
     
@@ -103,4 +108,10 @@ public class Pacman extends MovingEntity{
         }
     }
     
+    //////////////////
+    // Getters and setters below
+    
+    public long getScore(){
+        return score;
+    }
 }

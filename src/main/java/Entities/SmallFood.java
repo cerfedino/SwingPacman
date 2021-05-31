@@ -15,6 +15,5 @@ public class SmallFood extends Food{
     public void onCollision(Entity e){
         // Just disappears
         super.onCollision(e);
-        Game.Game.audioengine().playIfNotAlready(EAudio.small_food, null);
     }
 }
