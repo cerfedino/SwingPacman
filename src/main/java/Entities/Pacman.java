@@ -23,7 +23,7 @@ public class Pacman extends MovingEntity{
      */
     public Pacman(Edge location){
         super(EImage.pacman, location, null, (int)Settings.get(EParam.pacman_speed));
-        lives = (int)Settings.get(EParam.pacman_starting_lives);
+        setLives((int)Settings.get(EParam.pacman_starting_lives));
     }
     
     /**
@@ -45,7 +45,7 @@ public class Pacman extends MovingEntity{
             if (!((Ghost)e).isVulnerable()) {
                 // TODO: Check if gameover
                 Game.gamethread().performDeathSequence();
-                lives--;
+                setLives(lives-1);
                 System.out.println(lives);
             } else {
                 // The Ghost dies instead (add points)
@@ -113,5 +113,10 @@ public class Pacman extends MovingEntity{
     
     public long getScore(){
         return score;
+    }
+    
+    public void setLives(int lives){
+        this.lives=lives;
+        Game.painter().updateLivesPanel(lives);
     }
 }

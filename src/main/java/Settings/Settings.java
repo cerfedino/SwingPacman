@@ -34,7 +34,7 @@ public class Settings {
     
         // Game mechanics
         newMapping.put(EParam.pacman_speed,            2.9);
-        newMapping.put(EParam.pacman_starting_lives,   3);
+        newMapping.put(EParam.pacman_starting_lives,   0);
     
         newMapping.put(EParam.ghost_speed,             2.4);
         newMapping.put(EParam.vulnerable_mstime,       15000);

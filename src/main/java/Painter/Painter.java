@@ -4,12 +4,12 @@ import Entities.Sprite;
 import Game.GameInputManager;
 import Map.Map;
 import Media.Media;
+import Painter.HUD.LivesJPanel;
+import Painter.HUD.ScoreJLabel;
 import Settings.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 /**
@@ -23,8 +23,8 @@ public class Painter {
     private JLayeredPane gamepanel;
     private JFrame gameframe;
     
-    private ScoreJLabel scoreLabel;
-    
+    private ScoreJLabel scoreHUD;
+    private LivesJPanel livesHUD;
     /**
      * Initializes the Painter object by creating and setting the game window.
      */
@@ -53,10 +53,14 @@ public class Painter {
         
         gameframe.add(gamepanel);
     
-        scoreLabel = new ScoreJLabel();
-        scoreLabel.setLocation(0,size-Scaler.scale(100));
-        scoreLabel.repaint();
-        gameframe.add(scoreLabel);
+        scoreHUD= new ScoreJLabel();
+        scoreHUD.setLocation(0,size-Scaler.scale(100));
+        scoreHUD.repaint();
+        livesHUD= new LivesJPanel();
+        livesHUD.setLocation(size-Scaler.scale(600),size-Scaler.scale(100));
+        livesHUD.repaint();
+        gameframe.add(scoreHUD);
+        gameframe.add(livesHUD);
         
         gamepanel.setFocusable(true);
         gamepanel.grabFocus();
@@ -115,8 +119,9 @@ public class Painter {
     ///////////////////
     // Getters and Setters below
     public void updateScoreLabel(long newScore) {
-        scoreLabel.updateScore(newScore);
+        scoreHUD.updateScore(newScore);
     }
+    public void updateLivesPanel(int newLives) { livesHUD.updateLives(newLives);}
     
     public JLayeredPane getGamepanel(){
         return gamepanel;
