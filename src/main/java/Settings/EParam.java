@@ -16,8 +16,8 @@ public enum EParam {
     background_color,
     path_width,
     
-    score_label_color,
-    score_label_size,
+    label_color,
+    label_size,
     
     // Controls
     KEY_turn_up, KEY_turn_down,
