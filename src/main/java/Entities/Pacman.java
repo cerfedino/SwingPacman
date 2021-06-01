@@ -46,6 +46,7 @@ public class Pacman extends MovingEntity{
                 if (lives > 1) {
                     Game.gamethread().performDeathSequence();
                     setLives(lives - 1);
+                    Game.gamestate().setRound(Game.gamestate().getRound() + 1);
                     System.out.println(lives);
                 }
                 else {

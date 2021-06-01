@@ -14,6 +14,7 @@ public class GameState {
     private Pacman pacman;
     private ArrayList<Ghost> ghosts = new ArrayList<>();
     private Map map;
+    private int round = 1;
     
     /**
      * Initializes the GameState object.
@@ -114,6 +115,10 @@ public class GameState {
     public void removePacman(Pacman g) {
         pacman = null;
     }
+    public void setRound(int round){
+        this.round = round;
+        Game.painter().updateRoundPanel(round);
+    }
     
     public ArrayList<Ghost> getGhosts(){
         return ghosts;
@@ -122,4 +127,6 @@ public class GameState {
     public Pacman getPacman(){
         return pacman;
     }
+
+    public int getRound() {return round; }
 }

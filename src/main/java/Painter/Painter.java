@@ -128,6 +128,7 @@ public class Painter {
         scoreHUD.updateScore(newScore);
     }
     public void updateLivesPanel(int newLives) { livesHUD.updateLives(newLives);}
+    public void updateRoundPanel(int newRound) { roundHUD.updateRound(newRound);}
     public static RoundJLabel getRoundHUD() { return roundHUD; }
     
     public JLayeredPane getGamepanel(){
