@@ -97,7 +97,7 @@ public class AudioEntity {
     /**
      * Restarts the audio Clip.
      */
-    public void restart() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+    public void restart() {
         pause();
         currentFrame = 0L;
         clip.setMicrosecondPosition(0);

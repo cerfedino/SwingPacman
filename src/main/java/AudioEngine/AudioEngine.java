@@ -69,12 +69,18 @@ public class AudioEngine {
      * @param callback the callback function to call after the AudioEntity has finished playing
      */
     public void playIfNotAlready(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
+        if (!isPlaying(audio))
+            play(audio,mode, callback);
+    }
+    
+    public void restartOrPlay(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
         for (AudioEntity e : entities) {
-            if (e.getAudio() == audio && e.isPlaying()) {
+            if(e.getAudio() == audio) {
+                e.restart();
                 return;
             }
         }
-        play(audio,mode, callback);
+        play(audio, mode, callback);
     }
     
     /**
@@ -93,5 +99,14 @@ public class AudioEngine {
         for(AudioEntity e : entities) {
             e.resumeAudio();
         }
+    }
+    
+    public boolean isPlaying(EAudio audio) {
+        for(AudioEntity a : entities) {
+            if(a.isPlaying()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

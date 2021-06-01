@@ -15,12 +15,13 @@ public class LargeFood extends Food {
     }
 
     @Override
-    public void onCollision(Entity e){
+    public void onCollision(Entity e) {
         super.onCollision(e);
+        
         Game.audioengine().playIfNotAlready(EAudio.large_food, PlaybackMode.regular, null);
+        
         EntityManager.makeGhostVulnerable(true);
-        Game.audioengine().pauseAll();
-        Game.audioengine().play(EAudio.ghost_vulnerable, PlaybackMode.regular, new FunctionCallback() {
+        Game.audioengine().restartOrPlay(EAudio.ghost_vulnerable, PlaybackMode.regular, new FunctionCallback() {
             @Override
             public void callback() {
                 System.out.println("Finished ghost vulnerability");
