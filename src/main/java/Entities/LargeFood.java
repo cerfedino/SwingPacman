@@ -19,7 +19,7 @@ public class LargeFood extends Food {
         Game.audioengine().playIfNotAlready(EAudio.large_food, null);
         EntityManager.makeGhostVulnerable(true);
         Game.audioengine().pauseAll();
-        Game.audioengine().play(EAudio.round_start, new FunctionCallback() {
+        Game.audioengine().play(EAudio.ghost_vulnerable, new FunctionCallback() {
             @Override
             public void callback() {
                 System.out.println("Finished ghost vulnerability");
