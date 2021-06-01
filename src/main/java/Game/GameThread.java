@@ -37,6 +37,9 @@ public class GameThread implements Runnable {
             ae.printStackTrace();
         }
     }
+    public void gameOver() {
+        freezeEntities();
+    }
     
     public void performRoundIntro(){
         freezeEntities();

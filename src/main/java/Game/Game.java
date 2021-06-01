@@ -31,6 +31,10 @@ public class Game {
         gamethread = new GameThread();
         gamethread.run();
     }
+    public static void gameOver() {
+        // TODO: Display gameover image
+        Game.gamethread().freezeEntities();
+    }
     
     
     

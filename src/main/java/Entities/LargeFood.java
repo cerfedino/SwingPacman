@@ -1,6 +1,7 @@
 package Entities;
 
 import AudioEngine.FunctionCallback;
+import AudioEngine.AudioEngine;
 import Game.Game;
 import Map.Edge;
 import Media.EAudio;
@@ -17,6 +18,7 @@ public class LargeFood extends Food {
         super.onCollision(e);
         Game.audioengine().playIfNotAlready(EAudio.large_food, null);
         EntityManager.makeGhostVulnerable(true);
+        Game.audioengine().pauseAll();
         Game.audioengine().play(EAudio.round_start, new FunctionCallback() {
             @Override
             public void callback() {
