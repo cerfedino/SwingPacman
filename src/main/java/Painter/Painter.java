@@ -5,6 +5,7 @@ import Game.GameInputManager;
 import Map.Map;
 import Media.Media;
 import Painter.HUD.LivesJPanel;
+import Painter.HUD.RoundJLabel;
 import Painter.HUD.ScoreJLabel;
 import Settings.*;
 
@@ -25,6 +26,7 @@ public class Painter {
     
     private ScoreJLabel scoreHUD;
     private LivesJPanel livesHUD;
+    private static RoundJLabel roundHUD;
     /**
      * Initializes the Painter object by creating and setting the game window.
      */
@@ -59,8 +61,12 @@ public class Painter {
         livesHUD= new LivesJPanel();
         livesHUD.setLocation(size-Scaler.scale(600),size-Scaler.scale(100));
         livesHUD.repaint();
+        roundHUD= new RoundJLabel();
+        roundHUD.setLocation(size-Scaler.scale(692), size-Scaler.scale(635));
+        roundHUD.repaint();
         gameframe.add(scoreHUD);
         gameframe.add(livesHUD);
+        gameframe.add(roundHUD);
         
         gamepanel.setFocusable(true);
         gamepanel.grabFocus();
@@ -122,6 +128,7 @@ public class Painter {
         scoreHUD.updateScore(newScore);
     }
     public void updateLivesPanel(int newLives) { livesHUD.updateLives(newLives);}
+    public static RoundJLabel getRoundHUD() { return roundHUD; }
     
     public JLayeredPane getGamepanel(){
         return gamepanel;

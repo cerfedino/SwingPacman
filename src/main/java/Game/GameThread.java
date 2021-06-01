@@ -5,6 +5,7 @@ package Game;
 import AudioEngine.FunctionCallback;
 import Entities.Ghost;
 import Media.EAudio;
+import Painter.Painter;
 
 import java.util.ArrayList;
 
@@ -42,11 +43,13 @@ public class GameThread implements Runnable {
     }
     
     public void performRoundIntro(){
+        Painter.getRoundHUD().getTimerLB().start();
         freezeEntities();
         Game.audioengine().play(EAudio.round_start, new FunctionCallback() {
             @Override
             public void callback(){
                 System.out.println("Finished round start");
+                Painter.getRoundHUD().getTimerLB().stop();
                 unfreezeEntities();
             }
         });
