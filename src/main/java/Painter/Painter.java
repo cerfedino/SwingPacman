@@ -62,10 +62,10 @@ public class Painter {
         scoreHUD= new ScoreJLabel();
         scoreHUD.setLocation(0,size-Scaler.scale(100));
         scoreHUD.repaint();
-        livesHUD= new LivesJPanel();
+        livesHUD = new LivesJPanel();
         livesHUD.setLocation(size-Scaler.scale(600),size-Scaler.scale(100));
         livesHUD.repaint();
-        roundHUD= new RoundJLabel();
+        roundHUD = new RoundJLabel();
         roundHUD.setLocation(Scaler.scale(400), Scaler.scale(470));
         roundHUD.repaint();
         gameframe.add(scoreHUD);

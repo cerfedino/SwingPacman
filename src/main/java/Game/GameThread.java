@@ -39,18 +39,19 @@ public class GameThread implements Runnable {
             ae.printStackTrace();
         }
     }
+    
     public void gameOver() {
         freezeEntities();
     }
     
-    public void performRoundIntro(){
-        Painter.getRoundHUD().getTimerLB().start();
+    public void performRoundIntro() {
+        Painter.getRoundHUD().getBlinkAnimator().start();
         freezeEntities();
         Game.audioengine().play(EAudio.round_start, PlaybackMode.regular, new FunctionCallback() {
             @Override
-            public void callback(){
+            public void callback() {
                 System.out.println("Finished round start");
-                Painter.getRoundHUD().getTimerLB().stop();
+                Painter.getRoundHUD().getBlinkAnimator().stop();
                 unfreezeEntities();
             }
         });

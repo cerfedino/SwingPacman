@@ -1,61 +1,40 @@
 package Painter.HUD;
 
+import Painter.BlinkAnimator;
 import Media.*;
 import Settings.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 public class RoundJLabel extends JLabel {
 
-    private int roundN = 1;
-    private Timer timerLB;
+    private int currentRound = 1;
+    private BlinkAnimator blinkAnimator;
 
 
     public RoundJLabel() {
         super();
-        timerLB = new Timer(500, (ActionListener) new LbBlink(this));
+        blinkAnimator= new BlinkAnimator(this,500, false);
         setOpaque(false);
         setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int)((int)Settings.get(EParam.label_size)*1.2)));
         updateRound(1);
-
-        setForeground(Color.black);
     }
 
     @Override
     public void paintComponent(Graphics g) {
-        setText("round "+ roundN);
+        setText("Round "+currentRound);
         super.paintComponent(g);
-        remove(this);
         Toolkit.getDefaultToolkit().sync();
     }
 
     public void updateRound(int round) {
-        this.roundN = round;
-        setBounds(getX(),getY(), ("round "+roundN).length()*getFont().getSize(), getFont().getSize());
+        this.currentRound = round;
+        setBounds(getX(),getY(), ("Round "+currentRound).length()*getFont().getSize(), getFont().getSize());
     }
 
-    public Timer getTimerLB() { return timerLB; }
+    public BlinkAnimator getBlinkAnimator() { return blinkAnimator; }
 
 }
-class LbBlink implements ActionListener {
-    private javax.swing.JLabel label;
-    private java.awt.Color cor1 = java.awt.Color.yellow;
-    private java.awt.Color cor2 = java.awt.Color.black;
-    private int count;
-    
-    public LbBlink(javax.swing.JLabel label){
-        this.label = label;
-    }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(count % 2 == 0)
-            label.setForeground(cor1);
-        else
-            label.setForeground(cor2);
-        count++;
-    }
-}
+
