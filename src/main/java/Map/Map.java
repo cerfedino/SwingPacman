@@ -34,7 +34,7 @@ public class Map extends JPanel {
         ((Graphics2D) g).setStroke(new BasicStroke(line_thickness));
         
         //Paints all the edges
-        int offset = Scaler.scale((int)Settings.get(EParam.path_width))/2;
+        int offset = (int)Settings.get(EParam.path_width)/2;
         for (Edge e : edges) {
             // Paints only edges that are not TeleportEdge
             if(!(e instanceof TeleportEdge)){
@@ -65,7 +65,7 @@ public class Map extends JPanel {
         for (Node n : nodes) {
             int x = n.getX() - offset;
             int y = n.getY() - offset;
-            int line_lenght = Scaler.scale((int)Settings.get(EParam.path_width)) - line_thickness;
+            int line_lenght = (int)Settings.get(EParam.path_width) - line_thickness;
     
             if (n.getLeft() != null) {
                 g.drawLine(x,y+line_thickness,x,y+line_lenght);

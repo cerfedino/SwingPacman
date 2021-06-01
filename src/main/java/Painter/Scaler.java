@@ -6,6 +6,9 @@ package Painter;
 public class Scaler {
     
     private static final int size = 1000;
+    
+    //private static final int scrHeight =
+    
     private static int newSize = 1000;
     private static double scale_factor;
     
@@ -15,7 +18,7 @@ public class Scaler {
      * @return the scaled integer
      */
     public static int scale(int n) {
-        return (int)Math.round(n * scale_factor);
+        return (int)(n * scale_factor);
     }
     
     /**

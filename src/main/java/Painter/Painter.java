@@ -33,7 +33,11 @@ public class Painter {
     public Painter(GameInputManager g) {
         Dimension screenSize = t.getScreenSize();
         int size = Math.min(screenSize.height, screenSize.width);
-        
+    
+        System.out.println("size: " + size);
+        System.out.println("DPI: " + t.getScreenResolution());
+    
+    
         // Scales the Sprite images and graphic settings based on the screen size
         Scaler.setNewsize(size);
         Scaler.setNewsize(size-Scaler.scale(100));
@@ -62,7 +66,7 @@ public class Painter {
         livesHUD.setLocation(size-Scaler.scale(600),size-Scaler.scale(100));
         livesHUD.repaint();
         roundHUD= new RoundJLabel();
-        roundHUD.setLocation(size-Scaler.scale(692), size-Scaler.scale(635));
+        roundHUD.setLocation(Scaler.scale(400), Scaler.scale(470));
         roundHUD.repaint();
         gameframe.add(scoreHUD);
         gameframe.add(livesHUD);

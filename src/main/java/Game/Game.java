@@ -21,6 +21,9 @@ public class Game {
      * @param args the arguments passed to the main method
      */
     public static void main(String[] args){
+        System.setProperty("prism.allowhidpi", "false");
+        System.setProperty("sun.java2d.uiScale", "1");
+    
         gameinput = new GameInputManager();
         painter = new Painter(gameinput);
         

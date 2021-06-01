@@ -18,7 +18,7 @@ public class RoundJLabel extends JLabel {
         super();
         timerLB = new Timer(500, (ActionListener) new LbBlink(this));
         setOpaque(false);
-        setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, 90));
+        setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int)((int)Settings.get(EParam.label_size)*1.2)));
         updateRound(1);
 
         setForeground(Color.black);
