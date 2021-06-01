@@ -3,7 +3,6 @@ package Entities;
 import Map.EDirection;
 import Map.Edge;
 import Map.Node;
-import Media.AnimationManager;
 import Media.EImage;
 import Settings.*;
 import Game.*;
@@ -11,7 +10,6 @@ import Game.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * An enemy Ghost.

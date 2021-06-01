@@ -1,5 +1,6 @@
 package Entities;
 
+import AnimationEngine.AnimationManager;
 import Media.*;
 import Game.Game;
 import javax.swing.*;

@@ -1,6 +1,6 @@
 package Painter.HUD;
 
-import Painter.BlinkAnimator;
+import AnimationEngine.BlinkAnimator;
 import Media.*;
 import Settings.*;
 

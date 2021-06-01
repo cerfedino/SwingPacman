@@ -1,4 +1,4 @@
-package Painter;
+package AnimationEngine;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

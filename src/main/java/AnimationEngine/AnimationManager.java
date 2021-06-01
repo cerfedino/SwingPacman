@@ -1,8 +1,9 @@
-package Media;
+package AnimationEngine;
 
 import Entities.Ghost;
 import Entities.Pacman;
 import Entities.Sprite;
+import Media.EImage;
 
 import java.util.EnumMap;
 

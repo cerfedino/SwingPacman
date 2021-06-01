@@ -3,12 +3,10 @@ package Entities;
 import Map.EDirection;
 import Map.Edge;
 import Map.Node;
-import Media.AnimationManager;
+import AnimationEngine.AnimationManager;
 import Media.EImage;
 
 import java.util.*;
-
-import static Map.EOrientation.HORIZONTAL;
 
 /**
  * An entity that has the ability of navigating and moving through the Map.
