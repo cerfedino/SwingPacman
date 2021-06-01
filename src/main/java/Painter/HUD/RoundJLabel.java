@@ -19,6 +19,7 @@ public class RoundJLabel extends JLabel {
         blinkAnimator= new BlinkAnimator(this,500, false);
         setOpaque(false);
         setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int)((int)Settings.get(EParam.label_size)*1.2)));
+        setForeground(Color.yellow);
         updateRound(1);
     }
 

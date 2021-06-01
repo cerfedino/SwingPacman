@@ -11,12 +11,12 @@ public class BlinkAnimator extends Timer {
     
     public BlinkAnimator(JComponent component, int interval, boolean finalState){
         super(interval, new ActionListener() {
-            boolean count=true;
+            boolean count = true;
             
             @Override
             public void actionPerformed(ActionEvent e){
                 component.setVisible(count);
-                count=!count;
+                count =! count;
             }
         });
         this.component=component;
