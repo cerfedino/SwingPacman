@@ -33,29 +33,29 @@ public class Settings {
         EnumMap<EParam, Object> newMapping = new EnumMap<>(EParam.class);
     
         // Game mechanics
-        newMapping.put(EParam.pacman_speed,            3.00);
-        newMapping.put(EParam.pacman_starting_lives,   3);
+        newMapping.put(EParam.pacman_speed,             3.00);
+        newMapping.put(EParam.pacman_starting_lives,    3);
     
-        newMapping.put(EParam.ghost_speed,             2.00);
-        newMapping.put(EParam.vulnerable_mstime,       15000);
-        newMapping.put(EParam.ghost_count,             4);
-        newMapping.put(EParam.ghost_vuln_speed,        2);
+        newMapping.put(EParam.ghost_speed,              2.00);
+        newMapping.put(EParam.vulnerable_mstime,        15000);
+        newMapping.put(EParam.ghost_count,              4);
+        newMapping.put(EParam.ghost_vuln_speed,         2);
     
-        newMapping.put(EParam.food_distancing,        20);
-        newMapping.put(EParam.large_food_score,        40);
-        newMapping.put(EParam.small_food_score,        20);
+        newMapping.put(EParam.food_distancing,          20);
+        newMapping.put(EParam.large_food_score,         40);
+        newMapping.put(EParam.small_food_score,         20);
     
-        newMapping.put(EParam.special_food_spawn_odd,  2);
+        newMapping.put(EParam.special_food_spawn_odd,   2);
     
         // Graphics
-        newMapping.put(EParam.line_color,              Color.blue);
-        newMapping.put(EParam.line_thickness,          12);
+        newMapping.put(EParam.line_color,               Color.blue);
+        newMapping.put(EParam.line_thickness,           12);
         
-        newMapping.put(EParam.background_color,        Color.black);
-        newMapping.put(EParam.path_width,              30);
+        newMapping.put(EParam.background_color,         Color.black);
+        newMapping.put(EParam.path_width,               30);
         
-        newMapping.put(EParam.label_size, 50);
-        newMapping.put(EParam.label_color, Color.WHITE);
+        newMapping.put(EParam.label_size,               50);
+        newMapping.put(EParam.label_color,              Color.WHITE);
     
         // Controls
         newMapping.put(EParam.KEY_turn_up,              KeyEvent.VK_UP);
