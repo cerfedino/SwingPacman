@@ -22,10 +22,16 @@ public class Sprite extends JPanel {
      * @param en the EImage ENUM for the image
      */
     public Sprite(int x, int y, EImage en) {
-        setImage(en);
+        if (en == null)
+            setImage(EImage.placeholder);
+        else
+            setImage(en);
+        
         setX(x);
         setY(y);
         setOpaque(false);
+    
+        getInitialAnimationFrame();
     }
     
     /**
@@ -33,7 +39,7 @@ public class Sprite extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(Media.getImg(image), 0, 0, this); // see javadoc for more info on the parameters
+        g.drawImage(Media.getImg(AnimationManager.getNextFrame(image)), 0, 0, this); // see javadoc for more info on the parameters
         
         super.paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
@@ -49,10 +55,16 @@ public class Sprite extends JPanel {
     /////////////////////////////
     // Getters and setters below
     
+    public EImage getImage(){
+        return image;
+    }
+    
     public void setImage(EImage image){
         int x = getSpriteX() ,y = getSpriteY();
+        
         BufferedImage img = Media.getImg(image);
         setSize(img.getWidth(), img.getHeight());
+        
         setX(x);
         setY(y);
         this.image = image;
@@ -101,6 +113,10 @@ public class Sprite extends JPanel {
     public void setY(int newY){
         y = newY - getWidth()/2;
         setLocation(x,y);
+    }
+    
+    public void getInitialAnimationFrame() {
+        setImage(AnimationManager.getFirstFrame(this));
     }
     
 }

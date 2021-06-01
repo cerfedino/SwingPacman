@@ -3,6 +3,7 @@ package Entities;
 import Map.EDirection;
 import Map.Edge;
 import Map.Node;
+import Media.AnimationManager;
 import Media.EImage;
 
 import java.util.*;
@@ -30,7 +31,8 @@ public class MovingEntity extends Entity {
         
         this.direction = direction;
         this.speed = speed;
-        
+    
+        getInitialAnimationFrame();
     }
     
     /**
@@ -68,11 +70,11 @@ public class MovingEntity extends Entity {
         // if there is a turn in the queue, unqueue it.
         // otherwise addTurn();
         if (turnQueue.isEmpty()) {
-            
             addTurn(null);
         }else if (n.canTurn(turnQueue.getFirst())){
             setDirection(turnQueue.getFirst());
             setCurrEdge(n.getTurn(turnQueue.removeFirst()));
+            setImage(AnimationManager.getFirstFrame(this));
         }else{
             turnQueue.removeFirst();
         }
@@ -96,6 +98,7 @@ public class MovingEntity extends Entity {
     
     public void setDirection(EDirection direction){
         this.direction=direction;
+        setImage(AnimationManager.getFirstFrame(this));
     }
     
     public EDirection getDirection(){

@@ -3,6 +3,7 @@ package Entities;
 import Map.EDirection;
 import Map.Edge;
 import Map.Node;
+import Media.AnimationManager;
 import Media.EImage;
 import Settings.*;
 import Game.*;
@@ -27,11 +28,13 @@ public class Ghost extends MovingEntity{
      * @param location the Edge where the ghost is located.
      */
     public Ghost(Edge location, EGhostType ghost){
-        super(EImage.ghost1, location, EDirection.DOWN, (int)Settings.get(EParam.ghost_speed));
+        super(null, location, EDirection.DOWN, (int)Settings.get(EParam.ghost_speed));
         type = ghost;
         
         // Chooses the respective image for the ghost
         resetGhostImg();
+        
+        getInitialAnimationFrame();
     }
     
     /**
@@ -137,16 +140,16 @@ public class Ghost extends MovingEntity{
         EImage img;
         switch(type) {
             case ghost1:
-                img = EImage.ghost1;
+                img = EImage.ghost1_left;
                 break;
             case ghost2:
-                img = EImage.ghost2;
+                img = EImage.ghost2_right;
                 break;
             case ghost3:
-                img = EImage.ghost3;
+                img = EImage.ghost3_right;
                 break;
             default:
-                img = EImage.ghost4;
+                img = EImage.ghost4_right;
                 break;
         }
         setImage(img);
@@ -154,6 +157,12 @@ public class Ghost extends MovingEntity{
     
     ////////////////
     // Setters and getters below
+    
+    
+    public EGhostType getType(){
+        return type;
+    }
+    
     @Override
     public void resetEntity() {
         super.resetEntity();

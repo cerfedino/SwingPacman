@@ -22,6 +22,8 @@ public class Entity extends Sprite {
     public Entity(int x, int y, EImage en, Edge currEdge){
         super(x, y, en);
         this.currEdge=currEdge;
+    
+        getInitialAnimationFrame();
     }
     
     /**

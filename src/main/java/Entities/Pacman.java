@@ -22,7 +22,7 @@ public class Pacman extends MovingEntity{
      * @param location the Edge where the ghost is located.
      */
     public Pacman(Edge location){
-        super(EImage.pacman, location, null, (int)Settings.get(EParam.pacman_speed));
+        super(null, location, null, (int)Settings.get(EParam.pacman_speed));
         setLives((int)Settings.get(EParam.pacman_starting_lives));
     }
     

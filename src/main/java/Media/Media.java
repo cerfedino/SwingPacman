@@ -22,6 +22,7 @@ public class Media {
     static {
         try{
             importMedia();
+            AnimationManager.initAnimations();
         } catch (IOException e){
             System.out.println("[-] Could not import media resources.");
             e.printStackTrace();
@@ -65,13 +66,39 @@ public class Media {
         EnumMap<EAudio, File> newSfx = new EnumMap<>(EAudio.class);
         EnumMap<EFont, Font> newFont = new EnumMap<>(EFont.class);
     
+        newImage.put(EImage.placeholder, ImageIO.read(new File("./src/main/resources/img/placeholder.png")));
     
-        newImage.put(EImage.pacman, ImageIO.read(new File("./src/main/resources/img/pacman.png")));
     
-        newImage.put(EImage.ghost1, ImageIO.read(new File("./src/main/resources/img/ghost1.png")));
-        newImage.put(EImage.ghost2, ImageIO.read(new File("./src/main/resources/img/ghost2.png")));
-        newImage.put(EImage.ghost3, ImageIO.read(new File("./src/main/resources/img/ghost3.png")));
-        newImage.put(EImage.ghost4, ImageIO.read(new File("./src/main/resources/img/ghost4.png")));
+        newImage.put(EImage.pacman_left, ImageIO.read(new File("./src/main/resources/img/pacman_left.png")));
+        newImage.put(EImage.pacman_right, ImageIO.read(new File("./src/main/resources/img/pacman_right.png")));
+        newImage.put(EImage.pacman_up, ImageIO.read(new File("./src/main/resources/img/pacman_up.png")));
+        newImage.put(EImage.pacman_down, ImageIO.read(new File("./src/main/resources/img/pacman_down.png")));
+    
+        newImage.put(EImage.ghost1_left, ImageIO.read(new File("./src/main/resources/img/ghost1_left.png")));
+        newImage.put(EImage.ghost1_right, ImageIO.read(new File("./src/main/resources/img/ghost1_right.png")));
+        newImage.put(EImage.ghost1_up, ImageIO.read(new File("./src/main/resources/img/ghost1_up.png")));
+        newImage.put(EImage.ghost1_down, ImageIO.read(new File("./src/main/resources/img/ghost1_down.png")));
+        
+    
+        newImage.put(EImage.ghost2_left, ImageIO.read(new File("./src/main/resources/img/ghost2_left.png")));
+        newImage.put(EImage.ghost2_right, ImageIO.read(new File("./src/main/resources/img/ghost2_right.png")));
+        newImage.put(EImage.ghost2_up, ImageIO.read(new File("./src/main/resources/img/ghost2_up.png")));
+        newImage.put(EImage.ghost2_down, ImageIO.read(new File("./src/main/resources/img/ghost2_down.png")));
+        
+        
+        newImage.put(EImage.ghost3_left, ImageIO.read(new File("./src/main/resources/img/ghost3_left.png")));
+        // TODO: Add ghost3_right looking left
+        newImage.put(EImage.ghost3_right, ImageIO.read(new File("./src/main/resources/img/ghost3_left.png")));
+        newImage.put(EImage.ghost3_up, ImageIO.read(new File("./src/main/resources/img/ghost3_up.png")));
+        newImage.put(EImage.ghost3_down, ImageIO.read(new File("./src/main/resources/img/ghost3_down.png")));
+        
+        
+        newImage.put(EImage.ghost4_left, ImageIO.read(new File("./src/main/resources/img/ghost4_left.png")));
+        newImage.put(EImage.ghost4_right, ImageIO.read(new File("./src/main/resources/img/ghost4_right.png")));
+        newImage.put(EImage.ghost4_up, ImageIO.read(new File("./src/main/resources/img/ghost4_up.png")));
+        newImage.put(EImage.ghost4_down, ImageIO.read(new File("./src/main/resources/img/ghost4_down.png")));
+        
+    
         newImage.put(EImage.ghost_vuln, ImageIO.read(new File("./src/main/resources/img/ghost_vuln.png")));
 
         newImage.put(EImage.large_food, ImageIO.read(new File("./src/main/resources/img/large_food.png")));
@@ -126,6 +153,7 @@ public class Media {
             BufferedImage originalImage = getImg(img);
             Media.img.replace(img, scaleImg(originalImage,scale));
         }
+        AnimationManager.initAnimations();
     }
     
     private static BufferedImage scaleImg(BufferedImage img, double scale) {
