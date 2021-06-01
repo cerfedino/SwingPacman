@@ -1,8 +1,6 @@
 package Entities;
 
-import AudioEngine.FunctionCallback;
 import Game.Game;
-import Media.EAudio;
 
 public class EntityManager {
 
@@ -29,19 +27,12 @@ public class EntityManager {
         if (a.isColliding() && b.isColliding()) {
             int minX = Math.min(a.getSpriteX(),b.getSpriteX()); int minY = Math.min(a.getSpriteY(),b.getSpriteY());
             int maxX = Math.max(a.getSpriteX(),b.getSpriteX()); int maxY = Math.max(a.getSpriteY(),b.getSpriteY());
-
+    
             if (maxX-minX < ((a.getWidth()/2) + (b.getWidth()/2))*offset
                 && maxY-minY < ((a.getHeight()/2) + (b.getHeight()/2))*offset) {
                 return true;
             }
         }
         return false;
-    }
-
-    public static void makeGhostVulnerable(boolean toVulnearble) {
-        for (Ghost g : Game.gamestate().getGhosts()) {
-            System.out.println("Ghost is now vulnerable");
-            g.setVulnerable(toVulnearble);
-        }
     }
 }

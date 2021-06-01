@@ -32,7 +32,7 @@ public class Ghost extends MovingEntity{
         // Chooses the respective image for the ghost
         resetGhostImg();
     }
-
+    
     /**
      * Handles the complete removal of the Ghost from the game.
      */
@@ -150,13 +150,5 @@ public class Ghost extends MovingEntity{
     
     public static boolean isVulnerable(){
         return vulnerable;
-    }
-
-    public void setVulnerable(boolean to) {
-        vulnerable = to;
-        if (vulnerable) {
-            setImage(EImage.ghost_vuln);
-        } else
-            resetGhostImg();
     }
 }
