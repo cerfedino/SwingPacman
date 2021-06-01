@@ -6,7 +6,6 @@ import Settings.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class LivesJPanel extends JPanel {
     
