@@ -19,10 +19,9 @@ public class AudioEngine {
      */
     public AudioEngine() {
         try {
-            
+        
             entities.add(new AudioEntity(EAudio.ghost_moving, PlaybackMode.loop));
-            entities.add(new AudioEntity(EAudio.ghost_moving, PlaybackMode.regular));
-            
+        
         } catch (Exception e) {
             System.out.println("[-] Couldn't set up the AudioEntities correctly.");
             e.printStackTrace();
@@ -34,9 +33,11 @@ public class AudioEngine {
      * @param audio the audio to play
      * @param callback the callback function to call after the AudioEntity has finished playing
      */
-    public void play(EAudio audio, FunctionCallback callback) {
-        try{
-            AudioEntity a = new AudioEntity(audio, PlaybackMode.regular);
+    public void play(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
+        
+        try {
+            
+            AudioEntity a = new AudioEntity(audio, mode);
             entities.add(a);
             
             Clip c = a.getClip();
@@ -67,13 +68,13 @@ public class AudioEngine {
      * @param audio the audio to play
      * @param callback the callback function to call after the AudioEntity has finished playing
      */
-    public void playIfNotAlready(EAudio audio, FunctionCallback callback) {
+    public void playIfNotAlready(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
         for (AudioEntity e : entities) {
             if (e.getAudio() == audio && e.isPlaying()) {
                 return;
             }
         }
-        play(audio, callback);
+        play(audio,mode, callback);
     }
     
     /**

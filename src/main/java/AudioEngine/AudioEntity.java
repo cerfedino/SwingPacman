@@ -13,10 +13,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 
-enum PlaybackMode {
-    regular, loop
-}
-
 enum PlaybackStatus {
     playing,paused,stopped
 }
@@ -102,9 +98,7 @@ public class AudioEntity {
      * Restarts the audio Clip.
      */
     public void restart() throws IOException, LineUnavailableException, UnsupportedAudioFileException {
-        clip.stop();
-        clip.close();
-        resetAudioStream();
+        pause();
         currentFrame = 0L;
         clip.setMicrosecondPosition(0);
         this.play();

@@ -1,6 +1,7 @@
 package Game;
 
 import AudioEngine.FunctionCallback;
+import AudioEngine.PlaybackMode;
 import Map.EDirection;
 import Media.EAudio;
 import Settings.*;
@@ -43,7 +44,7 @@ public class GameInputManager implements KeyListener {
         
         // TODO: Remove placeholder for audio Demo
         if(e.getKeyChar() == 'a') {
-            Game.audioengine().play(EAudio.placeholder, new FunctionCallback() {
+            Game.audioengine().play(EAudio.placeholder, PlaybackMode.regular, new FunctionCallback() {
                 @Override
                 public void callback(){
                     System.out.println("Audio is done playing, here's the callback !!!");

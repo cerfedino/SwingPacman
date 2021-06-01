@@ -3,6 +3,7 @@ package Game;
 
 
 import AudioEngine.FunctionCallback;
+import AudioEngine.PlaybackMode;
 import Entities.Ghost;
 import Media.EAudio;
 import Painter.Painter;
@@ -14,8 +15,8 @@ import java.util.ArrayList;
  */
 public class GameThread implements Runnable {
     
-    private static boolean paused=false;
-    private static boolean stepping=true;
+    private static boolean paused = false;
+    private static boolean stepping = true;
     
     @Override
     public void run() {
@@ -45,7 +46,7 @@ public class GameThread implements Runnable {
     public void performRoundIntro(){
         Painter.getRoundHUD().getTimerLB().start();
         freezeEntities();
-        Game.audioengine().play(EAudio.round_start, new FunctionCallback() {
+        Game.audioengine().play(EAudio.round_start, PlaybackMode.regular, new FunctionCallback() {
             @Override
             public void callback(){
                 System.out.println("Finished round start");
@@ -58,7 +59,7 @@ public class GameThread implements Runnable {
     public void performDeathSequence(){
         freezeEntities();
         
-        Game.audioengine().play(EAudio.death_sound, new FunctionCallback() {
+        Game.audioengine().play(EAudio.death_sound, PlaybackMode.regular, new FunctionCallback() {
             @Override
             public void callback() {
                 System.out.println("Finished death sound");

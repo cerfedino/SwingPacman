@@ -127,15 +127,15 @@ public class Media {
         
         ////////////////////
         // Audio
-        newSfx.put(EAudio.placeholder, new File("./src/main/resources/sfx/ding.wav").getAbsoluteFile());
-        
-        newSfx.put(EAudio.ghost_moving, new File("./src/main/resources/sfx/ghost_moving.wav").getAbsoluteFile());
-        newSfx.put(EAudio.small_food, new File("./src/main/resources/sfx/small_food.wav").getAbsoluteFile());
-        newSfx.put(EAudio.large_food, new File("./src/main/resources/sfx/large_food.wav").getAbsoluteFile());
-        newSfx.put(EAudio.ghost_vulnerable, new File("./src/main/resources/sfx/ghost_vulnerable.wav").getAbsoluteFile());
+        newSfx.put(EAudio.placeholder,          new File("./src/main/resources/sfx/ding.wav").getAbsoluteFile());
+    
+        newSfx.put(EAudio.ghost_moving,         new File("./src/main/resources/sfx/ghost_moving.wav").getAbsoluteFile());
+        newSfx.put(EAudio.small_food,           new File("./src/main/resources/sfx/small_food.wav").getAbsoluteFile());
+        newSfx.put(EAudio.large_food,           new File("./src/main/resources/sfx/large_food.wav").getAbsoluteFile());
+        newSfx.put(EAudio.ghost_vulnerable,     new File("./src/main/resources/sfx/ghost_vulnerable.wav").getAbsoluteFile());
         newSfx.put(EAudio.ghost_vulnerable_end, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
-        newSfx.put(EAudio.round_start, new File("./src/main/resources/sfx/round_start.wav").getAbsoluteFile());
-        newSfx.put(EAudio.death_sound, new File("./src/main/resources/sfx/death_sound.wav").getAbsoluteFile());
+        newSfx.put(EAudio.round_start,          new File("./src/main/resources/sfx/round_start.wav").getAbsoluteFile());
+        newSfx.put(EAudio.death_sound,          new File("./src/main/resources/sfx/death_sound.wav").getAbsoluteFile());
     
         ////////////////////
         // Font
