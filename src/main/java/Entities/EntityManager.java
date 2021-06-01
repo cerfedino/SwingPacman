@@ -38,7 +38,6 @@ public class EntityManager {
 
     public static void makeGhostVulnerable(boolean toVulnearble) {
         for (Ghost g : Game.gamestate().getGhosts()) {
-            System.out.println("Ghost is now vulnerable");
             g.setVulnerable(toVulnearble);
         }
     }

@@ -38,7 +38,8 @@ public class Settings {
     
         newMapping.put(EParam.ghost_speed,             2.4);
         newMapping.put(EParam.vulnerable_mstime,       15000);
-        newMapping.put(EParam.ghost_count,       4);
+        newMapping.put(EParam.ghost_count,             4);
+        newMapping.put(EParam.ghost_vuln_speed,        2);
     
         newMapping.put(EParam.food_distancing,        20);
         newMapping.put(EParam.large_food_score,        40);

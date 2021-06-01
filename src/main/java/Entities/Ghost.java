@@ -10,6 +10,7 @@ import Game.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * An enemy Ghost.
@@ -122,8 +123,11 @@ public class Ghost extends MovingEntity{
         vulnerable = to;
         if (vulnerable) {
             setImage(EImage.ghost_vuln);
-        } else
+            setSpeed((int)Settings.get(EParam.ghost_vuln_speed));
+        } else {
             resetGhostImg();
+            setSpeed((int)Settings.get(EParam.ghost_speed));
+        }
     }
 
     /**
