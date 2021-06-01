@@ -117,7 +117,15 @@ public class Ghost extends MovingEntity{
         }
         
     }
-    
+
+    public void setVulnerable(boolean to) {
+        vulnerable = to;
+        if (vulnerable) {
+            setImage(EImage.ghost_vuln);
+        } else
+            resetGhostImg();
+    }
+
     /**
      * Sets the Ghost image accordingly to the type of the ghost
      */
@@ -151,4 +159,6 @@ public class Ghost extends MovingEntity{
     public static boolean isVulnerable(){
         return vulnerable;
     }
+
+
 }
