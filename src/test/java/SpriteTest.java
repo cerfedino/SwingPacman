@@ -11,7 +11,7 @@ public class SpriteTest {
     
     @Test
     public void setPosTest() {
-        Sprite s = new Sprite(0,0, EImage.pacman_right);
+        Sprite s = new Sprite(0,0, EImage.pacman_right_1);
         
         s.setX(100);
         s.setY(200);
@@ -34,7 +34,7 @@ public class SpriteTest {
     
     @Test
     public void deleteSpriteTest() {
-        Sprite s = new Sprite(0,0, EImage.pacman_right);
+        Sprite s = new Sprite(0,0, EImage.pacman_right_1);
         Painter p = new Painter(new GameInputManager());
         
         p.registerSprite(s);

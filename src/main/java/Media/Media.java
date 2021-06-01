@@ -68,11 +68,29 @@ public class Media {
     
         newImage.put(EImage.placeholder, ImageIO.read(new File("./src/main/resources/img/placeholder.png")));
     
+        //////////////////////////////
     
-        newImage.put(EImage.pacman_left, ImageIO.read(new File("./src/main/resources/img/pacman_left.png")));
-        newImage.put(EImage.pacman_right, ImageIO.read(new File("./src/main/resources/img/pacman_right.png")));
-        newImage.put(EImage.pacman_up, ImageIO.read(new File("./src/main/resources/img/pacman_up.png")));
-        newImage.put(EImage.pacman_down, ImageIO.read(new File("./src/main/resources/img/pacman_down.png")));
+        newImage.put(EImage.pacman_left_1, ImageIO.read(new File("./src/main/resources/img/pacman_left_1.png")));
+        newImage.put(EImage.pacman_right_1, ImageIO.read(new File("./src/main/resources/img/pacman_right_1.png")));
+        newImage.put(EImage.pacman_up_1, ImageIO.read(new File("./src/main/resources/img/pacman_up_1.png")));
+        newImage.put(EImage.pacman_down_1, ImageIO.read(new File("./src/main/resources/img/pacman_down_1.png")));
+    
+        newImage.put(EImage.pacman_left_2, ImageIO.read(new File("./src/main/resources/img/pacman_left_2.png")));
+        newImage.put(EImage.pacman_right_2, ImageIO.read(new File("./src/main/resources/img/pacman_right_2.png")));
+        newImage.put(EImage.pacman_up_2, ImageIO.read(new File("./src/main/resources/img/pacman_up_2.png")));
+        newImage.put(EImage.pacman_down_2, ImageIO.read(new File("./src/main/resources/img/pacman_down_2.png")));
+    
+        newImage.put(EImage.pacman_left_3, ImageIO.read(new File("./src/main/resources/img/pacman_left_3.png")));
+        newImage.put(EImage.pacman_right_3, ImageIO.read(new File("./src/main/resources/img/pacman_right_3.png")));
+        newImage.put(EImage.pacman_up_3, ImageIO.read(new File("./src/main/resources/img/pacman_up_3.png")));
+        newImage.put(EImage.pacman_down_3, ImageIO.read(new File("./src/main/resources/img/pacman_down_3.png")));
+    
+        newImage.put(EImage.pacman_left_4, ImageIO.read(new File("./src/main/resources/img/pacman_left_4.png")));
+        newImage.put(EImage.pacman_right_4, ImageIO.read(new File("./src/main/resources/img/pacman_right_4.png")));
+        newImage.put(EImage.pacman_up_4, ImageIO.read(new File("./src/main/resources/img/pacman_up_4.png")));
+        newImage.put(EImage.pacman_down_4, ImageIO.read(new File("./src/main/resources/img/pacman_down_4.png")));
+        
+        /////////////////////////////
     
         newImage.put(EImage.ghost1_left, ImageIO.read(new File("./src/main/resources/img/ghost1_left.png")));
         newImage.put(EImage.ghost1_right, ImageIO.read(new File("./src/main/resources/img/ghost1_right.png")));

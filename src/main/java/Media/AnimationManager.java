@@ -1,23 +1,44 @@
 package Media;
 
 import Entities.Ghost;
-import Entities.MovingEntity;
 import Entities.Pacman;
 import Entities.Sprite;
 
 import java.util.EnumMap;
-import java.util.HashMap;
 
 public class AnimationManager {
     private static EnumMap<EImage,EImage> animation;
     
     public static void initAnimations() {
         EnumMap<EImage,EImage> newAnimation =new EnumMap<>(EImage.class);
+        
+        ///////////
+        
+        newAnimation.put(EImage.pacman_left_1,EImage.pacman_left_2);
+        newAnimation.put(EImage.pacman_left_2,EImage.pacman_left_3);
+        newAnimation.put(EImage.pacman_left_3,EImage.pacman_left_4);
+        newAnimation.put(EImage.pacman_left_4,EImage.pacman_left_1);
     
-        newAnimation.put(EImage.pacman_left,EImage.pacman_left);
-        newAnimation.put(EImage.pacman_right,EImage.pacman_right);
-        newAnimation.put(EImage.pacman_up,EImage.pacman_up);
-        newAnimation.put(EImage.pacman_down,EImage.pacman_down);
+    
+        newAnimation.put(EImage.pacman_right_1,EImage.pacman_right_2);
+        newAnimation.put(EImage.pacman_right_2,EImage.pacman_right_3);
+        newAnimation.put(EImage.pacman_right_3,EImage.pacman_right_4);
+        newAnimation.put(EImage.pacman_right_4,EImage.pacman_right_1);
+    
+    
+        newAnimation.put(EImage.pacman_down_1,EImage.pacman_down_2);
+        newAnimation.put(EImage.pacman_down_2,EImage.pacman_down_3);
+        newAnimation.put(EImage.pacman_down_3,EImage.pacman_down_4);
+        newAnimation.put(EImage.pacman_down_4,EImage.pacman_down_1);
+    
+    
+        newAnimation.put(EImage.pacman_up_1,EImage.pacman_up_2);
+        newAnimation.put(EImage.pacman_up_2,EImage.pacman_up_3);
+        newAnimation.put(EImage.pacman_up_3,EImage.pacman_up_4);
+        newAnimation.put(EImage.pacman_up_4,EImage.pacman_up_1);
+    
+        ///////////
+     
         
         newAnimation.put(EImage.ghost1_left,EImage.ghost1_left);
         newAnimation.put(EImage.ghost1_right,EImage.ghost1_right);
@@ -56,17 +77,17 @@ public class AnimationManager {
     
             // Check ghost type
             if (p.getDirection() == null)
-                return EImage.pacman_right;
+                return EImage.pacman_right_1;
             
             switch(((Pacman) s).getDirection()) {
                 case UP:
-                    return EImage.pacman_up;
+                    return EImage.pacman_up_1;
                 case DOWN:
-                    return EImage.pacman_down;
+                    return EImage.pacman_down_1;
                 case LEFT:
-                    return EImage.pacman_left;
+                    return EImage.pacman_left_1;
                 default: // RIGHT
-                    return EImage.pacman_right;
+                    return EImage.pacman_right_1;
             }
         } else if (s instanceof Ghost){
             Ghost g=(Ghost) s;

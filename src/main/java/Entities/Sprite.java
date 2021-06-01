@@ -39,7 +39,8 @@ public class Sprite extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(Media.getImg(AnimationManager.getNextFrame(image)), 0, 0, this); // see javadoc for more info on the parameters
+        setImage(AnimationManager.getNextFrame(image));
+        g.drawImage(Media.getImg(image), 0, 0, this); // see javadoc for more info on the parameters
         
         super.paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
