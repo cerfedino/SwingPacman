@@ -11,10 +11,13 @@ import Painter.*;
 public class Game {
     private static GameState gamestate;
     private static Painter painter;
-    private static AudioEngine audioengine;
     
     private static GameThread gamethread;
     private static GameInputManager gameinput;
+    
+    public Game() {
+        main(null);
+    }
     
     /**
      * The main method. Starts the game
@@ -29,11 +32,11 @@ public class Game {
         
         gamestate = new GameState();
         painter.registerMap(gamestate.getMap());
-        audioengine = new AudioEngine();
         
         gamethread = new GameThread();
         gamethread.run();
     }
+    
     public static void gameOver() {
         // TODO: Display gameover image
         Game.gamethread().freezeEntities();
@@ -46,7 +49,6 @@ public class Game {
     
     public static Painter painter() { return painter; }
     public static GameState gamestate() { return gamestate; }
-    public static AudioEngine audioengine() { return audioengine; };
     public static GameThread gamethread() { return gamethread; };
 }
 

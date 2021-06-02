@@ -12,14 +12,13 @@ import java.util.EnumMap;
 
 public class AudioEngine {
     
-    private final ArrayList<AudioEntity> entities = new ArrayList<AudioEntity>();
+    private static final ArrayList<AudioEntity> entities = new ArrayList<AudioEntity>();
     
     /**
-     * Initializes the AudioEngine object.
+     * Initializes the AudioEngine class.
      */
-    public AudioEngine() {
+    public static void initAudioEngine() {
         try {
-        
             entities.add(new AudioEntity(EAudio.ghost_moving, PlaybackMode.loop));
         
         } catch (Exception e) {
@@ -28,12 +27,13 @@ public class AudioEngine {
         }
     }
     
+    
     /**
      * Creates ad plays an AudioEntity on demand, without keeping track of it.
      * @param audio the audio to play
      * @param callback the callback function to call after the AudioEntity has finished playing
      */
-    public void play(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
+    public static void play(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
         
         try {
             
@@ -68,12 +68,12 @@ public class AudioEngine {
      * @param audio the audio to play
      * @param callback the callback function to call after the AudioEntity has finished playing
      */
-    public void playIfNotAlready(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
+    public static void playIfNotAlready(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
         if (!isPlaying(audio))
             play(audio,mode, callback);
     }
     
-    public void restartOrPlay(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
+    public static void restartOrPlay(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
         for (AudioEntity e : entities) {
             if(e.getAudio() == audio) {
                 e.restart();
@@ -86,7 +86,7 @@ public class AudioEngine {
     /**
      * Pauses all AudioEntities.
      */
-    public void pauseAll() {
+    public static void pauseAll() {
         for(AudioEntity e : entities) {
             e.pause();
         }
@@ -95,13 +95,13 @@ public class AudioEngine {
     /**
      * Resumes all AudioEntities.
      */
-    public void resumeALl() {
+    public static void resumeALl() {
         for(AudioEntity e : entities) {
             e.resumeAudio();
         }
     }
     
-    public boolean isPlaying(EAudio audio) {
+    public static boolean isPlaying(EAudio audio) {
         for(AudioEntity a : entities) {
             if(a.isPlaying()) {
                 return true;

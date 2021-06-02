@@ -124,7 +124,7 @@ public class Ghost extends MovingEntity{
         vulnerable = to;
         if (vulnerable) {
             setImage(EImage.ghost_vuln);
-            setSpeed((int)Settings.get(EParam.ghost_vuln_speed));
+            setSpeed(((int)Settings.get(EParam.ghost_vuln_speed)));
         } else {
             resetGhostImg();
             setSpeed((int)Settings.get(EParam.ghost_speed));

@@ -38,8 +38,8 @@ public class Settings {
     
         newMapping.put(EParam.ghost_speed,              2.00);
         newMapping.put(EParam.vulnerable_mstime,        15000);
-        newMapping.put(EParam.ghost_count,              4);
-        newMapping.put(EParam.ghost_vuln_speed,         2);
+        newMapping.put(EParam.ghost_count,              10);
+        newMapping.put(EParam.ghost_vuln_speed,         1.00);
     
         newMapping.put(EParam.food_distancing,          20);
         newMapping.put(EParam.large_food_score,         40);
@@ -75,6 +75,7 @@ public class Settings {
         setDefaultSettings();
         mapping.put(EParam.pacman_speed,    (int)((double)mapping.get(EParam.pacman_speed)*scalefactor));
         mapping.put(EParam.ghost_speed,     (int)((double)mapping.get(EParam.ghost_speed)*scalefactor));
+        mapping.put(EParam.ghost_vuln_speed,     (int)((double)mapping.get(EParam.ghost_vuln_speed)*scalefactor));
         mapping.put(EParam.food_distancing, (int)((int)mapping.get(EParam.food_distancing)*scalefactor));
         mapping.put(EParam.line_thickness,  (int)((int)mapping.get(EParam.line_thickness)*scalefactor));
         mapping.put(EParam.path_width,      (int)((int)mapping.get(EParam.path_width)*scalefactor));

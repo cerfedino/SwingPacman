@@ -1,5 +1,6 @@
 package Entities;
 
+import AudioEngine.AudioEngine;
 import AudioEngine.PlaybackMode;
 import Map.EDirection;
 import Map.Edge;
@@ -60,9 +61,9 @@ public class Pacman extends MovingEntity{
             score += ((Food) e).getPoints();
             Game.painter().updateScoreLabel(score);
             if (e instanceof LargeFood) {
-                Game.audioengine().playIfNotAlready(EAudio.large_food, PlaybackMode.regular, null);
+                AudioEngine.playIfNotAlready(EAudio.large_food, PlaybackMode.regular, null);
             } else{
-                Game.audioengine().playIfNotAlready(EAudio.small_food, PlaybackMode.regular,null);
+                AudioEngine.playIfNotAlready(EAudio.small_food, PlaybackMode.regular,null);
             }
         }
     }

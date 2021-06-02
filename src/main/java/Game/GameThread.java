@@ -2,6 +2,7 @@ package Game;
 
 
 
+import AudioEngine.AudioEngine;
 import AudioEngine.FunctionCallback;
 import AudioEngine.PlaybackMode;
 import Entities.Ghost;
@@ -47,7 +48,7 @@ public class GameThread implements Runnable {
     public void performRoundIntro() {
         Painter.getRoundHUD().getBlinkAnimator().start();
         freezeEntities();
-        Game.audioengine().play(EAudio.round_start, PlaybackMode.regular, new FunctionCallback() {
+        AudioEngine.play(EAudio.round_start, PlaybackMode.regular, new FunctionCallback() {
             @Override
             public void callback() {
                 System.out.println("Finished round start");
@@ -60,7 +61,7 @@ public class GameThread implements Runnable {
     public void performDeathSequence(){
         freezeEntities();
         
-        Game.audioengine().play(EAudio.death_sound, PlaybackMode.regular, new FunctionCallback() {
+        AudioEngine.play(EAudio.death_sound, PlaybackMode.regular, new FunctionCallback() {
             @Override
             public void callback() {
                 System.out.println("Finished death sound");
@@ -86,7 +87,7 @@ public class GameThread implements Runnable {
      */
     public void pause(){
         paused = true;
-        Game.audioengine().pauseAll();
+        AudioEngine.pauseAll();
     }
     
     /**
@@ -94,7 +95,7 @@ public class GameThread implements Runnable {
      */
     public void unpause(){
         paused = false;
-        Game.audioengine().resumeALl();
+        AudioEngine.resumeALl();
     }
     
     public void freezeEntities() {

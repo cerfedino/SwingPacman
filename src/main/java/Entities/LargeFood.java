@@ -1,5 +1,6 @@
 package Entities;
 
+import AudioEngine.AudioEngine;
 import AudioEngine.FunctionCallback;
 import AudioEngine.PlaybackMode;
 
@@ -17,11 +18,11 @@ public class LargeFood extends Food {
     @Override
     public void onCollision(Entity e) {
         super.onCollision(e);
-        
-        Game.audioengine().playIfNotAlready(EAudio.large_food, PlaybackMode.regular, null);
+    
+        AudioEngine.playIfNotAlready(EAudio.large_food, PlaybackMode.regular, null);
         
         EntityManager.makeGhostVulnerable(true);
-        Game.audioengine().restartOrPlay(EAudio.ghost_vulnerable, PlaybackMode.regular, new FunctionCallback() {
+        AudioEngine.restartOrPlay(EAudio.ghost_vulnerable, PlaybackMode.regular, new FunctionCallback() {
             @Override
             public void callback() {
                 System.out.println("Finished ghost vulnerability");
