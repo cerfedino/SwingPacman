@@ -52,7 +52,7 @@ public class Settings {
         newMapping.put(EParam.line_thickness,           12);
         
         newMapping.put(EParam.background_color,         Color.black);
-        newMapping.put(EParam.path_width,               30);
+        newMapping.put(EParam.path_width,               50);
         
         newMapping.put(EParam.label_size,               50);
         newMapping.put(EParam.label_color,              Color.WHITE);
