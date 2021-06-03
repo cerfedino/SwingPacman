@@ -71,7 +71,7 @@ public class Media {
         EnumMap<EFont, Font> newFont = new EnumMap<>(EFont.class);
         
         
-        double baseScale = 0.25;
+        double baseScale = 0.15;
         newImage.put(EImage.placeholder, ImageIO.read(new File("./src/main/resources/img/placeholder.png")));
     
         //////////////////////////////
@@ -141,6 +141,7 @@ public class Media {
         newSfx.put(EAudio.large_food,           new File("./src/main/resources/sfx/large_food.wav").getAbsoluteFile());
         newSfx.put(EAudio.ghost_vulnerable,     new File("./src/main/resources/sfx/ghost_vulnerable.wav").getAbsoluteFile());
         newSfx.put(EAudio.ghost_vulnerable_end, new File("./src/main/resources/sfx/placeholder.wav").getAbsoluteFile());
+        newSfx.put(EAudio.ghost_ate,            new File("./src/main/resources/sfx/ghost_ate.wav").getAbsoluteFile());
         newSfx.put(EAudio.round_start,          new File("./src/main/resources/sfx/round_start.wav").getAbsoluteFile());
         newSfx.put(EAudio.death_sound,          new File("./src/main/resources/sfx/death_sound.wav").getAbsoluteFile());
     

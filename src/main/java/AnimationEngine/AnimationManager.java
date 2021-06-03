@@ -7,6 +7,7 @@ import Media.EImage;
 
 import java.util.EnumMap;
 
+
 public class AnimationManager {
     private static EnumMap<EImage,EImage> animation;
     

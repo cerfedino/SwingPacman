@@ -45,7 +45,7 @@ public class Settings {
         newMapping.put(EParam.ghost_vuln_speed,         1.00);
         newMapping.put(EParam.ghost_vuln_val,           200);
     
-        newMapping.put(EParam.food_distancing,          20);
+        newMapping.put(EParam.food_distancing,          15);
         newMapping.put(EParam.large_food_score,         40);
         newMapping.put(EParam.small_food_score,         20);
     
@@ -53,10 +53,10 @@ public class Settings {
     
         // Graphics
         newMapping.put(EParam.line_color,               Color.blue);
-        newMapping.put(EParam.line_thickness,           12);
+        newMapping.put(EParam.line_thickness,           7);
         
         newMapping.put(EParam.background_color,         Color.black);
-        newMapping.put(EParam.path_width,               50);
+        newMapping.put(EParam.path_width,               29);
         
         newMapping.put(EParam.label_size,               50);
         newMapping.put(EParam.label_color,              Color.WHITE);

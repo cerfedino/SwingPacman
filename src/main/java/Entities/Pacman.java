@@ -1,7 +1,6 @@
 package Entities;
 
-import AudioEngine.AudioEngine;
-import AudioEngine.PlaybackMode;
+import AudioEngine.*;
 import Map.EDirection;
 import Map.Edge;
 
@@ -58,8 +57,15 @@ public class Pacman extends MovingEntity{
                     Game.gameOver();
                 }
             } else {
-                e.setColliding(false);
-                setScore((int)Settings.get(EParam.ghost_vuln_val) + (int)score);
+                Game.gamethread().freezeEntities();
+                AudioEngine.play(EAudio.ghost_ate, PlaybackMode.regular, new FunctionCallback() {
+                    @Override
+                    public void callback(){
+                        Game.gamethread().unfreezeEntities();
+                    }
+                });
+                ((Ghost) e).die();
+                increaseScore((int)Settings.get(EParam.ghost_vuln_val));
             }
         }else if(e instanceof Food) {
             score += ((Food) e).getPoints();
@@ -72,10 +78,6 @@ public class Pacman extends MovingEntity{
         }
     }
     
-    @Override
-    public void step() {
-        super.step();
-    }
     /**
      * Handles the decision-making when it comes to choosing which turn to perform next.
      * @param direction used by Pacman to manually add a turn
@@ -130,8 +132,12 @@ public class Pacman extends MovingEntity{
         this.lives=lives;
         Game.painter().updateLivesPanel(lives);
     }
-
-    public void setScore(int score){
+    
+    public void increaseScore(long score) {
+        setScore(this.score + score);
+    }
+    
+    public void setScore(long score){
         this.score = score;
         Game.painter().updateScoreLabel(score);
     }

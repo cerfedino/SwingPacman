@@ -1,5 +1,8 @@
 package Entities;
 
+import AnimationEngine.BlinkAnimator;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import Map.EDirection;
 import Map.Edge;
 import Map.Node;
@@ -7,6 +10,8 @@ import Media.EImage;
 import Settings.*;
 import Game.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
@@ -14,18 +19,20 @@ import java.util.Random;
 /**
  * An enemy Ghost.
  */
-public class Ghost extends MovingEntity{
+public class Ghost extends MovingEntity {
     
     EGhostType type;
     private static boolean vulnerable = false;
     
     private LinkedList<EDirection> priorityQueue = new LinkedList<>();
     
+    private boolean dead = false;
+    
     /**
      * Initializes a Ghost object.
      * @param location the Edge where the ghost is located.
      */
-    public Ghost(Edge location, EGhostType ghost){
+    public Ghost(Edge location, EGhostType ghost) {
         super(null, location, EDirection.DOWN, (int)Settings.get(EParam.ghost_speed));
         type = ghost;
         
@@ -53,6 +60,12 @@ public class Ghost extends MovingEntity{
     
     }
     
+    @Override
+    public void step() {
+        if (!dead)
+            super.step();
+    }
+    
     /**
      * Unqueues a turn from the queue and tries to perform it on the Node.
      * @param n The Node to perform the turn on.
@@ -63,7 +76,7 @@ public class Ghost extends MovingEntity{
         // otherwise super.makeTurn()
         if (priorityQueue.isEmpty()) {
             super.makeTurn(n);
-        }else if (n.canTurn(priorityQueue.getFirst())){
+        }else if (n.canTurn(priorityQueue.getFirst())) {
             setDirection(priorityQueue.getFirst());
             setCurrEdge(n.getTurn(priorityQueue.removeFirst()));
         }else {
@@ -117,7 +130,6 @@ public class Ghost extends MovingEntity{
             Random r = new Random();
             turnQueue.add(possible_turns.get(new Random().nextInt(possible_turns.size())));
         }
-        
     }
 
     public void setVulnerable(boolean to) {
@@ -156,7 +168,22 @@ public class Ghost extends MovingEntity{
     ////////////////
     // Setters and getters below
     
-    
+    public void die() {
+        dead = true;
+        setColliding(false);
+        
+        BlinkAnimator b = new BlinkAnimator(this, 100, true);
+        b.start();
+        Timer t = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dead = false;
+                b.stop();
+                setColliding(true);
+            }
+        });
+        t.start();
+    }
     public EGhostType getType(){
         return type;
     }
