@@ -184,6 +184,7 @@ public class Ghost extends MovingEntity {
         });
         t.start();
     }
+    
     public EGhostType getType(){
         return type;
     }

@@ -43,7 +43,7 @@ public class AudioEngine {
                 AudioEntity a = entity;
                 @Override
                 public void update(LineEvent event) {
-                    if (event.getType() == LineEvent.Type.STOP && a.status != PlaybackStatus.paused) {
+                    if (event.getType() == LineEvent.Type.STOP && a.status != PlaybackStatus.paused && a.status != PlaybackStatus.stopped) {
                         a.getClip().removeLineListener(this);
                         a.getClip().close();
                         entities.remove(a);
@@ -81,20 +81,14 @@ public class AudioEngine {
     }
     
     public static void stop(EAudio audio){
-        ArrayList<AudioEntity> entitiesToRemove = new ArrayList<>();
         for (AudioEntity e : entities){
             if (e.getAudio() == audio){
                 try{
                     e.stop();
-                    entitiesToRemove.add(e);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
-        }
-        
-        for (AudioEntity e : entitiesToRemove) {
-            entities.remove(e);
         }
     }
     
