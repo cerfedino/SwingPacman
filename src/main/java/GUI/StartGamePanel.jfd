@@ -1,0 +1,87 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"background": new java.awt.Color( 0, 0, 27, 255 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "starting_liv_label"
+				"text": "Starting Lives"
+				"foreground": new java.awt.Color( 255, 0, 255, 255 )
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 2, false )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 109
+				"height": 31
+				"x": 95
+				"y": 155
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "start_game_button"
+				"text": "START GAME"
+				"background": &Color0 new java.awt.Color( 0, 0, 0, 0 )
+				"border": &LineBorder0 new javax.swing.border.LineBorder( new java.awt.Color( 255, 255, 0, 255 ), 2, true )
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 7, false )
+				"foreground": &Color1 new java.awt.Color( 255, 0, 204, 255 )
+				"contentAreaFilled": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 190
+				"height": 55
+				"x": 100
+				"y": 240
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "newgame_title"
+				"text": "NEW GAME"
+				"font": new com.jformdesigner.model.SwingDerivedFont( "SansSerif", 0, 32, false )
+				"foreground": new java.awt.Color( 255, 255, 0, 255 )
+				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 355
+				"x": 85
+				"y": 40
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "back_button"
+				"text": "- back"
+				"background": #Color0
+				"border": #LineBorder0
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 1, false )
+				"foreground": #Color1
+				"contentAreaFilled": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 70
+				"height": 30
+				"x": 15
+				"y": 360
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "lives_spinner"
+				"model": new javax.swing.SpinnerNumberModel {
+					minimum: 1
+					value: 3
+				}
+				"foreground": sfield java.awt.Color black
+				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 225
+				"y": 155
+				"width": 100
+				"height": 30
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 400 )
+		} )
+	}
+}

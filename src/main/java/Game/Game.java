@@ -15,6 +15,9 @@ public class Game {
     private static GameInputManager gameinput;
     
     public Game() {
+        System.setProperty("prism.allowhidpi", "false");
+        System.setProperty("sun.java2d.uiScale", "1");
+        
         gameinput = new GameInputManager();
         painter = new Painter(gameinput);
     

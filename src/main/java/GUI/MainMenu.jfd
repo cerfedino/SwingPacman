@@ -1,0 +1,93 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"title": "SwingPacman"
+			"defaultCloseOperation": 3
+			"resizable": false
+			"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"$sizePolicy": 1
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+				"autoSize": false
+			} ) {
+				name: "main_panel"
+				"background": new java.awt.Color( 0, 0, 27, 255 )
+				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "title"
+					"text": "SwingPacman"
+					"font": new com.jformdesigner.model.SwingDerivedFont( "SansSerif", 0, 32, false )
+					"foreground": new java.awt.Color( 255, 255, 0, 255 )
+					"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 55
+					"y": 55
+					"width": 355
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "github_button"
+					"text": "GitHub"
+					"background": &Color0 new java.awt.Color( 0, 0, 0, 0 )
+					"foreground": new java.awt.Color( 204, 0, 204, 255 )
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 0, false )
+					"border": &LineBorder0 new javax.swing.border.LineBorder( new java.awt.Color( 255, 255, 0, 255 ), 2, true )
+					"contentAreaFilled": false
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 305
+					"y": 345
+					"width": 87
+					"height": 45
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "play_button"
+					"text": "PLAY"
+					"background": new java.awt.Color( 0, 0, 0, 0 )
+					"border": new javax.swing.border.LineBorder( new java.awt.Color( 255, 255, 0, 255 ), 2, true )
+					"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 1, 6, false )
+					"foreground": new java.awt.Color( 255, 0, 204, 255 )
+					"contentAreaFilled": false
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 205
+					"height": 45
+					"x": 100
+					"y": 160
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "exit_button"
+					"text": "EXIT"
+					"background": #Color0
+					"foreground": new java.awt.Color( 255, 0, 204, 255 )
+					"font": #SwingDerivedFont0
+					"border": #LineBorder0
+					"contentAreaFilled": false
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"y": 220
+					"width": 205
+					"x": 100
+					"height": 45
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 400
+				"height": 400
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 425 )
+		} )
+	}
+}
