@@ -40,10 +40,10 @@ public class Sprite extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         setImage(AnimationManager.getNextFrame(image));
         g.drawImage(Media.getImg(image), 0, 0, this); // see javadoc for more info on the parameters
         
-        super.paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
     }
     

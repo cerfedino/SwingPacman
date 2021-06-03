@@ -4,13 +4,14 @@ import AudioEngine.*;
 import Map.EDirection;
 import Map.Edge;
 
-import Media.EAudio;
-import Media.EImage;
+import Media.*;
+import Painter.Scaler;
 import Settings.EParam;
 import Settings.Settings;
 import Game.*;
 
-import java.util.concurrent.TimeUnit;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * An enemy Ghost.
@@ -58,9 +59,14 @@ public class Pacman extends MovingEntity{
                 }
             } else {
                 Game.gamethread().freezeEntities();
+                JLabel label = new JLabel("1000");
+                label.setForeground(Color.yellow);
+                label.setFont(Media.getFont(EFont.regular).deriveFont(Scaler.scale(3000)));
+                ((JPanel) e).add(label);
                 AudioEngine.play(EAudio.ghost_ate, PlaybackMode.regular, new FunctionCallback() {
                     @Override
                     public void callback(){
+                        ((JPanel) e).remove(label);
                         Game.gamethread().unfreezeEntities();
                     }
                 });
