@@ -26,6 +26,10 @@ public class Settings {
         return mapping.get(eparam);
     }
     
+    public static void set(EParam parameter, Object value){
+        mapping.put(parameter, value);
+    }
+    
     /**
      * Sets the current settings to their default values.
      */

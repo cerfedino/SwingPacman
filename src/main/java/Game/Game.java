@@ -1,6 +1,5 @@
 package Game;
 
-import AudioEngine.*;
 
 import Painter.*;
 
@@ -16,25 +15,18 @@ public class Game {
     private static GameInputManager gameinput;
     
     public Game() {
-        main(null);
-    }
-    
-    /**
-     * The main method. Starts the game
-     * @param args the arguments passed to the main method
-     */
-    public static void main(String[] args){
-        System.setProperty("prism.allowhidpi", "false");
-        System.setProperty("sun.java2d.uiScale", "1");
-    
         gameinput = new GameInputManager();
         painter = new Painter(gameinput);
-        
+    
         gamestate = new GameState();
         painter.registerMap(gamestate.getMap());
-        
+    
         gamethread = new GameThread();
         gamethread.run();
+    }
+    
+    public static void main(String[] args){
+        new Game();
     }
     
     public static void gameOver() {

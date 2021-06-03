@@ -132,8 +132,9 @@ public class Media {
         ////////////////////
         // Audio
         newSfx.put(EAudio.placeholder,          new File("./src/main/resources/sfx/ding.wav").getAbsoluteFile());
-        
+    
         newSfx.put(EAudio.ost,                  new File("./src/main/resources/sfx/ost.wav").getAbsoluteFile());
+        newSfx.put(EAudio.button_click,                  new File("./src/main/resources/sfx/button_click.wav").getAbsoluteFile());
     
         newSfx.put(EAudio.ghost_moving,         new File("./src/main/resources/sfx/ghost_moving.wav").getAbsoluteFile());
         newSfx.put(EAudio.small_food,           new File("./src/main/resources/sfx/small_food.wav").getAbsoluteFile());

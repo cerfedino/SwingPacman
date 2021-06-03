@@ -3,10 +3,9 @@ package AudioEngine;
 import Media.EAudio;
 import Media.Media;
 
-import javax.sound.sampled.LineEvent;import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 
-import javax.sound.sampled.LineListener;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
@@ -37,17 +36,26 @@ public class AudioEngine {
         
         try {
             
-            AudioEntity a = new AudioEntity(audio, mode);
-            entities.add(a);
+            AudioEntity entity = new AudioEntity(audio, mode);
+            entities.add(entity);
             
-            Clip c = a.getClip();
+            if (audio == EAudio.round_start) {
+                System.out.println("AYOO");
+            }
             
-            c.addLineListener(new LineListener() {
+            entity.getClip().addLineListener(new LineListener() {
+                
+                AudioEntity a = entity;
                 @Override
-                public void update(LineEvent event){
+                public void update(LineEvent event) {
+                    if (a.getAudio() == EAudio.round_start) {
+                        System.out.println("SSSSSS");
+                    }
+                    
                     if (event.getType() == LineEvent.Type.STOP && a.status != PlaybackStatus.paused) {
-                        c.removeLineListener(this);
-                        c.close();
+                        
+                        a.getClip().removeLineListener(this);
+                        a.getClip().close();
                         entities.remove(a);
                         if (callback != null) {
                             callback.callback();
@@ -55,8 +63,7 @@ public class AudioEngine {
                     }
                 }
             });
-            
-            a.play();
+            entity.play();
         }catch (Exception e) {
             System.out.println("[-] Couldn't set up the AudioEntity correctly.");
             e.printStackTrace();
@@ -81,6 +88,24 @@ public class AudioEngine {
             }
         }
         play(audio, mode, callback);
+    }
+    
+    public static void stop(EAudio audio){
+        ArrayList<AudioEntity> entitiesToRemove = new ArrayList<>();
+        for (AudioEntity e : entities){
+            if (e.getAudio() == audio){
+                try{
+                    e.stop();
+                    entitiesToRemove.add(e);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        
+        for (AudioEntity e : entitiesToRemove) {
+            entities.remove(e);
+        }
     }
     
     /**
