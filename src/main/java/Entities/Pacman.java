@@ -60,13 +60,13 @@ public class Pacman extends MovingEntity{
             } else {
                 Game.gamethread().freezeEntities();
                 JLabel label = new JLabel("1000");
-                label.setForeground(Color.yellow);
-                label.setFont(Media.getFont(EFont.regular).deriveFont(Scaler.scale(3000)));
+                label.setForeground(Color.red);
+                label.setFont(new Font("Serif", Font.BOLD, 35));
                 ((JPanel) e).add(label);
                 AudioEngine.play(EAudio.ghost_ate, PlaybackMode.regular, new FunctionCallback() {
                     @Override
                     public void callback(){
-                        ((JPanel) e).remove(label);
+                        e.remove(label);
                         Game.gamethread().unfreezeEntities();
                     }
                 });
