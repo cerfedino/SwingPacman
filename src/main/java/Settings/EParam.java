@@ -6,7 +6,7 @@ package Settings;
 public enum EParam {
     // Game mechanics
     pacman_speed, pacman_starting_lives,
-    ghost_speed, vulnerable_mstime, ghost_count, ghost_vuln_speed,
+    ghost_speed, ghost_count, ghost_vuln_speed,
     food_distancing,
     large_food_score, small_food_score,
     special_food_spawn_odd,
