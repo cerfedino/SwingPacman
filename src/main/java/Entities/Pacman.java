@@ -11,6 +11,8 @@ import Settings.EParam;
 import Settings.Settings;
 import Game.*;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * An enemy Ghost.
  */
@@ -18,6 +20,7 @@ public class Pacman extends MovingEntity{
     
     private int lives;
     private long score = 0;
+    private int streak = 1;
     
     /**
      * Initializes a Ghost object.
@@ -55,7 +58,8 @@ public class Pacman extends MovingEntity{
                     Game.gameOver();
                 }
             } else {
-                // The Ghost dies instead (add points)
+                e.setColliding(false);
+                setScore((int)Settings.get(EParam.ghost_vuln_val) + (int)score);
             }
         }else if(e instanceof Food) {
             score += ((Food) e).getPoints();
@@ -125,5 +129,10 @@ public class Pacman extends MovingEntity{
     public void setLives(int lives){
         this.lives=lives;
         Game.painter().updateLivesPanel(lives);
+    }
+
+    public void setScore(int score){
+        this.score = score;
+        Game.painter().updateScoreLabel(score);
     }
 }
