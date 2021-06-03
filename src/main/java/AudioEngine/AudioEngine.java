@@ -39,21 +39,11 @@ public class AudioEngine {
             AudioEntity entity = new AudioEntity(audio, mode);
             entities.add(entity);
             
-            if (audio == EAudio.round_start) {
-                System.out.println("AYOO");
-            }
-            
             entity.getClip().addLineListener(new LineListener() {
-                
                 AudioEntity a = entity;
                 @Override
                 public void update(LineEvent event) {
-                    if (a.getAudio() == EAudio.round_start) {
-                        System.out.println("SSSSSS");
-                    }
-                    
                     if (event.getType() == LineEvent.Type.STOP && a.status != PlaybackStatus.paused) {
-                        
                         a.getClip().removeLineListener(this);
                         a.getClip().close();
                         entities.remove(a);
