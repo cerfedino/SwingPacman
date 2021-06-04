@@ -1,5 +1,8 @@
 package Media;
 
+/**
+ * Contains all the available sfx resources
+ */
 public enum EAudio {
     ost, button_click,
     round_start, death_sound,

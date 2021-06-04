@@ -11,7 +11,8 @@ import java.util.EnumMap;
 import javax.imageio.ImageIO;
 
 /**
- *  Contains all the media files needed to display the game.
+ *  Contains all the media files needed to display the game. Scales them based on the screen size,
+ *      making sure the game runs and looks the same on every screen size.
  */
 public class Media {
     static private EnumMap<EImage, BufferedImage> img;
@@ -20,6 +21,8 @@ public class Media {
     
     /**
      * Imports the media files.
+     * Initializes the animations.
+     * Initializes the AudioEngine.
      *  Throws an Exception if a media file can't be found
      */
     static {
@@ -43,7 +46,7 @@ public class Media {
     }
     
     /**
-     * Returns the File object associated with its key.
+     * Returns the sfx File object associated with its key.
      * @param eaudio the EAudio ENUM key
      * @return the sfx File
      */
@@ -183,6 +186,12 @@ public class Media {
         AnimationManager.initAnimations();
     }
     
+    /**
+     * Scales one specific BufferedImage by a certain scale.
+     * @param img the BufferedImage to scale
+     * @param scale the scale to scale the BufferedImage to
+     * @return the scaled BufferedImage
+     */
     private static BufferedImage scaleImg(BufferedImage img, double scale) {
         int targetWidth = (int)(img.getWidth()*scale);
         int targetHeight = (int) (img.getHeight()*scale);
