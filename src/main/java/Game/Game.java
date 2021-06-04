@@ -14,6 +14,9 @@ public class Game {
     private static GameThread gamethread;
     private static GameInputManager gameinput;
     
+    /**
+     * Starts the Game.
+     */
     public Game() {
         System.setProperty("prism.allowhidpi", "false");
         System.setProperty("sun.java2d.uiScale", "1");
@@ -32,8 +35,11 @@ public class Game {
         new Game();
     }
     
+    /**
+     * Handles the gameover phase.
+     */
     public static void gameOver() {
-        // TODO: Display gameover image
+        // TODO: Make gameover panel showing score and misc stats about the game.
         Game.gamethread().freezeEntities();
     }
     

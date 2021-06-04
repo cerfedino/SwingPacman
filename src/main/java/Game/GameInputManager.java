@@ -12,7 +12,7 @@ import java.awt.event.KeyListener;
 import java.util.HashMap;
 
 /**
- * Handles the Keyboard input from the user
+ * Handles the Keyboard input from the user.
  */
 public class GameInputManager implements KeyListener {
     
@@ -38,28 +38,15 @@ public class GameInputManager implements KeyListener {
      */
     public void keyPressed(KeyEvent e) {
         if (key_direction_mapping.containsKey(e.getKeyCode())) {
-            System.out.println("**********\nGAME INPUT MANAGER\n" + "Key pressed: ["+e.getKeyCode()+":"+e.getKeyChar()+"]");
             Game.gamestate().getPacman().addTurn(key_direction_mapping.get(e.getKeyCode()));
             return;
         }
         
-        // TODO: Remove placeholder for audio Demo
-        if(e.getKeyChar() == 'a') {
-            AudioEngine.play(EAudio.placeholder, PlaybackMode.regular, new FunctionCallback() {
-                @Override
-                public void callback(){
-                    System.out.println("Audio is done playing, here's the callback !!!");
-                }
-            });
-        }
         if (e.getKeyChar() == 'p') {
             Game.gamethread().pause();
         }
         if (e.getKeyChar() == 'u') {
             Game.gamethread().unpause();
-        }
-        if (e.getKeyChar() == 'd') {
-            Game.gamethread().performDeathSequence();
         }
     }
     

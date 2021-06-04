@@ -41,10 +41,16 @@ public class GameThread implements Runnable {
         }
     }
     
+    /**
+     * Handles what happens on game over.
+     */
     public void gameOver() {
         freezeEntities();
     }
     
+    /**
+     * Handles what happens on a new round sequence.
+     */
     public void performRoundIntro() {
         Painter.getRoundHUD().getBlinkAnimator().start();
         freezeEntities();
@@ -58,6 +64,9 @@ public class GameThread implements Runnable {
         });
     }
     
+    /**
+     * handles what happens on a death sequence
+     */
     public void performDeathSequence(){
         freezeEntities();
         

@@ -14,6 +14,7 @@ public class GameState {
     private Pacman pacman;
     private ArrayList<Ghost> ghosts = new ArrayList<>();
     private Map map;
+    
     private int round = 1;
     
     /**
