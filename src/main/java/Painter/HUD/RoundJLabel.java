@@ -7,7 +7,9 @@ import Settings.*;
 import javax.swing.*;
 import java.awt.*;
 
-
+/**
+ * The blinking JLabel that shows the Round number as part of the game's HUD system.
+ */
 public class RoundJLabel extends JLabel {
 
     private int currentRound = 1;
@@ -29,7 +31,11 @@ public class RoundJLabel extends JLabel {
         super.paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
     }
-
+    
+    /**
+     * Sets the new round to be displayed.
+     * @param round the new round to be displayed
+     */
     public void updateRound(int round) {
         this.currentRound = round;
         setBounds(getX(),getY(), ("Round "+currentRound).length()*getFont().getSize(), getFont().getSize());
