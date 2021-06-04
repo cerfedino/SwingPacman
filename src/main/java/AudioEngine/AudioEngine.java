@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
+/**
+ * Handles all the audio-playing aspect of the game.
+ */
 public class AudioEngine {
     
     private static final ArrayList<AudioEntity> entities = new ArrayList<AudioEntity>();
@@ -70,6 +73,12 @@ public class AudioEngine {
             play(audio,mode, callback);
     }
     
+    /**
+     * Tries to restart an existing SFX, otherwise plays a new one.
+     * @param audio the audio to play
+     * @param mode the mode to play the audio (e.g Loop or regular)
+     * @param callback the callback function to call after the audio has finished playing
+     */
     public static void restartOrPlay(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
         for (AudioEntity e : entities) {
             if(e.getAudio() == audio) {
@@ -80,6 +89,10 @@ public class AudioEngine {
         play(audio, mode, callback);
     }
     
+    /**
+     * Stops a certain audio sfx from playing.
+     * @param audio the audio sfx to stop
+     */
     public static void stop(EAudio audio){
         for (AudioEntity e : entities){
             if (e.getAudio() == audio){
@@ -110,6 +123,11 @@ public class AudioEngine {
         }
     }
     
+    /**
+     * Returns whether an audio sfx is playing.
+     * @param audio the audio sfx to check for
+     * @return whether it's playing
+     */
     public static boolean isPlaying(EAudio audio) {
         for(AudioEntity a : entities) {
             if(a.isPlaying()) {

@@ -12,12 +12,16 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-
+/**
+ * Represents the state in which an AudioEntity can be.
+ */
 enum PlaybackStatus {
     playing,paused,stopped
 }
 
-
+/**
+ * An AudioEntity that plays a certain SFX Clip, complete with independent controls for pausing, stopping restarting ecc.
+ */
 public class AudioEntity {
     
     // To store current position
@@ -33,7 +37,11 @@ public class AudioEntity {
     
     AudioInputStream audioInputStream;
     
-    // Constructor to initialize streams and clip
+    /**
+     * Initializes an AudioEntity object.
+     * @param audio the SFX audio associated with this AudioEntity.
+     * @param mode the mode to play this AudioEntity at (eg. loop, regular ecc)
+     */
     public AudioEntity(EAudio audio, PlaybackMode mode) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         // Create AudioInputStream object
         this.audio = audio;
