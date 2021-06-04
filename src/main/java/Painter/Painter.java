@@ -27,8 +27,10 @@ public class Painter {
     private ScoreJLabel scoreHUD;
     private LivesJPanel livesHUD;
     private static RoundJLabel roundHUD;
+    
     /**
      * Initializes the Painter object by creating and setting the game window.
+     * @param g the input listener for the users inputs
      */
     public Painter(GameInputManager g) {
         Dimension screenSize = t.getScreenSize();

@@ -2,15 +2,15 @@ package Painter;
 
 /**
  * Scales an integer based on the ratio between the original screen size and the new one.
+ * This way, all the settings and media get scaled in order for the game to run and look the same on every screen size.
+ *
  */
 public class Scaler {
     
     private static final int size = 1000;
     
-    //private static final int scrHeight =
-    
     private static int newSize = 1000;
-    private static double scale_factor;
+    private static double scale_factor = 1;
     
     /**
      * Scales an integer given in input
