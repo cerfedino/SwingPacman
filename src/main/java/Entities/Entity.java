@@ -4,7 +4,7 @@ import Map.Edge;
 import Media.EImage;
 
 /**
- * An entity that has an active presence in the Map and can collide with other Entities
+ * An entity that has an active presence in the Map and can collide with other Entities.
  */
 public class Entity extends Sprite {
     

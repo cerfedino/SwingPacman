@@ -2,8 +2,16 @@ package Entities;
 
 import Game.Game;
 
+/**
+ * Handles and manages most of the Entites of the game.
+ */
 public class EntityManager {
-
+    
+    /**
+     * Checks if the Sprite in inout has collided with any other entity in particular and
+     *  if so calls their respective onCollision methods.
+     * @param e the entity to check for collisions
+     */
     public static void checkCollisions(Entity e) {
         if (e instanceof Pacman) {
             for (Food f : e.getCurrEdge().getFood()) {
@@ -21,7 +29,13 @@ public class EntityManager {
             }
         }
     }
-
+    
+    /**
+     * Returns whether two Entities are colliding or not.
+     * @param a the first Entity
+     * @param b the second Entity
+     * @return whether two Entities are colliding or not.
+     */
     public static boolean areColliding(Entity a, Entity b) {
         double offset = 0.3;
         if (a.isColliding() && b.isColliding()) {
@@ -35,7 +49,11 @@ public class EntityManager {
         }
         return false;
     }
-
+    
+    /**
+     * Makes all the Ghosts of the game vulnerable or not.
+     * @param toVulnearble the new vulnerable value of the Ghosts
+     */
     public static void makeGhostVulnerable(boolean toVulnearble) {
         for (Ghost g : Game.gamestate().getGhosts()) {
             g.setVulnerable(toVulnearble);

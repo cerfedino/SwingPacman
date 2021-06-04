@@ -14,7 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * An enemy Ghost.
+ * The main character of the game, Pacman.
  */
 public class Pacman extends MovingEntity{
     
@@ -58,6 +58,7 @@ public class Pacman extends MovingEntity{
                     Game.gameOver();
                 }
             } else {
+                // TODO: Not completely implementing the printing of the increased score above Pacmans head
                 Game.gamethread().freezeEntities();
                 JLabel label = new JLabel("1000");
                 label.setForeground(Color.red);
@@ -91,6 +92,7 @@ public class Pacman extends MovingEntity{
     @Override
     public void addTurn(EDirection direction) {
         if (getDirection() != null) {
+            // If Pacman tries to invert its direction, it immediately does so
             switch (getDirection()) {
                 case DOWN:
                     if (direction == EDirection.UP) {
@@ -119,6 +121,7 @@ public class Pacman extends MovingEntity{
             }
             
         }
+        // Otherwise adds the turn to the queue
         if (direction != null){
             turnQueue.addFirst(direction);
             if (turnQueue.size() > 1) {

@@ -22,6 +22,7 @@ public class MovingEntity extends Entity {
      * Initializes a MovingEntity object.
      * @param en the image of the MovingEntity
      * @param location the Edge where the entity is located
+     * @param direction the initial direction of the MovingEntity
      * @param speed the speed of the MovingEntity
      */
     public MovingEntity(EImage en, Edge location, EDirection direction, int speed){
@@ -60,7 +61,7 @@ public class MovingEntity extends Entity {
     
     /**
      * Unqueues a turn and tries to perform it,
-     *  otherwise calls addTurn(null).
+     *  otherwise tries to generate a new turn by calling addTurn().
      * @param n the node to perform the turn on
      */
     public void makeTurn(Node n) {

@@ -23,7 +23,6 @@ public class LargeFood extends Food {
         
         EntityManager.makeGhostVulnerable(true);
         
-        
         AudioEngine.stop(EAudio.ghost_vulnerable_end);
         AudioEngine.restartOrPlay(EAudio.ghost_vulnerable, PlaybackMode.regular, new FunctionCallback() {
             @Override
