@@ -8,9 +8,15 @@ import Media.EImage;
 import java.util.EnumMap;
 
 
+/**
+ * Handles all the animations of the game.
+ */
 public class AnimationManager {
     private static EnumMap<EImage,EImage> animation;
     
+    /**
+     * Creates all the initial animation mapping.
+     */
     public static void initAnimations() {
         EnumMap<EImage,EImage> newAnimation =new EnumMap<>(EImage.class);
         
@@ -66,12 +72,24 @@ public class AnimationManager {
         animation = newAnimation;
     }
     
+    /**
+     * Returns the next frame of the specified ENUM image.
+     * @param currFrame the current frame of the animation
+     * @return the next frame image
+     */
     public static EImage getNextFrame(EImage currFrame) {
         if(animation.containsKey(currFrame))
             return animation.get(currFrame);
         return currFrame;
     }
     
+    /**
+     * Gets the first frame of the animation for the specified Sprite.
+     *  Method gets usually called when a Sprite changes significantly its state.
+     *  (e.g a MovingEntity changes direction / Ghosts gets vulnerable ecc.)
+     * @param s the Sprite to return the first frame for.
+     * @return the first frame
+     */
     public static EImage getFirstFrame(Sprite s) {
         
         if (s instanceof Pacman) {
