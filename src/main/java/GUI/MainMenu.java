@@ -12,6 +12,9 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
+/**
+ * The Mainmenu of the game
+ */
 public class MainMenu extends JFrame {
     
     private StartGamePanel startpanel;
@@ -23,6 +26,9 @@ public class MainMenu extends JFrame {
         new MainMenu();
     }
     
+    /**
+     * Initializes the MainMenu frame.
+     */
     public MainMenu() {
         super();
         
@@ -103,6 +109,10 @@ public class MainMenu extends JFrame {
         
     }
     
+    /**
+     * Opens a webpage in the Systems default web browser.
+     * @param uri
+     */
     public void openWebpage(URI uri) {
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {

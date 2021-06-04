@@ -14,12 +14,17 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /**
- * @author Albert Cerfeda
+ * The panel responsible for setting the pacmans lives and starting the game.
  */
 public class StartGamePanel extends JPanel {
     
     private MainMenu menu;
     
+    /**
+     * Initializes the StartGamePanel panel.
+     * @param size the size of the panel
+     * @param mainmenu the mainmenu
+     */
     public StartGamePanel(int size, MainMenu mainmenu) {
         super();
         initComponents();
@@ -61,6 +66,9 @@ public class StartGamePanel extends JPanel {
         repaint();
     }
     
+    /**
+     * Starts the game
+     */
     public static void startGame() {
         Settings.set(EParam.pacman_starting_lives, 3);
         AudioEngine.stop(EAudio.ost);
