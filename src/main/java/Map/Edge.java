@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Represents a walkable path connect two edges together
+ * Represents a walkable path connecting two nodes together
  */
 public class Edge {
     private final Node from;

@@ -42,6 +42,10 @@ public class TeleportEdge extends Edge {
         }
     }
     
+    /**
+     * Gets the middle X coordinate of the Edge.
+     * @return the middle X coordinate of the Edge.
+     */
     @Override
     public int getMiddlePointX() {
         Random r = new Random();

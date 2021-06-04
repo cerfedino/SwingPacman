@@ -104,6 +104,13 @@ public class Map extends JPanel {
         edges.add(edge);
     }
     
+    /**
+     * Adds a TeleportEdge connecting two Nodes.
+     * @param from the starting node
+     * @param to the end node
+     * @param fromDirection the direction of the new Edge from the start Node
+     * @param toDirection the direction of the new Edge from the end Node
+     */
     private void addTeleportEdge(Node from, Node to, EDirection fromDirection, EDirection toDirection) {
         if (!nodes.contains(from))
             nodes.add(from);
