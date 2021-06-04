@@ -37,22 +37,22 @@ public class Settings {
         EnumMap<EParam, Object> newMapping = new EnumMap<>(EParam.class);
     
         // Game mechanics
-        newMapping.put(EParam.pacman_speed,             3.00);
+        newMapping.put(EParam.pacman_speed,             4.00);
         newMapping.put(EParam.pacman_starting_lives,    10);
     
-        newMapping.put(EParam.ghost_speed,              2.00);
+        newMapping.put(EParam.ghost_speed,              3.00);
         newMapping.put(EParam.ghost_count,              4);
-        newMapping.put(EParam.ghost_vuln_speed,         1.00);
+        newMapping.put(EParam.ghost_vuln_speed,         2.00);
         newMapping.put(EParam.ghost_vuln_val,           200);
     
-        newMapping.put(EParam.food_distancing,          15);
+        newMapping.put(EParam.food_distancing,          30);
         newMapping.put(EParam.large_food_score,         40);
         newMapping.put(EParam.small_food_score,         20);
     
         newMapping.put(EParam.special_food_spawn_odd,   2);
     
         // Graphics
-        newMapping.put(EParam.line_color,               Color.blue);
+        newMapping.put(EParam.line_color,               Color.magenta);
         newMapping.put(EParam.line_thickness,           7);
         
         newMapping.put(EParam.background_color,         Color.black);
@@ -73,6 +73,8 @@ public class Settings {
     
     /**
      * Scales all the graphics settings by a factor.
+     *  This way the game behaves and looks always the same (e.g the map render scales and
+     *      the entities move at the same relative speed)
      * @param scalefactor the scale factor of the new graphic settings
      */
     static public void rescaleSettings(double scalefactor) {
