@@ -75,7 +75,7 @@ public class MainMenu extends JFrame {
                         public void callback() {
                             blinkAnimator.stop();
                             try{
-                                openWebpage(new URI("https://github.com/usi-pf2-2021/videogame-albert-bojan"));
+                                openWebpage(new URI("https://github.com/AlbertCerfeda/SwingPacman"));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
