@@ -49,34 +49,33 @@ public class Map extends JPanel {
     
                 switch (e.getOrientation()){
                     case HORIZONTAL:
-                        g.drawLine(x1-offset, y1+offset, x2+offset, y2+offset);
-                        g.drawLine(x1-offset, y1-offset, x2+offset, y2-offset);
+                        g.drawLine(x1+offset, y1+offset, x2-offset, y2+offset);
+                        g.drawLine(x1+offset, y1-offset, x2-offset, y2-offset);
                         break;
                     case VERTICAL:
-                        g.drawLine(x1+offset, y1-offset, x2+offset, y2+offset);
-                        g.drawLine(x1-offset, y1-offset, x2-offset, y2+offset);
+                        g.drawLine(x1+offset, y1+offset, x2+offset, y2-offset);
+                        g.drawLine(x1-offset, y1+offset, x2-offset, y2-offset);
                         break;
                 }
             }
         }
         
         // Paints all the nodes
-        g.setColor((Color)Settings.get(EParam.background_color));
         for (Node n : nodes) {
             int x = n.getX() - offset;
             int y = n.getY() - offset;
             int line_lenght = (int)Settings.get(EParam.path_width) - line_thickness;
-    
-            if (n.getLeft() != null) {
+
+            if (n.getLeft() == null) {
                 g.drawLine(x,y+line_thickness,x,y+line_lenght);
             }
-            if (n.getRight() != null) {
+            if (n.getRight() == null) {
                 g.drawLine(x+offset*2,y+line_thickness,x+offset*2,y+line_lenght);
             }
-            if (n.getUp() != null) {
+            if (n.getUp() == null) {
                 g.drawLine(x+line_thickness,y,x+line_lenght,y);
             }
-            if (n.getDown() != null) {
+            if (n.getDown() == null) {
                 g.drawLine(x+line_thickness,y+offset*2,x+line_lenght,y+offset*2);
             }
         }
