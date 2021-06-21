@@ -64,7 +64,7 @@ public class AudioEntity {
      */
     public void play() {
         //start the clip
-        switch(mode){
+        switch(mode) {
             case loop:
                 clip.loop(-1);
             case regular:
@@ -77,10 +77,9 @@ public class AudioEntity {
      * Pauses the audio Clip.
      */
     public void pause() {
-        if (status != PlaybackStatus.stopped)
-            status = PlaybackStatus.paused;
+        status = status != PlaybackStatus.stopped ? PlaybackStatus.paused : status;
         
-        this.currentFrame = this.clip.getMicrosecondPosition();
+        currentFrame = clip.getMicrosecondPosition();
         clip.stop();
     }
     
@@ -93,7 +92,8 @@ public class AudioEntity {
             try{
                 resetAudioStream();
             }catch (Exception e) {
-                System.out.println("[-] Could not resume playing Clip");
+                System.out.println("[-] Could not play audio clip");
+                e.printStackTrace();
             }
             clip.setMicrosecondPosition(currentFrame);
             this.play();

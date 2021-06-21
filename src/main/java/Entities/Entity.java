@@ -19,7 +19,7 @@ public class Entity extends Sprite {
      * @param en the EImage ENUM for the image
      * @param currEdge the Edge in which the Entity is located at
      */
-    public Entity(int x, int y, EImage en, Edge currEdge){
+    public Entity(int x, int y, EImage en, Edge currEdge) {
         super(x, y, en);
         this.currEdge=currEdge;
     

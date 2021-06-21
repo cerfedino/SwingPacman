@@ -44,7 +44,7 @@ public class MainMenu extends JFrame {
     
         startpanel = new StartGamePanel(this.getWidth(),  this);
         
-        MouseListener a = new MouseListener() {
+        MouseListener a = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getSource().equals(exit_button)) {
@@ -83,22 +83,6 @@ public class MainMenu extends JFrame {
                     });
                 
                 }
-            }
-        
-            @Override
-            public void mousePressed(MouseEvent e){
-            }
-        
-            @Override
-            public void mouseReleased(MouseEvent e){
-            }
-        
-            @Override
-            public void mouseEntered(MouseEvent e){
-            }
-        
-            @Override
-            public void mouseExited(MouseEvent e){
             }
         };
         github_button.addMouseListener(a);
