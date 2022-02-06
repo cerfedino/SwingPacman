@@ -78,9 +78,7 @@ public class AnimationManager {
      * @return the next frame image
      */
     public static EImage getNextFrame(EImage currFrame) {
-        if(animation.containsKey(currFrame))
-            return animation.get(currFrame);
-        return currFrame;
+        return animation.containsKey(currFrame) ? animation.get(currFrame) : currFrame;
     }
     
     /**
