@@ -1,17 +1,29 @@
-# PACMAN
-
+**SwingPacman**
+---
+- [How to play](#how-to-play)
+- [Code Structure](#code-structure)
+    - [1. Package Game:](#1-package-game)
+    - [2. Package Map:](#2-package-map)
+    - [3. Package Entities:](#3-package-entities)
+    - [4. Package AudioEngine and Media](#4-package-audioengine-and-media)
+    - [5. Package Painter and AnimationEngine](#5-package-painter-and-animationengine)
+    - [6. Package Settings](#6-package-settings)
+- [Guide to compiling :rocket:](#guide-to-compiling-rocket)
+    - [1. Install Java 16](#1-install-java-16)
+    - [2. Install Maven 3.8.1](#2-install-maven-381)
+---
 This is a classic Pacman game implemented in Java. 
 
 The goal is simple: eat all food, save yourself from the ghosts that chase you and attack them when they are vulnerable!
 
-## How to play
+# How to play
 To play the game, just run the ```main()``` method. Once you spawn on the map, use the arrow keys to navigate. The game ends when Pacman eats all food on the map or when he loses all of his lives. Pacman loses a single life whenever he collides with an invulnerable ghost.
 
 Eating a single food grants you 20 points and eating a ghost, when vulnerable, grants you 200 points. You can keep track of your total score on the bottom left edge of the game screen and see remaining lives of Pacman on the bottom right edge of the game screen.
 
 To pause the game, press P. To resume, press U.
 
-## Code Structure
+# Code Structure
 
 The program consists of 8 packages and 37 classes, each having a huge importance of the game implementation. It is structured in a way that is easily readable, modifiable and understandable. In almost every package, there is a main class that nearly all other sub-classes inherit from. The class hiearchy is organized at a high-level and every componenet that is a part of the game can be instantly classified to its correspondant position in this hiearchy.
 
@@ -23,11 +35,12 @@ This is the package that holds all Map components. Our map is designed such that
 
 For example, this is the current map:
 
-![image](https://user-images.githubusercontent.com/79482346/120639712-f246b200-c471-11eb-8c2a-fa6dd025898b.png)
+<img src="./documentation/readme/map.png" width="100%">
+
 
 If needed, nodes and edges can be relocated to form a different map. In the example below, some of the edges are removed. The game still runs, the ghosts and the pacman will be able to move only along the edges which are present on the map:
 
-![image](https://user-images.githubusercontent.com/79482346/120640199-7862f880-c472-11eb-9f7d-747654ab3195.png)
+<img src="./documentation/readme/map_removed.png" width="100%">
 
 ### 3. Package Entities:
 This package contains the classes of all visible Sprites on the map as well as classes that manage the interactions between them, such as:
