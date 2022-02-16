@@ -41,21 +41,6 @@ public class Map extends JPanel {
                 Node n1=e.getFrom();
                 Node n2=e.getTo();
                 
-                boolean switch_nodes = false;
-                switch(e.getOrientation()) {
-                    case HORIZONTAL:
-                        switch_nodes = n1.getX() > n2.getX();
-                        break;
-                    case VERTICAL:
-                        switch_nodes = n1.getY() > n2.getY();
-                        break;
-                }
-                if(switch_nodes) {
-                    Node tmp = n1;
-                    n1 = n2;
-                    n2 = tmp;
-                }
-                
                 
                 int x1=n1.getX();
                 int y1=n1.getY();
@@ -96,8 +81,8 @@ public class Map extends JPanel {
             }
         }
         
-        Toolkit.getDefaultToolkit().sync();
         super.paintComponent(g);
+        Toolkit.getDefaultToolkit().sync();
     }
     
     /**

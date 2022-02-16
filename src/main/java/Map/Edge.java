@@ -25,14 +25,18 @@ public class Edge {
      * @param to the end Node
      */
     public Edge(Node from, Node to) {
-        this.from = from;
-        this.to = to;
-        
+    
+        boolean switch_nodes =  false;
         if (from.getX() == to.getX()) {
             orientation = EOrientation.VERTICAL;
+            switch_nodes = from.getY() > to.getY();
         } else if(from.getY() == to.getY()){
             orientation = EOrientation.HORIZONTAL;
+            switch_nodes = from.getX() > to.getX();
         }
+        
+        this.from = switch_nodes? to   : from;
+        this.to =   switch_nodes? from : to;
         
         length = calcLength();
         
