@@ -36,9 +36,9 @@ These classes handle the **start** and **end** of the game, perform an **intro**
 The `GameInputManager` takes the keyboard actions from the user and makes Pacman behave accordingly.
 
 ### 2. Package Map:
-This is the package that holds all `Map` components. Our map is designed such that it is built from nodes that are connected by edges. The Pacman and Ghosts move along the edges and make a new turn whenever they are located on a Node.\
+This is the package that holds all `Map` components. Our map is designed such that it is built from **nodes** connected by **edges**. The Pacman and Ghosts move along the edges and make a new turn whenever they are located on a `Node`.\
 All nodes have a specific location on the map and every edge is built based on a relation between two nodes.\
-The map is not hardcoded, therefore it can be easily modified based on player's preferences and it will not affect the playability of the game.
+**The map is not hardcoded**, therefore it can be easily modified based on player's preferences and it will not affect the playability of the game.
 
 For example, this is the current map:
 
