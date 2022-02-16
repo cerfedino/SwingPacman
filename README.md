@@ -48,6 +48,7 @@ For example, this is the current map:
 If needed, nodes and edges can be relocated to form a different map. In the example below, some of the edges are removed. The game still runs, the ghosts and the pacman will be able to move only along the edges which are present on the map:
 
 <img src="./documentation/readme/map_removed.png" width="100%">
+<img src="./documentation/readme/map_removed2.png" width="100%">
 
 ### 3. Package Entities:
 This package contains the classes of all visible Sprites on the map as well as classes that manage the interactions between them, such as:
@@ -57,18 +58,19 @@ A Sprite is an object to be displayed on the game screen. Any visible Sprite has
 
 * **Entity**
 
-An Entity has an active presence on the Map and can collide with other entities. It extends the Sprite class, meaning it has its position on the Map and an Edge where it is currently located at. Every Entity has a ```colliding``` field which specifies whether it is able to collide with other entities in the moment or not.\
+An Entity has an active presence on the Map and can collide with other entities. It extends the Sprite class, meaning it has its position on the Map and an Edge where it is currently located at.\
+Every Entity has a ```colliding``` field which specifies whether it is able to collide with other entities in the moment or not.\
 The  ```onCollision()``` method is overrriden by the subclasses and handles the effects when colliding with other entities.
 
 * **MovingEntity**
 
-This class extends the `Entity` class and reprsents a moving entity on the Map. All moving entites have the ability of navigating and moving through the Map.\
+This class extends the `Entity` class and represents a moving entity on the Map. All moving entites have the ability of navigating and moving through the Map.\
 They have a field `speed` which determines the speed of the Entity and a field `direction` which determines the direction of moving. Every `MovingEntity` can call the method `step()` to step and move along their current edge in their specified direction.\
 After every performed step of a `MovingEntity`, the `EntityManager` checks whether that entity has collided with another Entity present on the Map.
 
 * **EntityManager**
 
-This is an individual class which is responsible for managing the behaviour of entities, as well as interaction between active enetities on the Map.\
+This is an individual class which is responsible for managing the behaviour of entities, as well as interactions between active entities on the Map.\
 The most important method is `checkCollisions(Entity e)` that is called by every `MovingEntity` after they perform a step along an Edge. The method then checks whether it collides with other entities by calling the method `areColliding(Entity a, Entity b)`.\
 For example, if `Pacman` calls this method, then every Food that is on the same Edge as Pacman is passed as a parameter in the method, alongside Pacman itself. The method checks whether the passed entities collide by checking whether their images and positioning intersect on the Map.
 
@@ -99,12 +101,12 @@ The `SmallFood` is a regular food that just grants score to Pacman upon eating. 
 ### 4. Package AudioEngine and Media
 
 Audio and Sound Effects are necessary for this game to achieve the full experience. Depending on the current gamestate or actions performed, a corresponding sound is played from the Audio Engine. The following sounds can be recognized while playing:
-* Round Intro - played on every start of round;
-* Round End, Death of Pacman - played whenever a Pacman loses a life and is eaten from a Ghost.
-* Eating SmallFood - played when Pacman eats a regular, Small Food.
-* Eating LargeFood - played when Pacman eats the special food.
-* Ghosts are vulnerable - played after Pacman eats a LargeFood, the Ghosts are vulnerable as long as the audio is playing.
-* Ghosts no longer vulnerable - played when the vulnerability of all Ghosts has ended.
+* **Round Intro** - played on every start of round;
+* **Round End, Death of Pacman** - played whenever a Pacman loses a life and is eaten from a Ghost.
+* **Eating SmallFood** - played when Pacman eats a regular, Small Food.
+* **Eating LargeFood** - played when Pacman eats the special food.
+* **Ghosts are vulnerable** - played after Pacman eats a LargeFood, the Ghosts are vulnerable as long as the audio is playing.
+* **Ghosts no longer vulnerable** - played when the vulnerability of all Ghosts has ended.
 
 In the `Media` package, all ENUM classes are present where the sound, image and font files are listed. In the Media class, the required media files are imported into the game with static method `importMedia()`.
 
