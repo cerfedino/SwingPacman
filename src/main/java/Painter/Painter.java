@@ -104,7 +104,6 @@ public class Painter {
         if ( sprites.contains(sprite)) {
             sprites.remove(sprite);
             gamepanel.remove(sprite);
-            gamepanel.repaint();
         }
     }
     
