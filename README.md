@@ -1,5 +1,8 @@
 **SwingPacman**
 ---
+<img src="./documentation/readme/gameplay.gif" width="80%">
+
+---
 - [How to play](#how-to-play)
 - [Code Structure](#code-structure)
     - [1. Package Game:](#1-package-game)
