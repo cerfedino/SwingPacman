@@ -2,6 +2,9 @@ package Game;
 
 
 import Painter.*;
+import Painter.Painter;
+
+import javax.swing.*;
 
 
 /**

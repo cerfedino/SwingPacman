@@ -3,8 +3,8 @@ package Map;
 import Entities.*;
 import Settings.*;
 
-import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Represents a walkable path connecting two nodes together
@@ -17,7 +17,7 @@ public class Edge {
     
     private EOrientation orientation;
     
-    private ArrayList<Food> food = new ArrayList<>();
+    private ConcurrentLinkedQueue<Food> food =  new ConcurrentLinkedQueue<>();
     
     /**
      * Initializes an Edge object.
@@ -62,7 +62,7 @@ public class Edge {
      */
     protected void spawnFood() {
         calcLength();
-        food = new ArrayList<>();
+        food = new ConcurrentLinkedQueue<>();
         
         int minX = Math.min(from.getX(), to.getX());
         int minY = Math.min(from.getY(), to.getY());
@@ -211,7 +211,7 @@ public class Edge {
     // Getters and Setters below
     
     
-    public ArrayList<Food> getFood(){
+    public ConcurrentLinkedQueue<Food> getFood(){
         return food;
     }
     
