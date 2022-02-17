@@ -28,6 +28,7 @@ public class Map extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         g.setColor((Color)Settings.get(EParam.line_color));
         int line_thickness = (int)Settings.get(EParam.line_thickness);
         
@@ -81,7 +82,6 @@ public class Map extends JPanel {
             }
         }
         
-        super.paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
     }
     
