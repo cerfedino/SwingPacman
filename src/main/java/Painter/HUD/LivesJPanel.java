@@ -18,7 +18,7 @@ public class LivesJPanel extends JPanel {
     private int lives = 0;
     private JLabel label;
     
-    public LivesJPanel(){
+    public LivesJPanel() {
         super();
         label = new JLabel("LIVES ");
         label.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int)Settings.get(EParam.label_size)));

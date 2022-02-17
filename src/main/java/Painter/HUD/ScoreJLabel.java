@@ -13,21 +13,14 @@ import java.awt.*;
  */
 public class ScoreJLabel extends JLabel {
     
-    private long score;
+    private long score = 0;
     
     public ScoreJLabel() {
         super();
         setOpaque(false);
         setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int)Settings.get(EParam.label_size)));
-        updateScore(0);
-    }
-    
-    @Override
-    public void paintComponent(Graphics g) {
         setForeground((Color)Settings.get(EParam.label_color));
-        setText("SCORE     "+score);
-        super.paintComponent(g);
-        Toolkit.getDefaultToolkit().sync();
+        updateScore(0);
     }
     
     /**
@@ -37,5 +30,7 @@ public class ScoreJLabel extends JLabel {
     public void updateScore(long score) {
         this.score = score;
         setBounds(getX(),getY(), ("SCORE: "+score).length()*(int)Settings.get(EParam.label_size), (int)Settings.get(EParam.label_size));
+        setText("SCORE     "+score);
+        repaint();
     }
 }
