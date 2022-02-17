@@ -1,11 +1,7 @@
 package Game;
 
 
-import Painter.*;
 import Painter.Painter;
-
-import javax.swing.*;
-
 
 /**
  * The main class that starts the game.
@@ -21,7 +17,7 @@ public class Game {
      * Starts the Game.
      */
     public Game() {
-        
+        System.setProperty("sun.java2d.opengl", "true");
         System.setProperty("prism.allowhidpi", "false");
         System.setProperty("sun.java2d.uiScale", "1");
         
