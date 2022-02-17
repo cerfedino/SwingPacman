@@ -63,13 +63,13 @@ public class Painter {
     
         scoreHUD= new ScoreJLabel();
         scoreHUD.setLocation(0,size-Scaler.scale(100));
-        scoreHUD.repaint();
+
         livesHUD = new LivesJPanel();
         livesHUD.setLocation(size-Scaler.scale(600),size-Scaler.scale(100));
-        livesHUD.repaint();
+
         roundHUD = new RoundJLabel();
         roundHUD.setLocation(Scaler.scale(400), Scaler.scale(470));
-        roundHUD.repaint();
+
         gameframe.add(scoreHUD);
         gameframe.add(livesHUD);
         gameframe.add(roundHUD);
@@ -78,7 +78,8 @@ public class Painter {
         gamepanel.grabFocus();
         gamepanel.addKeyListener(g);
         
-        
+        gamepanel.revalidate();
+        gamepanel.repaint();
         gameframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
@@ -91,8 +92,6 @@ public class Painter {
         if ( !sprites.contains(sprite)) {
             sprites.add(sprite);
             gamepanel.add(sprite,1);
-            gamepanel.revalidate();
-            gamepanel.repaint();
         }
     }
     
@@ -113,7 +112,6 @@ public class Painter {
      */
     public void registerMap(Map map) {
         gamepanel.add(map,-1);
-        map.repaint();
         gamepanel.revalidate();
         gamepanel.repaint();
     }
