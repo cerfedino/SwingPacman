@@ -21,6 +21,7 @@ public class Game {
      * Starts the Game.
      */
     public Game() {
+        
         System.setProperty("prism.allowhidpi", "false");
         System.setProperty("sun.java2d.uiScale", "1");
         
@@ -31,7 +32,8 @@ public class Game {
         painter.registerMap(gamestate.getMap());
     
         gamethread = new GameThread();
-        gamethread.run();
+        Thread t = new Thread(gamethread);
+        t.start();
     }
     
     public static void main(String[] args){
