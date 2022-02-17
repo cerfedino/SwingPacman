@@ -1,8 +1,10 @@
 package Entities;
 
 import AnimationEngine.AnimationManager;
-import Media.*;
 import Game.Game;
+import Media.EImage;
+import Media.Media;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;

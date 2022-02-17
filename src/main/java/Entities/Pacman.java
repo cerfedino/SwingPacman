@@ -1,14 +1,14 @@
 package Entities;
 
-import AudioEngine.*;
+import AudioEngine.AudioEngine;
+import AudioEngine.FunctionCallback;
+import AudioEngine.PlaybackMode;
+import Game.Game;
 import Map.EDirection;
 import Map.Edge;
-
-import Media.*;
-import Painter.Scaler;
+import Media.EAudio;
 import Settings.EParam;
 import Settings.Settings;
-import Game.*;
 
 import javax.swing.*;
 import java.awt.*;

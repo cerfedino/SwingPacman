@@ -1,11 +1,8 @@
 package Game;
 
-import AudioEngine.AudioEngine;
-import AudioEngine.FunctionCallback;
-import AudioEngine.PlaybackMode;
 import Map.EDirection;
-import Media.EAudio;
-import Settings.*;
+import Settings.EParam;
+import Settings.Settings;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

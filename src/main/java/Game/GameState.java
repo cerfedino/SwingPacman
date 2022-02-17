@@ -1,8 +1,13 @@
 package Game;
 
-import Entities.*;
-import Map.*;
-import Settings.*;
+import Entities.EGhostType;
+import Entities.EntityManager;
+import Entities.Ghost;
+import Entities.Pacman;
+import Map.Edge;
+import Map.Map;
+import Settings.EParam;
+import Settings.Settings;
 
 import java.util.ArrayList;
 import java.util.Random;

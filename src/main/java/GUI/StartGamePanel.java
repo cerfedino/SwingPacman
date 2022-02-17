@@ -1,17 +1,22 @@
 package GUI;
 
 import AnimationEngine.BlinkAnimator;
-import AudioEngine.*;
+import AudioEngine.AudioEngine;
+import AudioEngine.FunctionCallback;
+import AudioEngine.PlaybackMode;
 import Game.Game;
-import Media.*;
+import Media.EAudio;
+import Media.EFont;
+import Media.Media;
 import Painter.Scaler;
-import Settings.*;
+import Settings.EParam;
+import Settings.Settings;
 
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import javax.swing.border.*;
 
 /**
  * The panel responsible for setting the pacmans lives and starting the game.

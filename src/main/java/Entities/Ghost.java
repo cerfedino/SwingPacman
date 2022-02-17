@@ -1,15 +1,15 @@
 package Entities;
 
 import AnimationEngine.BlinkAnimator;
-import javax.swing.*;
-import java.awt.event.ActionEvent;
+import Game.Game;
 import Map.EDirection;
 import Map.Edge;
 import Map.Node;
 import Media.EImage;
-import Settings.*;
-import Game.*;
+import Settings.EParam;
+import Settings.Settings;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;

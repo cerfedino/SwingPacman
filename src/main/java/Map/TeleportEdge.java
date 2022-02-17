@@ -1,7 +1,6 @@
 package Map;
 
 import Entities.MovingEntity;
-import Entities.Sprite;
 
 import java.util.Random;
 

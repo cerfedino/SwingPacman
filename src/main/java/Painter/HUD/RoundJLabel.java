@@ -1,8 +1,10 @@
 package Painter.HUD;
 
 import AnimationEngine.BlinkAnimator;
-import Media.*;
-import Settings.*;
+import Media.EFont;
+import Media.Media;
+import Settings.EParam;
+import Settings.Settings;
 
 import javax.swing.*;
 import java.awt.*;

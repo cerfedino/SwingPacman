@@ -1,8 +1,11 @@
 package Painter.HUD;
 
 import Entities.Sprite;
-import Media.*;
-import Settings.*;
+import Media.EFont;
+import Media.EImage;
+import Media.Media;
+import Settings.EParam;
+import Settings.Settings;
 
 import javax.swing.*;
 import java.awt.*;

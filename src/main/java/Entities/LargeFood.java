@@ -3,12 +3,11 @@ package Entities;
 import AudioEngine.AudioEngine;
 import AudioEngine.FunctionCallback;
 import AudioEngine.PlaybackMode;
-
-import Game.Game;
 import Map.Edge;
 import Media.EAudio;
 import Media.EImage;
-import Settings.*;
+import Settings.EParam;
+import Settings.Settings;
 
 public class LargeFood extends Food {
     public LargeFood(int x, int y, Edge currEdge){

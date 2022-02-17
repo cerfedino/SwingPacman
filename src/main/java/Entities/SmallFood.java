@@ -2,8 +2,8 @@ package Entities;
 
 import Map.Edge;
 import Media.EImage;
-import Media.*;
-import Settings.*;
+import Settings.EParam;
+import Settings.Settings;
 
 /**
  * Simple food that merely increases Pacman's score upon geting eaten.

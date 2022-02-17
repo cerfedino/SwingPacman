@@ -1,15 +1,21 @@
 package GUI;
 
 import AnimationEngine.BlinkAnimator;
-import AudioEngine.*;
-import Media.*;
+import AudioEngine.AudioEngine;
+import AudioEngine.FunctionCallback;
+import AudioEngine.PlaybackMode;
+import Media.EAudio;
+import Media.EFont;
+import Media.Media;
 import Painter.Scaler;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.net.URI;
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.net.URI;
 
 
 /**

@@ -1,7 +1,8 @@
 package Map;
 
 import Entities.*;
-import Settings.*;
+import Settings.EParam;
+import Settings.Settings;
 
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;

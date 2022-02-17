@@ -3,12 +3,12 @@ package Media;
 import AnimationEngine.AnimationManager;
 import AudioEngine.AudioEngine;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.EnumMap;
-import javax.imageio.ImageIO;
 
 /**
  *  Contains all the media files needed to display the game. Scales them based on the screen size,
@@ -193,12 +193,13 @@ public class Media {
      * @return the scaled BufferedImage
      */
     private static BufferedImage scaleImg(BufferedImage img, double scale) {
-        int targetWidth = (int)(img.getWidth()*scale);
-        int targetHeight = (int) (img.getHeight()*scale);
+        int targetWidth =  (int)(img.getWidth()*scale);
+        int targetHeight = (int)(img.getHeight()*scale);
     
         BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics2D = resizedImage.createGraphics();
         graphics2D.drawImage(img, 0, 0, targetWidth, targetHeight, null);
+        graphics2D.dispose();
         
         return resizedImage;
     }

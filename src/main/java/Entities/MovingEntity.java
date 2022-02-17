@@ -1,12 +1,12 @@
 package Entities;
 
+import AnimationEngine.AnimationManager;
 import Map.EDirection;
 import Map.Edge;
 import Map.Node;
-import AnimationEngine.AnimationManager;
 import Media.EImage;
 
-import java.util.*;
+import java.util.LinkedList;
 
 /**
  * An entity that has the ability of navigating and moving through the Map.

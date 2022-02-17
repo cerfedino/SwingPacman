@@ -7,7 +7,8 @@ import Media.Media;
 import Painter.HUD.LivesJPanel;
 import Painter.HUD.RoundJLabel;
 import Painter.HUD.ScoreJLabel;
-import Settings.*;
+import Settings.EParam;
+import Settings.Settings;
 
 import javax.swing.*;
 import java.awt.*;

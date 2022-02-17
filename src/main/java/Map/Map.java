@@ -1,11 +1,12 @@
 package Map;
 
+import Painter.Scaler;
+import Settings.EParam;
+import Settings.Settings;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
-import Painter.Scaler;
-import Settings.*;
 
 /**
  * The Map navigable by MovingEntity objects and to be independently painted on the game screen.
