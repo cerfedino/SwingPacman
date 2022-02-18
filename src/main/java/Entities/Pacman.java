@@ -23,8 +23,8 @@ public class Pacman extends MovingEntity{
     private int streak = 1;
     
     /**
-     * Initializes a Ghost object.
-     * @param location the Edge where the ghost is located.
+     * Initializes a Pacman object.
+     * @param location the Edge where the pacman is located.
      */
     public Pacman(Edge location){
         super(null, location, null, (int)Settings.get(EParam.pacman_speed));
