@@ -11,9 +11,11 @@
     - [4. Package AudioEngine and Media](#4-package-audioengine-and-media)
     - [5. Package Painter and AnimationEngine](#5-package-painter-and-animationengine)
     - [6. Package Settings](#6-package-settings)
+    - [7. Package GUI](#7-package-gui)
 - [Guide to compiling :rocket:](#guide-to-compiling-rocket)
     - [1. Install Java 16](#1-install-java-16)
     - [2. Install Maven 3.8.1](#2-install-maven-381)
+    - [3. Running the game](#3-running-the-game)
 ---
 The classic **Pacman** game implemented in Java. 
 
@@ -154,6 +156,12 @@ This package allows the player to customize the game and settings based on perso
 * Label Color
 * Control Keys
 
+### 7. Package GUI
+<img src="./documentation/readme/mainmenu.gif" width="60%">
+
+This package consists of the main menu interface.
+Class `MainMenu` contains a `main()` method for starting the game with the Main Menu.
+
 # Guide to compiling :rocket:
 
 ### 1. Install Java 16
@@ -181,6 +189,14 @@ Since we are using Java 16, you need to be using Apache Maven 3.8.1
   export PATH=$M2:$PATH
   ```
 
+### 3. Running the game
+You can run the game either with or without the Main Menu.
+There are two `main()` methods you can run:
+- `Game.Game.main`\
+  Starts the game **without** the Main Menu
 
+- `GUI.MainMenu.main`\
+  Starts the game **with** the Main Menu
 
+\
 You should be good to go now :smiling_imp:
