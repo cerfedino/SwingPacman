@@ -67,10 +67,10 @@ public class StartGamePanel extends JPanel {
     /**
      * Starts the game
      */
-    public static void startGame() {
-        Settings.set(EParam.pacman_starting_lives, 3);
+    public void startGame() {
+        Settings.set(EParam.pacman_starting_lives, getLives_spinner().getValue());
         AudioEngine.stop(EAudio.ost);
-        AudioEngine.initAudioEngine();
+        //AudioEngine.initAudioEngine();
         new Game();
     }
     
@@ -86,6 +86,7 @@ public class StartGamePanel extends JPanel {
         start_game_button.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int) Scaler.scale(start_game_button.getFont().getSize())));
         start_game_button.setBounds(Scaler.scale(start_game_button.getX()), Scaler.scale(start_game_button.getY()), Scaler.scale(start_game_button.getWidth()), Scaler.scale(start_game_button.getHeight()));
         start_game_button.setBorder(BorderFactory.createLineBorder(Color.yellow, Scaler.scale(3)));
+        start_game_button.setOpaque(true);
         
         starting_liv_label.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int) Scaler.scale(starting_liv_label.getFont().getSize())));
         starting_liv_label.setBounds(Scaler.scale(starting_liv_label.getX()), Scaler.scale(starting_liv_label.getY()), Scaler.scale(starting_liv_label.getWidth()), Scaler.scale(starting_liv_label.getHeight()));
@@ -97,10 +98,11 @@ public class StartGamePanel extends JPanel {
         lives_spinner.getEditor().getComponent(0).setBackground(new Color(0, 0, 27));
         lives_spinner.getEditor().getComponent(0);
         lives_spinner.setOpaque(true);
-        
+    
         back_button.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int) Scaler.scale(back_button.getFont().getSize())));
         back_button.setBounds(Scaler.scale(back_button.getX()), Scaler.scale(back_button.getY()), Scaler.scale(back_button.getWidth()), Scaler.scale(back_button.getHeight()));
         back_button.setBorder(BorderFactory.createLineBorder(Color.yellow, Scaler.scale(2)));
+        back_button.setOpaque(true);
     }
     
     private void initComponents() {
@@ -115,7 +117,7 @@ public class StartGamePanel extends JPanel {
         setMaximumSize(null);
         setMinimumSize(null);
         setPreferredSize(null);
-        setBackground(new Color(0, 0, 27));
+        setBackground(new Color(0, 0, 0, 170));
         setLayout(null);
 
         //---- starting_liv_label ----
@@ -149,7 +151,7 @@ public class StartGamePanel extends JPanel {
 
         //---- back_button ----
         back_button.setText("- back");
-        back_button.setBackground(new Color(0, 0, 0, 0));
+        back_button.setBackground(new Color(0, 0, 27));
         back_button.setBorder(new LineBorder(Color.yellow, 2, true));
         back_button.setFont(back_button.getFont().deriveFont(back_button.getFont().getStyle() | Font.BOLD, back_button.getFont().getSize() + 1f));
         back_button.setForeground(new Color(255, 0, 204));

@@ -16,7 +16,7 @@ new FormModel {
 				"autoSize": false
 			} ) {
 				name: "main_panel"
-				"background": new java.awt.Color( 0, 0, 27, 255 )
+				"background": new java.awt.Color( 0, 0, 0, 170 )
 				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -37,7 +37,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "github_button"
 					"text": "GitHub"
-					"background": &Color0 new java.awt.Color( 0, 0, 0, 0 )
+					"background": new java.awt.Color( 0, 0, 27, 255 )
 					"foreground": new java.awt.Color( 204, 0, 204, 255 )
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 0, false )
 					"border": &LineBorder0 new javax.swing.border.LineBorder( new java.awt.Color( 255, 255, 0, 255 ), 2, true )
@@ -51,7 +51,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "play_button"
 					"text": "PLAY"
-					"background": new java.awt.Color( 0, 0, 0, 0 )
+					"background": new java.awt.Color( 0, 0, 27, 255 )
 					"border": new javax.swing.border.LineBorder( new java.awt.Color( 255, 255, 0, 255 ), 2, true )
 					"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 1, 6, false )
 					"foreground": new java.awt.Color( 255, 0, 204, 255 )
@@ -68,7 +68,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "exit_button"
 					"text": "EXIT"
-					"background": #Color0
+					"background": new java.awt.Color( 0, 0, 27, 255 )
 					"foreground": new java.awt.Color( 255, 0, 204, 255 )
 					"font": #SwingDerivedFont0
 					"border": #LineBorder0

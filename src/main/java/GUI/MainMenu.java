@@ -14,8 +14,9 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.io.File;
 import java.net.URI;
+import java.net.URL;
 
 
 /**
@@ -104,9 +105,16 @@ public class MainMenu extends JFrame {
         add(startpanel,0);
         startpanel.setLocation(0,0);
         startpanel.setVisible(false);
-        
+    
+        try{
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(new File("src/main/resources/gif/gameplay.gif").toURI().toURL()).getImage().getScaledInstance(getWidth(),getHeight(),Image.SCALE_DEFAULT));
+            JLabel label = new JLabel(imageIcon);
+            add(label);
+            label.setBounds(0,0,getWidth(), getHeight());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
         setVisible(true);
-        
     }
     
     /**
@@ -127,12 +135,14 @@ public class MainMenu extends JFrame {
     
     public void showMainPanel() {
         startpanel.setVisible(false);
-        repaint();
+        main_panel.setVisible(true);
+//        repaint();
     }
     
     public void showNewGamepanel() {
+        main_panel.setVisible(false);
         startpanel.setVisible(true);
-        repaint();
+//        repaint();
     }
     
     
@@ -150,14 +160,17 @@ public class MainMenu extends JFrame {
         play_button.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int) Scaler.scale(play_button.getFont().getSize())));
         play_button.setBounds(Scaler.scale(play_button.getX()), Scaler.scale(play_button.getY()), Scaler.scale(play_button.getWidth()),Scaler.scale(play_button.getHeight()));
         play_button.setBorder(BorderFactory.createLineBorder(Color.yellow, Scaler.scale(3)));
+        play_button.setOpaque(true);
         
         exit_button.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int) Scaler.scale(exit_button.getFont().getSize())));
         exit_button.setBounds(Scaler.scale(exit_button.getX()), Scaler.scale(exit_button.getY()), Scaler.scale(exit_button.getWidth()),Scaler.scale(exit_button.getHeight()));
         exit_button.setBorder(BorderFactory.createLineBorder(Color.yellow, Scaler.scale(3)));
+        exit_button.setOpaque(true);
         
         github_button.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int) Scaler.scale(github_button.getFont().getSize())));
         github_button.setBounds(Scaler.scale(github_button.getX()), Scaler.scale(github_button.getY()), Scaler.scale(github_button.getWidth()),Scaler.scale(github_button.getHeight()));
         github_button.setBorder(BorderFactory.createLineBorder(Color.yellow, Scaler.scale(3)));
+        github_button.setOpaque(true);
     }
     
     private void initComponents() {
@@ -178,7 +191,7 @@ public class MainMenu extends JFrame {
 
         //======== main_panel ========
         {
-            main_panel.setBackground(new Color(0, 0, 27));
+            main_panel.setBackground(new Color(0, 0, 0, 170));
             main_panel.setPreferredSize(null);
             main_panel.setMaximumSize(null);
             main_panel.setMinimumSize(null);
@@ -197,7 +210,7 @@ public class MainMenu extends JFrame {
 
             //---- github_button ----
             github_button.setText("GitHub");
-            github_button.setBackground(new Color(0, 0, 0, 0));
+            github_button.setBackground(new Color(0, 0, 27));
             github_button.setForeground(new Color(204, 0, 204));
             github_button.setFont(github_button.getFont().deriveFont(github_button.getFont().getStyle() | Font.BOLD));
             github_button.setBorder(new LineBorder(Color.yellow, 2, true));
@@ -207,7 +220,7 @@ public class MainMenu extends JFrame {
 
             //---- play_button ----
             play_button.setText("PLAY");
-            play_button.setBackground(new Color(0, 0, 0, 0));
+            play_button.setBackground(new Color(0, 0, 27));
             play_button.setBorder(new LineBorder(Color.yellow, 2, true));
             play_button.setFont(play_button.getFont().deriveFont(play_button.getFont().getStyle() | Font.BOLD, play_button.getFont().getSize() + 6f));
             play_button.setForeground(new Color(255, 0, 204));
@@ -220,7 +233,7 @@ public class MainMenu extends JFrame {
 
             //---- exit_button ----
             exit_button.setText("EXIT");
-            exit_button.setBackground(new Color(0, 0, 0, 0));
+            exit_button.setBackground(new Color(0, 0, 27));
             exit_button.setForeground(new Color(255, 0, 204));
             exit_button.setFont(exit_button.getFont().deriveFont(exit_button.getFont().getStyle() | Font.BOLD, exit_button.getFont().getSize() + 6f));
             exit_button.setBorder(new LineBorder(Color.yellow, 2, true));

@@ -10,7 +10,7 @@ new FormModel {
 			"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
-			"background": new java.awt.Color( 0, 0, 27, 255 )
+			"background": new java.awt.Color( 0, 0, 0, 170 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "starting_liv_label"
 				"text": "Starting Lives "
@@ -54,7 +54,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "back_button"
 				"text": "- back"
-				"background": new java.awt.Color( 0, 0, 0, 0 )
+				"background": new java.awt.Color( 0, 0, 27, 255 )
 				"border": #LineBorder0
 				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 1, false )
 				"foreground": #Color0
