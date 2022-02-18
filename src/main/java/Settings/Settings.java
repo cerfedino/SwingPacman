@@ -78,7 +78,7 @@ public class Settings {
      * @param scalefactor the scale factor of the new graphic settings
      */
     static public void rescaleSettings(double scalefactor) {
-        setDefaultSettings();
+        //setDefaultSettings();
         mapping.put(EParam.pacman_speed,    (int)((double)mapping.get(EParam.pacman_speed)*scalefactor));
         mapping.put(EParam.ghost_speed,     (int)((double)mapping.get(EParam.ghost_speed)*scalefactor));
         mapping.put(EParam.ghost_vuln_speed,(int)((double)mapping.get(EParam.ghost_vuln_speed)*scalefactor));
