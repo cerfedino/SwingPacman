@@ -26,6 +26,7 @@ public class MainMenu extends JFrame {
     private StartGamePanel startpanel;
     
     public static void main(String[] args) {
+        System.setProperty("sun.java2d.opengl", "true");
         System.setProperty("prism.allowhidpi", "false");
         System.setProperty("sun.java2d.uiScale", "1");
         
@@ -39,7 +40,7 @@ public class MainMenu extends JFrame {
         super();
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int size = Math.max(screenSize.height, screenSize.width);
+        int size = Math.min(screenSize.height, screenSize.width);
         Scaler.setNewsize(size);
     
         
@@ -50,10 +51,27 @@ public class MainMenu extends JFrame {
     
         startpanel = new StartGamePanel(this.getWidth(),  this);
         
-        MouseListener a = new MouseAdapter() {
+        github_button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getSource().equals(exit_button)) {
+                BlinkAnimator blinkAnimator = new BlinkAnimator(github_button,80,true);
+                blinkAnimator.start();
+                AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
+                    @Override
+                    public void callback() {
+                        blinkAnimator.stop();
+                        try{
+                            openWebpage(new URI("https://github.com/AlbertCerfeda/SwingPacman"));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+        exit_button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
                     BlinkAnimator blinkAnimator = new BlinkAnimator(exit_button,80,true);
                     blinkAnimator.start();
                     AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
@@ -63,37 +81,29 @@ public class MainMenu extends JFrame {
                             System.exit(0);
                         }
                     });
-                } else if (e.getSource().equals(play_button)) {
-                    BlinkAnimator blinkAnimator = new BlinkAnimator(play_button,80,true);
-                    blinkAnimator.start();
-                    AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
-                        @Override
-                        public void callback() {
-                            blinkAnimator.stop();
-                            showNewGamepanel();
-                        }
-                    });
-                } else if (e.getSource().equals(github_button)) {
-                    BlinkAnimator blinkAnimator = new BlinkAnimator(github_button,80,true);
-                    blinkAnimator.start();
-                    AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
-                        @Override
-                        public void callback() {
-                            blinkAnimator.stop();
-                            try{
-                                openWebpage(new URI("https://github.com/AlbertCerfeda/SwingPacman"));
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                
                 }
+            
+        });
+        play_button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                BlinkAnimator blinkAnimator = new BlinkAnimator(play_button,80,true);
+                blinkAnimator.start();
+                AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
+                    @Override
+                    public void callback() {
+                        blinkAnimator.stop();
+                        showNewGamepanel();
+                    }
+                });
             }
-        };
-        github_button.addMouseListener(a);
-        exit_button.addMouseListener(a);
-        play_button.addMouseListener(a);
+        });
+    
+        setUndecorated(true);
+        
+        add(startpanel,0);
+        startpanel.setLocation(0,0);
+        startpanel.setVisible(false);
         
         setVisible(true);
         
@@ -116,21 +126,19 @@ public class MainMenu extends JFrame {
     
     
     public void showMainPanel() {
-        remove(startpanel);
-        add(main_panel);
+        startpanel.setVisible(false);
         repaint();
     }
     
     public void showNewGamepanel() {
-        remove(main_panel);
-        add(startpanel);
+        startpanel.setVisible(true);
         repaint();
     }
     
     
     
     public void adjustSizes() {
-        setSize(Scaler.scale(getWidth()), Scaler.scale(getHeight()));
+        setSize(Scaler.scale(main_panel.getWidth()), Scaler.scale(main_panel.getHeight()));
         int width = this.getWidth();
         int height = this.getHeight();
         Media.rescaleMedia(Scaler.getScale_factor());
@@ -183,8 +191,9 @@ public class MainMenu extends JFrame {
             title.setMaximumSize(null);
             title.setMinimumSize(null);
             title.setPreferredSize(null);
+            title.setHorizontalAlignment(SwingConstants.CENTER);
             main_panel.add(title);
-            title.setBounds(55, 55, 355, title.getPreferredSize().height);
+            title.setBounds(0, 55, 400, title.getPreferredSize().height);
 
             //---- github_button ----
             github_button.setText("GitHub");

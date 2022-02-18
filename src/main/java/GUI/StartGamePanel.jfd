@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.10" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.3.411" Java: "11.0.13" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -13,22 +13,23 @@ new FormModel {
 			"background": new java.awt.Color( 0, 0, 27, 255 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "starting_liv_label"
-				"text": "Starting Lives"
+				"text": "Starting Lives "
 				"foreground": new java.awt.Color( 255, 0, 255, 255 )
-				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 2, false )
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 7, false )
+				"horizontalAlignment": 4
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 109
+				"width": 205
 				"height": 31
-				"x": 95
+				"x": 0
 				"y": 155
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "start_game_button"
 				"text": "START GAME"
-				"background": &Color0 new java.awt.Color( 0, 0, 0, 0 )
+				"background": new java.awt.Color( 0, 0, 27, 255 )
 				"border": &LineBorder0 new javax.swing.border.LineBorder( new java.awt.Color( 255, 255, 0, 255 ), 2, true )
 				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 7, false )
-				"foreground": &Color1 new java.awt.Color( 255, 0, 204, 255 )
+				"foreground": &Color0 new java.awt.Color( 255, 0, 204, 255 )
 				"contentAreaFilled": false
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 190
@@ -44,18 +45,19 @@ new FormModel {
 				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"horizontalAlignment": 0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 355
-				"x": 85
+				"width": 395
+				"x": 0
 				"y": 40
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "back_button"
 				"text": "- back"
-				"background": #Color0
+				"background": new java.awt.Color( 0, 0, 0, 0 )
 				"border": #LineBorder0
 				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 1, false )
-				"foreground": #Color1
+				"foreground": #Color0
 				"contentAreaFilled": false
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 70
@@ -73,6 +75,8 @@ new FormModel {
 				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 11, false )
+				"background": new java.awt.Color( 0, 0, 27, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 225
 				"y": 155

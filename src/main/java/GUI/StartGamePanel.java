@@ -37,35 +37,28 @@ public class StartGamePanel extends JPanel {
         
         this.menu = mainmenu;
         
-        ActionListener a = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){
-                if (e.getSource().equals(start_game_button)) {
-                    BlinkAnimator blink =  new BlinkAnimator(start_game_button, 80, true);
-                    blink.start();
-                    AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
-                        @Override
-                        public void callback() {
-                            blink.stop();
-                            startGame();
-                        }
-                    });
-                } else if (e.getSource().equals(back_button)) {
-                    BlinkAnimator blink =  new BlinkAnimator(back_button, 80, true);
-                    blink.start();
-                    AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
-                        @Override
-                        public void callback(){
-                            blink.stop();
-                            menu.showMainPanel();
-                        }
-                    });
-                    
+        start_game_button.addActionListener((e)->{
+            BlinkAnimator blink =  new BlinkAnimator(start_game_button, 80, true);
+            blink.start();
+            AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
+                @Override
+                public void callback() {
+                    blink.stop();
+                    startGame();
                 }
-            }
-        };
-        start_game_button.addActionListener(a);
-        back_button.addActionListener(a);
+            });
+        });
+        back_button.addActionListener((e)->{
+            BlinkAnimator blink =  new BlinkAnimator(back_button, 80, true);
+            blink.start();
+            AudioEngine.play(EAudio.button_click, PlaybackMode.regular, new FunctionCallback() {
+                @Override
+                public void callback(){
+                    blink.stop();
+                    menu.showMainPanel();
+                }
+            });
+        });
         
         
         repaint();
@@ -101,6 +94,8 @@ public class StartGamePanel extends JPanel {
         lives_spinner.setBounds(Scaler.scale(lives_spinner.getX()), Scaler.scale(lives_spinner.getY()), Scaler.scale(lives_spinner.getWidth()), Scaler.scale(lives_spinner.getHeight()));
         lives_spinner.setBorder(BorderFactory.createLineBorder(Color.yellow, Scaler.scale(3)));
         lives_spinner.getEditor().getComponent(0).setForeground(Color.magenta);
+        lives_spinner.getEditor().getComponent(0).setBackground(new Color(0, 0, 27));
+        lives_spinner.getEditor().getComponent(0);
         lives_spinner.setOpaque(true);
         
         back_button.setFont(Media.getFont(EFont.regular).deriveFont(Font.PLAIN, (int) Scaler.scale(back_button.getFont().getSize())));
@@ -124,15 +119,16 @@ public class StartGamePanel extends JPanel {
         setLayout(null);
 
         //---- starting_liv_label ----
-        starting_liv_label.setText("Starting Lives");
+        starting_liv_label.setText("Starting Lives ");
         starting_liv_label.setForeground(Color.magenta);
-        starting_liv_label.setFont(starting_liv_label.getFont().deriveFont(starting_liv_label.getFont().getStyle() | Font.BOLD, starting_liv_label.getFont().getSize() + 2f));
+        starting_liv_label.setFont(starting_liv_label.getFont().deriveFont(starting_liv_label.getFont().getStyle() | Font.BOLD, starting_liv_label.getFont().getSize() + 7f));
+        starting_liv_label.setHorizontalAlignment(SwingConstants.RIGHT);
         add(starting_liv_label);
-        starting_liv_label.setBounds(95, 155, 109, 31);
+        starting_liv_label.setBounds(0, 155, 205, 31);
 
         //---- start_game_button ----
         start_game_button.setText("START GAME");
-        start_game_button.setBackground(new Color(0, 0, 0, 0));
+        start_game_button.setBackground(new Color(0, 0, 27));
         start_game_button.setBorder(new LineBorder(Color.yellow, 2, true));
         start_game_button.setFont(start_game_button.getFont().deriveFont(start_game_button.getFont().getStyle() | Font.BOLD, start_game_button.getFont().getSize() + 7f));
         start_game_button.setForeground(new Color(255, 0, 204));
@@ -147,8 +143,9 @@ public class StartGamePanel extends JPanel {
         newgame_title.setMaximumSize(null);
         newgame_title.setMinimumSize(null);
         newgame_title.setPreferredSize(null);
+        newgame_title.setHorizontalAlignment(SwingConstants.CENTER);
         add(newgame_title);
-        newgame_title.setBounds(85, 40, 355, newgame_title.getPreferredSize().height);
+        newgame_title.setBounds(0, 40, 395, newgame_title.getPreferredSize().height);
 
         //---- back_button ----
         back_button.setText("- back");
@@ -166,6 +163,8 @@ public class StartGamePanel extends JPanel {
         lives_spinner.setMaximumSize(null);
         lives_spinner.setMinimumSize(null);
         lives_spinner.setPreferredSize(null);
+        lives_spinner.setFont(lives_spinner.getFont().deriveFont(lives_spinner.getFont().getSize() + 11f));
+        lives_spinner.setBackground(new Color(0, 0, 27));
         add(lives_spinner);
         lives_spinner.setBounds(225, 155, 100, 30);
 
