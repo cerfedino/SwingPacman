@@ -63,11 +63,11 @@ public class Painter {
         gameframe.add(gamepanel);
     
         scoreHUD= new ScoreJLabel();
-        scoreHUD.setLocation(0,size-Scaler.scale(100));
-
+        scoreHUD.setBounds(0,size-Scaler.scale(100), Scaler.scale(500), (int)Settings.get(EParam.label_size));
+        
         livesHUD = new LivesJPanel((int)Settings.get(EParam.pacman_starting_lives));
-        livesHUD.setLocation(size-Scaler.scale(600),size-Scaler.scale(100));
-
+        livesHUD.setBounds(size-Scaler.scale(600),size-Scaler.scale(100), Scaler.scale(600), Scaler.scale(100));
+        
         roundHUD = new RoundJLabel();
         roundHUD.setLocation(Scaler.scale(400), Scaler.scale(470));
 

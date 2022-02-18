@@ -8,6 +8,7 @@ import Settings.EParam;
 import Settings.Settings;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 /**
@@ -25,24 +26,9 @@ public class LivesJPanel extends JPanel {
         label.setForeground(((Color)Settings.get(EParam.label_color)));
         add(label);
         
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         setOpaque(false);
         updateLives(lives);
-    }
-    
-    @Override
-    public void paintComponent(Graphics g) {
-        removeAll();
-        add(label);
-        label.setLocation(0,0);
-        
-        int offset = label.getWidth();
-        int width = Media.getImg(EImage.live).getWidth();
-        for (int i = 1; i<= lives; i++) {
-            Sprite s = new Sprite(offset+(i*width), getHeight()/2, EImage.live);
-            add(s);
-        }
-        super.paintComponent(g);
-        Toolkit.getDefaultToolkit().sync();
     }
     
     /**
@@ -50,11 +36,12 @@ public class LivesJPanel extends JPanel {
      * @param lives the new lives to be displayed
      */
     public void updateLives(int lives) {
-        this.lives = lives;
-        int newWidth = label.getWidth()
-                        + Math.max(0,(lives+1)*Media.getImg(EImage.live).getWidth());
-        int newHeight = Math.max(label.getHeight(), Media.getImg(EImage.live).getHeight());
-        
-        setBounds(getX(), getY(),newWidth, newHeight);
+    
+        while(lives < this.lives && getComponentCount() > 1) {
+            remove(getComponentCount()-1); this.lives--;
+        }
+        while(lives > this.lives) {
+            add(new JLabel(new ImageIcon(Media.getImg(EImage.live)))); this.lives++;
+        }
     }
 }

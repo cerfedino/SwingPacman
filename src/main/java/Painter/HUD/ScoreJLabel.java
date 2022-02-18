@@ -29,7 +29,6 @@ public class ScoreJLabel extends JLabel {
      */
     public void updateScore(long score) {
         this.score = score;
-        setBounds(getX(),getY(), ("SCORE: "+score).length()*(int)Settings.get(EParam.label_size), (int)Settings.get(EParam.label_size));
         setText("SCORE     "+score);
         repaint();
     }
