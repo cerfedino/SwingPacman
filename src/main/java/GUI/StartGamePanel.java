@@ -15,8 +15,6 @@ import Settings.Settings;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * The panel responsible for setting the pacmans lives and starting the game.
@@ -70,7 +68,6 @@ public class StartGamePanel extends JPanel {
     public void startGame() {
         Settings.set(EParam.pacman_starting_lives, getLives_spinner().getValue());
         AudioEngine.stop(EAudio.ost);
-        //AudioEngine.initAudioEngine();
         new Game();
     }
     

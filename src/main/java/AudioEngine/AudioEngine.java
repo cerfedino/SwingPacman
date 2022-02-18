@@ -1,13 +1,10 @@
 package AudioEngine;
 
 import Media.EAudio;
-import Media.Media;
 
 import javax.sound.sampled.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.EnumMap;
 
 /**
  * Handles all the audio-playing aspect of the game.

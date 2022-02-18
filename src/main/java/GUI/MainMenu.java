@@ -16,7 +16,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.URI;
-import java.net.URL;
 
 
 /**
@@ -136,13 +135,11 @@ public class MainMenu extends JFrame {
     public void showMainPanel() {
         startpanel.setVisible(false);
         main_panel.setVisible(true);
-//        repaint();
     }
     
     public void showNewGamepanel() {
         main_panel.setVisible(false);
         startpanel.setVisible(true);
-//        repaint();
     }
     
     
