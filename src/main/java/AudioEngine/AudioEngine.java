@@ -4,6 +4,7 @@ import Media.EAudio;
 
 import javax.sound.sampled.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  */
 public class AudioEngine {
     
-    private static final ArrayList<AudioEntity> entities = new ArrayList<AudioEntity>();
+    private static final ArrayList<AudioEntity> entities = new ArrayList<>();
     
     /**
      * Initializes the AudioEngine class.
@@ -19,9 +20,8 @@ public class AudioEngine {
     public static void initAudioEngine() {
         try {
             entities.add(new AudioEntity(EAudio.ghost_moving, PlaybackMode.loop));
-        
         } catch (Exception e) {
-            System.out.println("[-] Couldn't set up the AudioEntities correctly.");
+            System.err.println("\n[-] Couldn't init the audio engine.");
             e.printStackTrace();
         }
     }
@@ -33,9 +33,7 @@ public class AudioEngine {
      * @param callback the callback function to call after the AudioEntity has finished playing
      */
     public static void play(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
-        
         try {
-            
             AudioEntity entity = new AudioEntity(audio, mode);
             entities.add(entity);
             
@@ -55,8 +53,11 @@ public class AudioEngine {
             });
             entity.play();
         }catch (Exception e) {
-            System.out.println("[-] Couldn't set up the AudioEntity correctly.");
+            System.err.println("\n[-] Couldn't set up the AudioEntity correctly, calling callback immediately.");
             e.printStackTrace();
+            if (callback != null) {
+                callback.callback();
+            }
         }
     }
     
@@ -79,8 +80,14 @@ public class AudioEngine {
     public static void restartOrPlay(EAudio audio, PlaybackMode mode, FunctionCallback callback) {
         for (AudioEntity e : entities) {
             if(e.getAudio() == audio) {
-                e.restart();
-                return;
+                try{
+                    e.restart();
+                } catch(IOException ex) {
+                    ex.printStackTrace();
+                    play(audio, mode, callback);
+                } finally{
+                    return;
+                }
             }
         }
         play(audio, mode, callback);
@@ -96,6 +103,7 @@ public class AudioEngine {
                 try{
                     e.stop();
                 } catch (Exception ex) {
+                    System.err.println("\n[-] Couldnt stop AudioEntity");
                     ex.printStackTrace();
                 }
             }

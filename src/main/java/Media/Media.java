@@ -6,9 +6,11 @@ import AudioEngine.AudioEngine;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.EnumMap;
 
 
@@ -18,7 +20,7 @@ import java.util.EnumMap;
  */
 public class Media {
     static private EnumMap<EImage, BufferedImage> img;
-    static private EnumMap<EAudio, File> sfx;
+    static private EnumMap<EAudio, String> sfx;
     static private EnumMap<EFont, Font> font;
     
     /**
@@ -52,8 +54,8 @@ public class Media {
      * @param eaudio the EAudio ENUM key
      * @return the sfx File
      */
-    public static File getSfx(EAudio eaudio) {
-        return sfx.get(eaudio);
+    public static InputStream getSfx(EAudio eaudio) {
+        return getStreamfromResource(sfx.get(eaudio));
     }
     
     /**
@@ -72,108 +74,113 @@ public class Media {
     static private void importMedia() throws IOException  {
         
         EnumMap<EImage, BufferedImage> newImage = new EnumMap<>(EImage.class);
-        EnumMap<EAudio, File> newSfx = new EnumMap<>(EAudio.class);
+        EnumMap<EAudio, String> newSfx = new EnumMap<>(EAudio.class);
         EnumMap<EFont, Font> newFont = new EnumMap<>(EFont.class);
         
         
         double baseScale = 0.15;
         try {
-            newImage.put(EImage.placeholder, scaleImg(ImageIO.read(Thread.currentThread().getContextClassLoader().getResource("res/img/placeholder.png")), baseScale));
+            newImage.put(EImage.placeholder, scaleImg(ImageIO.read(getStreamfromResource("res/img/placeholder.png")), baseScale));
         
             //////////////////////////////
             
-            newImage.put(EImage.pacman_left_1, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_left_1.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_right_1, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_right_1.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_up_1, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_up_1.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_down_1, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_down_1.png").toURI())), baseScale));
+            newImage.put(EImage.pacman_left_1, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_left_1.png")), baseScale));
+            newImage.put(EImage.pacman_right_1, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_right_1.png")), baseScale));
+            newImage.put(EImage.pacman_up_1, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_up_1.png")), baseScale));
+            newImage.put(EImage.pacman_down_1, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_down_1.png")), baseScale));
         
-            newImage.put(EImage.pacman_left_2, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_left_2.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_right_2, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_right_2.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_up_2, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_up_2.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_down_2, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_down_2.png").toURI())), baseScale));
+            newImage.put(EImage.pacman_left_2, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_left_2.png")), baseScale));
+            newImage.put(EImage.pacman_right_2, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_right_2.png")), baseScale));
+            newImage.put(EImage.pacman_up_2, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_up_2.png")), baseScale));
+            newImage.put(EImage.pacman_down_2, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_down_2.png")), baseScale));
         
-            newImage.put(EImage.pacman_left_3, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_left_3.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_right_3, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_right_3.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_up_3, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_up_3.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_down_3, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_down_3.png").toURI())), baseScale));
+            newImage.put(EImage.pacman_left_3, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_left_3.png")), baseScale));
+            newImage.put(EImage.pacman_right_3, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_right_3.png")), baseScale));
+            newImage.put(EImage.pacman_up_3, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_up_3.png")), baseScale));
+            newImage.put(EImage.pacman_down_3, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_down_3.png")), baseScale));
         
-            newImage.put(EImage.pacman_left_4, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_left_4.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_right_4, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_right_4.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_up_4, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_up_4.png").toURI())), baseScale));
-            newImage.put(EImage.pacman_down_4, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/pacman/pacman_down_4.png").toURI())), baseScale));
+            newImage.put(EImage.pacman_left_4, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_left_4.png")), baseScale));
+            newImage.put(EImage.pacman_right_4, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_right_4.png")), baseScale));
+            newImage.put(EImage.pacman_up_4, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_up_4.png")), baseScale));
+            newImage.put(EImage.pacman_down_4, scaleImg(ImageIO.read(getStreamfromResource("res/img/pacman/pacman_down_4.png")), baseScale));
             
             /////////////////////////////
         
-            newImage.put(EImage.ghost1_left, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost1_left.png").toURI())), baseScale));
-            newImage.put(EImage.ghost1_right, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost1_right.png").toURI())), baseScale));
-            newImage.put(EImage.ghost1_up, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost1_up.png").toURI())), baseScale));
-            newImage.put(EImage.ghost1_down, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost1_down.png").toURI())), baseScale));
+            newImage.put(EImage.ghost1_left, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost1_left.png")), baseScale));
+            newImage.put(EImage.ghost1_right, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost1_right.png")), baseScale));
+            newImage.put(EImage.ghost1_up, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost1_up.png")), baseScale));
+            newImage.put(EImage.ghost1_down, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost1_down.png")), baseScale));
             
         
-            newImage.put(EImage.ghost2_left, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost2_left.png").toURI())), baseScale));
-            newImage.put(EImage.ghost2_right, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost2_right.png").toURI())), baseScale));
-            newImage.put(EImage.ghost2_up, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost2_up.png").toURI())), baseScale));
-            newImage.put(EImage.ghost2_down, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost2_down.png").toURI())), baseScale));
+            newImage.put(EImage.ghost2_left, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost2_left.png")), baseScale));
+            newImage.put(EImage.ghost2_right, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost2_right.png")), baseScale));
+            newImage.put(EImage.ghost2_up, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost2_up.png")), baseScale));
+            newImage.put(EImage.ghost2_down, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost2_down.png")), baseScale));
             
             
-            newImage.put(EImage.ghost3_left, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost3_left.png").toURI())), baseScale));
-            newImage.put(EImage.ghost3_right, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost3_right.png").toURI())), baseScale));
-            newImage.put(EImage.ghost3_up, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost3_up.png").toURI())), baseScale));
-            newImage.put(EImage.ghost3_down, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost3_down.png").toURI())), baseScale));
+            newImage.put(EImage.ghost3_left, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost3_left.png")), baseScale));
+            newImage.put(EImage.ghost3_right, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost3_right.png")), baseScale));
+            newImage.put(EImage.ghost3_up, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost3_up.png")), baseScale));
+            newImage.put(EImage.ghost3_down, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost3_down.png")), baseScale));
             
             
-            newImage.put(EImage.ghost4_left, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost4_left.png").toURI())), baseScale));
-            newImage.put(EImage.ghost4_right, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost4_right.png").toURI())), baseScale));
-            newImage.put(EImage.ghost4_up, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost4_up.png").toURI())), baseScale));
-            newImage.put(EImage.ghost4_down, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost4_down.png").toURI())), baseScale));
+            newImage.put(EImage.ghost4_left, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost4_left.png")), baseScale));
+            newImage.put(EImage.ghost4_right, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost4_right.png")), baseScale));
+            newImage.put(EImage.ghost4_up, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost4_up.png")), baseScale));
+            newImage.put(EImage.ghost4_down, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost4_down.png")), baseScale));
             
         
-            newImage.put(EImage.ghost_vuln, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/ghost/ghost_vuln.png").toURI())), baseScale));
+            newImage.put(EImage.ghost_vuln, scaleImg(ImageIO.read(getStreamfromResource("res/img/ghost/ghost_vuln.png")), baseScale));
     
-            newImage.put(EImage.large_food, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/large_food.png").toURI())), baseScale));
-            newImage.put(EImage.small_food, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/small_food.png").toURI())), baseScale));
+            newImage.put(EImage.large_food, scaleImg(ImageIO.read(getStreamfromResource("res/img/large_food.png")), baseScale));
+            newImage.put(EImage.small_food, scaleImg(ImageIO.read(getStreamfromResource("res/img/small_food.png")), baseScale));
     
-            newImage.put(EImage.live, scaleImg(ImageIO.read(new File(Thread.currentThread().getContextClassLoader().getResource("res/img/live.png").toURI())), baseScale));
+            newImage.put(EImage.live, scaleImg(ImageIO.read(getStreamfromResource("res/img/live.png")), baseScale));
+            
         } catch(Exception e) {
-            System.err.println("Could not import audio files");
+            System.err.println("Could not import image files");
             e.printStackTrace();
         }
+        
         ////////////////////
         // Audio
         
         try {
-            newSfx.put(EAudio.placeholder, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/ding.wav").toURI()));
+            newSfx.put(EAudio.placeholder, "res/sfx/ding.wav");
         
-            newSfx.put(EAudio.ost, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/ost.wav").toURI()));
-            newSfx.put(EAudio.button_click, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/button_click.wav").toURI()));
+            newSfx.put(EAudio.ost, "res/sfx/ost.wav");
+            newSfx.put(EAudio.button_click, "res/sfx/button_click.wav");
             
-            newSfx.put(EAudio.ghost_moving, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/ghost_moving.wav").toURI()));
-            newSfx.put(EAudio.small_food, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/small_food.wav").toURI()));
-            newSfx.put(EAudio.large_food, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/large_food.wav").toURI()));
-            newSfx.put(EAudio.ghost_vulnerable, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/ghost_vulnerable.wav").toURI()));
-            newSfx.put(EAudio.ghost_vulnerable_end, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/ghost_vulnerable_end.wav").toURI()));
-            newSfx.put(EAudio.ghost_ate, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/ghost_ate.wav").toURI()));
-            newSfx.put(EAudio.round_start, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/round_start.wav").toURI()));
-            newSfx.put(EAudio.death_sound, new File(Thread.currentThread().getContextClassLoader().getResource("res/sfx/death_sound.wav").toURI()));
+            newSfx.put(EAudio.ghost_moving, "res/sfx/ghost_moving.wav");
+            newSfx.put(EAudio.small_food, "res/sfx/small_food.wav");
+            newSfx.put(EAudio.large_food, "res/sfx/large_food.wav");
+            newSfx.put(EAudio.ghost_vulnerable, "res/sfx/ghost_vulnerable.wav");
+            newSfx.put(EAudio.ghost_vulnerable_end, "res/sfx/ghost_vulnerable_end.wav");
+            newSfx.put(EAudio.ghost_ate, "res/sfx/ghost_ate.wav");
+            newSfx.put(EAudio.round_start, "res/sfx/round_start.wav");
+            newSfx.put(EAudio.death_sound, "res/sfx/death_sound.wav");
+            
         } catch(Exception e) {
             System.err.println("Could not import audio files");
             e.printStackTrace();
         }
+        
         ////////////////////
         // Font
         try {
-            Font f = Font.createFont(Font.TRUETYPE_FONT, new File(Thread.currentThread().getContextClassLoader().getResource("res/font/game_font1.ttf").toURI())).deriveFont(12f);
+            Font f = Font.createFont(Font.TRUETYPE_FONT, getStreamfromResource("res/font/game_font1.ttf")).deriveFont(12f);
             newFont.put(EFont.regular, f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
             ge.registerFont(f);
             
         } catch (Exception e) {
+            System.err.println("Could not import font files");
             e.printStackTrace();
         }
     
-        img= newImage;
-        sfx = newSfx;
+        img  = newImage;
+        sfx  = newSfx;
         font = newFont;
     }
     
@@ -220,14 +227,17 @@ public class Media {
     public static EnumMap<EImage, BufferedImage> getImgMap() {
         return img;
     }
+    
     /**
      * Getter method for the EnumMap.
      * @return the sfx EnumMap
      */
-    public static EnumMap<EAudio, File> getSfxMap() {
+    public static EnumMap<EAudio, String> getSfxMap() {
         return sfx;
     }
     
-    
+    private static InputStream getStreamfromResource(String resource) {
+        return Thread.currentThread().getContextClassLoader().getResourceAsStream(resource);
+    }
     
 }

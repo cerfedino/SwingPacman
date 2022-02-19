@@ -4,8 +4,10 @@ import Media.EAudio;
 import Media.Media;
 
 import javax.sound.sampled.*;
-import java.io.File;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Represents the state in which an AudioEntity can be.
@@ -23,7 +25,7 @@ public class AudioEntity {
     Long currentFrame;
     
     EAudio audio;
-    File audiofile;
+    InputStream audiofile;
     Clip clip;
     
     // current status of clip
@@ -44,14 +46,12 @@ public class AudioEntity {
         setMode(mode);
         status = PlaybackStatus.stopped;
         
-        audioInputStream = AudioSystem.getAudioInputStream(audiofile);
-        
+        audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(audiofile));
         // Create clip reference
         clip = AudioSystem.getClip();
         
         // Open audioInputStream to the clip
-        resetAudioStream();
-        
+        clip.open(audioInputStream);
     }
     
     /**
@@ -100,10 +100,12 @@ public class AudioEntity {
     /**
      * Restarts the audio Clip.
      */
-    public void restart() {
+    public void restart() throws IOException{
         pause();
+        
         currentFrame = 0L;
         clip.setMicrosecondPosition(0);
+        audiofile.reset();
         this.play();
         
         status = PlaybackStatus.playing;
@@ -112,19 +114,23 @@ public class AudioEntity {
     /**
      * Stops the audio Clip.
      */
-    public void stop() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public void stop() {
         status = PlaybackStatus.stopped;
         
-        currentFrame = 0L;
         clip.stop();
-        clip.close();
+        currentFrame = 0L;
     }
     
     /**
      * Resets the Clip.
      */
     public void resetAudioStream() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        audioInputStream = AudioSystem.getAudioInputStream(audiofile);
+        clip.stop();
+        
+        audiofile.reset();
+        audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(audiofile));
+        System.out.println(audio + "     reset");
+        
         clip.open(audioInputStream);
     }
     

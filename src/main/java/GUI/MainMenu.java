@@ -7,12 +7,15 @@ import AudioEngine.PlaybackMode;
 import Media.*;
 import Painter.Scaler;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.net.URI;
 
 
@@ -105,13 +108,23 @@ public class MainMenu extends JFrame {
         startpanel.setLocation(0,0);
         startpanel.setVisible(false);
     
-        try{
+        try {
+            InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("res/gif/gameplay.gif");
+            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+            int nRead;
+            byte[] data = new byte[16384];
+            while ((nRead = in.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
+            }
+            
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(
-                    new File(Thread.currentThread().getContextClassLoader().getResource("res/gif/gameplay.gif").toURI()).toURI().toURL()
+                    buffer.toByteArray()
             ).getImage().getScaledInstance(getWidth(),getHeight(),Image.SCALE_DEFAULT));
+            
             JLabel label = new JLabel(imageIcon);
             add(label);
             label.setBounds(0,0,getWidth(), getHeight());
+            
         } catch(Exception e) {
             e.printStackTrace();
         }
