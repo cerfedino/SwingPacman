@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SwingPacman">
+    <output-path>$PROJECT_DIR$/out/artifacts/SwingPacman</output-path>
+    <root id="archive" name="SwingPacman.jar">
+      <element id="module-output" name="SwingPacman" />
+      <element id="directory" name="res">
+        <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources/res" />
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/manifests/SwingPacman/SwingPacman.MF" output-file-name="MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
