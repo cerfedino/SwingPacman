@@ -1,6 +1,7 @@
 package Game;
 
 
+import Media.Media;
 import Painter.Painter;
 
 /**

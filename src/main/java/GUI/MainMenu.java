@@ -4,9 +4,7 @@ import AnimationEngine.BlinkAnimator;
 import AudioEngine.AudioEngine;
 import AudioEngine.FunctionCallback;
 import AudioEngine.PlaybackMode;
-import Media.EAudio;
-import Media.EFont;
-import Media.Media;
+import Media.*;
 import Painter.Scaler;
 
 import javax.swing.*;
@@ -42,7 +40,9 @@ public class MainMenu extends JFrame {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int size = Math.min(screenSize.height, screenSize.width);
         Scaler.setNewsize(size);
-    
+        
+        setTitle("SwingPacman - MENU");
+        setIconImage(Media.getImg(EImage.pacman_right_1));
         
         initComponents();
         adjustSizes();
@@ -106,7 +106,9 @@ public class MainMenu extends JFrame {
         startpanel.setVisible(false);
     
         try{
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(new File("src/main/resources/gif/gameplay.gif").toURI().toURL()).getImage().getScaledInstance(getWidth(),getHeight(),Image.SCALE_DEFAULT));
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(
+                    new File(Thread.currentThread().getContextClassLoader().getResource("res/gif/gameplay.gif").toURI()).toURI().toURL()
+            ).getImage().getScaledInstance(getWidth(),getHeight(),Image.SCALE_DEFAULT));
             JLabel label = new JLabel(imageIcon);
             add(label);
             label.setBounds(0,0,getWidth(), getHeight());

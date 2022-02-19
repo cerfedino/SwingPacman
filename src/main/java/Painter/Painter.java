@@ -3,7 +3,7 @@ package Painter;
 import Entities.Sprite;
 import Game.GameInputManager;
 import Map.Map;
-import Media.Media;
+import Media.*;
 import Painter.HUD.LivesJPanel;
 import Painter.HUD.RoundJLabel;
 import Painter.HUD.ScoreJLabel;
@@ -48,6 +48,8 @@ public class Painter {
         Settings.rescaleSettings(Scaler.getScale_factor());
         
         gameframe = new JFrame("SwingPacman");
+        gameframe.setIconImage(Media.getImg(EImage.pacman_right_1));
+        
         gameframe.setSize(Scaler.getNewSize(), size);
         gameframe.setResizable(false);
         gameframe.getContentPane().setBackground((Color)Settings.get(EParam.background_color));
