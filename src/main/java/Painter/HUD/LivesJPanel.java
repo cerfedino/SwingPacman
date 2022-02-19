@@ -43,5 +43,6 @@ public class LivesJPanel extends JPanel {
         while(lives > this.lives) {
             add(new JLabel(new ImageIcon(Media.getImg(EImage.live)))); this.lives++;
         }
+        repaint();
     }
 }
