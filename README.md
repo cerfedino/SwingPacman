@@ -12,6 +12,7 @@
     - [5. Package Painter and AnimationEngine](#5-package-painter-and-animationengine)
     - [6. Package Settings](#6-package-settings)
     - [7. Package GUI](#7-package-gui)
+- [Download :dizzy:](#download-dizzy)
 - [Guide to compiling :rocket:](#guide-to-compiling-rocket)
     - [1. Install Java 16](#1-install-java-16)
     - [2. Install Maven 3.8.1](#2-install-maven-381)
@@ -161,6 +162,10 @@ This package allows the player to customize the game and settings based on perso
 
 This package consists of the main menu interface.
 Class `MainMenu` contains a `main()` method for starting the game with the Main Menu.
+
+# Download :dizzy:
+[**Latest release**](https://github.com/AlbertCerfeda/SwingPacman/releases/latest)
+
 
 # Guide to compiling :rocket:
 
