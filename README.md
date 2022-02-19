@@ -47,13 +47,13 @@ All nodes have a specific location on the map and every edge is built based on a
 
 For example, this is the current map:
 
-<img src="./documentation/readme/map.png" width="100%">
+<img src="./documentation/readme/map.png" width="70%">
 
 
 If needed, nodes and edges can be relocated to form a different map. In the example below, some of the edges are removed. The game still runs, the ghosts and the pacman will be able to move only along the edges which are present on the map:
 
-<img src="./documentation/readme/map_removed.png" width="100%">
-<img src="./documentation/readme/map_removed2.png" width="100%">
+<img src="./documentation/readme/map_removed.png" width="70%">
+<img src="./documentation/readme/map_removed2.png" width="70%">
 
 ### 3. Package Entities:
 This package contains the classes of all visible Sprites on the map as well as classes that manage the interactions between them, such as:
