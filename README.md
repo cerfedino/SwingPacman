@@ -186,7 +186,7 @@ Since we are using Java 16, you need to be using Apache Maven 3.8.1
 
 - Extract the tar.gz archive somewhere safe :wink:
 
-- edit your .bashrc file with  ```nano ~/.bashrc``` and add the following lines
+- edit your .bashrc file and add the following lines
   
   ```bash
   export M2_HOME=<path-to-extracted-maven-archive>
