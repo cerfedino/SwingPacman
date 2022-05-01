@@ -25,7 +25,7 @@ The goal is simple: eat all food, save yourself from the ghosts that chase you a
 \
 \
 This project spans from *6 May 2021* to *21 June 2021* (47 days).\
-Developed as part of the final group project for _Programming Fundamentals 2_, part of BSc INF at USI Lugano.
+Developed as part of the final group project for _Programming Fundamentals 2 SP 2020-2021_, part of BSc INF at USI Lugano.
 
 # How to play
 To play the game, just run the ```main()``` method. Once you spawn on the map, use the arrow keys to navigate. The game ends when Pacman eats all food on the map or when he loses all of his lives. Pacman loses a single life whenever he collides with an invulnerable ghost.
